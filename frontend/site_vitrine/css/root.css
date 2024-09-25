@@ -1,0 +1,10 @@
+:root {
+    --main-color: #08415C;
+    --secondary-color: #7CC6FE;
+    --text-color: white;
+    --background-light: #def9ff;
+    --container-width: 80%;
+    --container-max-width: 800px;
+    --button-radius: 25px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
