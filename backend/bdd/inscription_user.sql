@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 26 sep. 2024 à 11:51
+-- Généré le : jeu. 26 sep. 2024 à 13:53
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `validation` (
   `id_client` int NOT NULL,
   `nom_inscrit` varchar(150) NOT NULL,
   `prenom_inscrit` varchar(150) NOT NULL,
+  `decision` binary(1) NOT NULL,
   PRIMARY KEY (`id_client`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;
