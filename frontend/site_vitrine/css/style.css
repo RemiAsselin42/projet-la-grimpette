@@ -101,7 +101,7 @@ header h2 {
 
 
 .container {
-    background-color: var(--secondary-color);
+    background-color: var(--main-color);
     padding: 40px;
     border-radius: 15px;
     box-shadow: var(--box-shadow);
@@ -113,13 +113,18 @@ header h2 {
 .container h1 {
     margin: 0;
     font-size: 2em;
-    color: var(--main-color);
+    color: var(--text-color);
     text-align: center;
+}
+
+.trait{
+    border-style: solid;
+    border-bottom: var(--main-color);
 }
 
 /* Formulaire */
 .form-container {
-    background-color: var(--secondary-color);
+    background-color: var(--main-color);
     padding: 40px;
     border-radius: 15px;
     box-shadow: var(--box-shadow);
@@ -131,6 +136,7 @@ header h2 {
 /* Titre */
 .form-container h1 {
     margin-bottom: 30px; 
+    color: var(--text-color);
 }
 
 /* Champs de formulaire */
@@ -150,8 +156,8 @@ header h2 {
 
 /* Bouton Formulaire */
 .form-container button {
-    background-color: var(--main-color);
-    color: var(--text-color);
+    background-color: var(--text-color);
+    color: var(--main-color);
     padding: 12px;
     border: none;
     border-radius: var(--button-radius);
@@ -162,6 +168,7 @@ header h2 {
 
 .form-container button:hover {
     background-color: #096191; /* Couleur de fond au survol */
+    color: var(--text-color);
 }
 
 /* Boutons site général */
