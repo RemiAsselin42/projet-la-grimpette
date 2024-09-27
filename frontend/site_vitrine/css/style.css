@@ -63,8 +63,8 @@ main {
 header {
     background-color: var(--main-color);
     color: var(--text-color);
-    padding-top: 15px; 
-    padding-bottom: 15px;width: 100%;
+    padding: 15px 0; 
+    width: 100%;
     position: relative; 
     z-index: 1000; /* S'assurer qu'il reste au-dessus du contenu */
     top: 0;
@@ -85,7 +85,6 @@ header h2 {
     margin: 0 0 0 100px;
 }
 
-
 /* Ajout de marge pour éviter que le contenu soit caché par le header*/
 #page2 .container {
     margin-top: 20px; 
@@ -98,7 +97,6 @@ header h2 {
     align-items: center;
     height: 100vh;
 }
-
 
 .container {
     background-color: var(--main-color);
@@ -208,7 +206,6 @@ header h2 {
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
-
 /* Flèche pour glisser vers la droite */
 .arrow {
     display: inline-block;
@@ -224,6 +221,7 @@ header h2 {
 .arrow:hover {
     transform: translateX(10px);
     animation-play-state: paused; /* Pause l'animation de clignotement */
+    opacity: 1 !important; /* Force l'opacité à 1 lors du hover*/
 }
 
 @keyframes blink {
@@ -231,7 +229,6 @@ header h2 {
     50% { opacity: 0; }  
     100% { opacity: 1; } 
 }
-
 
 .description {
     margin: 20px auto; 
@@ -241,9 +238,9 @@ header h2 {
     padding: 10px; 
 }
 
-
 /* Footer */
 footer {
+    position: relative;
     background-color: var(--main-color);
     color: var(--text-color);
     text-align: center;
@@ -285,8 +282,6 @@ footer {
         padding: 10px 20px; /* Espacement intérieur pour le bouton */
     }
 }
-
-
 
 /* Conteneur de l'activité */
 .activity-container {
@@ -335,8 +330,6 @@ footer {
     text-decoration: none; /* Pas de soulignement */
     transition: background-color 0.3s ease; /* Transition pour le changement de couleur */
 }
-
-
 
 .register-button:hover {
     background-color: #096191; 
