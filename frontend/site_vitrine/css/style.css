@@ -5,6 +5,7 @@ body, html {
     margin: 0;
     padding: 0;
     color: var(--main-color);
+    overflow-x: hidden;
     font-family: "Raleway", system-ui;
     background-color: #f8f8f8;
 }
@@ -26,12 +27,12 @@ main {
     display: flex;
     transition: transform 0.5s ease;
     width: 200vw; /* 2 pages de 100% de largeur chacune */
-    overflow: hidden; /* Empêche le contenu de déborder */
+    overflow-y: hidden; /* Cache la barre de défilement verticale */
+    height: 100vh; /* Plein écran */
 }
 
 .slide {
     width: 100vw;
-    height: 100vh;
     position: relative;
     display: flex;
     justify-content: center;
@@ -43,7 +44,7 @@ main {
 #page1 {
     background: url(https://saint-etienne.climb-up.fr/wp-content/uploads/2024/03/P6A7944-1024x683.png) no-repeat center center;
     background-size: cover;
-    position: relative;
+    width: 100vw;
 }
 
 /* Ajout d'un voile noir sur l'image */
@@ -63,15 +64,10 @@ header {
     background-color: var(--main-color);
     color: var(--text-color);
     padding: 15px 0; 
-    width: 100%;
     position: relative; 
     z-index: 1000; /* S'assurer qu'il reste au-dessus du contenu */
     top: 0;
     width: 100%;
-}
-
-header.accueil {
-    position: absolute;
 }
 
 header a {
@@ -92,9 +88,10 @@ header h2 {
 /* Deuxième slide */
 #page2 {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    height: 100vh;
+    width: 100vw;
 }
 
 .container {

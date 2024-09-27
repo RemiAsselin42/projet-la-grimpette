@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="./css/root.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/jquery-3.5.1.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/index.js"></script>
-    
+    <script src="./js/bootstrap.min.js"></script>    
 </head>
 
 <body>
@@ -27,7 +25,7 @@
 
         <!-- Deuxième page : Choix des catégories -->
         <section id="page2" class="slide">
-            <header class="accueil">
+            <header>
                 <a href="index.html"><h2>La Grimpette</h2></a>
             </header>
             
@@ -65,23 +63,26 @@
                     <h1>Qui sommes-nous ?</h1>
                 </div>
                 <div class="trait">
-
+                    <ul>
+                        <li>Une équipe de professionnels</li>
+                        <li>Des activités pour tous les âges</li>
+                        <li>Des cours adaptés à tous les niveaux</li>
+                        <li>Des sorties en pleine nature</li>
+                        <li>Des événements et des compétitions</li>
+                        <li>Des équipements de qualité</li>
+                        <li>Des tarifs abordables</li>
+                    </ul>
+                </div>
+                <div>
+                    <h1>Contactez-nous !</h1>
+                </div>
+                <div>
+                    <button class="button">Contactez-nous</button>
                 </div>
             </div>    
         </section>
 
     </div>
-
-    <!-- Script pour le slide--> 
-    <script>
-        const slideRight = document.getElementById('slideRight');
-        const slidesContainer = document.querySelector('.slides-container');
-
-        slideRight.addEventListener('click', function (defilement) {
-            defilement.preventDefault();
-            slidesContainer.style.transform = 'translateX(-100vw)';
-        });
-    </script>
-
     </body>
+    <script src="./js/gestionScroll.js"></script>
 </html>
