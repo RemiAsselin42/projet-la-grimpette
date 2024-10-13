@@ -26,10 +26,26 @@
         <!-- Deuxième page : Choix des catégories -->
         <section id="page2" class="slide">
             <header>
-                <a href="index.html"><h2>La Grimpette</h2></a>
+                <a href="index.html" class="hd-logo">
+                    <h2>La Grimpette</h2>
+                </a>
+                <div class="hd-flex">
+                    <a href="inscrits.html"><h2>Inscrits</h2></a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <h2>Activités <span class="arrow-dd">&#9660;</span></h2>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="enfants.html">Enfants</a>
+                            <a href="ados.html">Ados</a>
+                            <a href="adultes.html">Adultes</a>
+                        </div>
+                    </div>
+                    <a href="contact.html"><h2>Contact</h2></a>
+                </div>
             </header>
-            
-            <p class="description"><strong>Bienvenue à La Grimpette</strong>, votre club d'escalade dédié à tous les passionnés d'aventure et de sensations fortes. Que vous soyez débutant ou grimpeur expérimenté, nous offrons des cours et des activités adaptés à tous les âges et niveaux. Rejoignez-nous pour développer vos compétences, rencontrer de nouveaux amis et partager des moments inoubliables en pleine nature!</p>
+            <h1>Bienvenue à La Grimpette</h1>
+            <p class="description">, votre club d'escalade dédié à tous les passionnés d'aventure et de sensations fortes. Que vous soyez débutant ou grimpeur expérimenté, nous offrons des cours et des activités adaptés à tous les âges et niveaux. Rejoignez-nous pour développer vos compétences, rencontrer de nouveaux amis et partager des moments inoubliables en pleine nature!</p>
 
             <div>
                 <div>
@@ -40,20 +56,14 @@
                 </div>
             </div>
 
-            <div class="container">
-                <div class="categorie">
+            <div class="pa-container-grp">
+                <div class="categorie ctg-1">
                     <h3>Enfants</h3>
                 </div>
-            </div>
-
-            <div class="container">
-                <div class="categorie">
+                <div class="categorie ctg-2">
                     <h3>Adolescents</h3>
                 </div>
-            </div>
-
-            <div class="container">
-                <div class="categorie">
+                <div class="categorie ctg-3">
                     <h3>Adultes</h3>
                 </div>
             </div>
@@ -83,6 +93,7 @@
         </section>
 
     </div>
+        <script src="./js/script.js"></script>
+        <script src="./js/gestionScroll.js"></script>
     </body>
-    <script src="./js/gestionScroll.js"></script>
 </html>
