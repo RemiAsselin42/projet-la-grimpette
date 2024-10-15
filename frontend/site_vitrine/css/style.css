@@ -12,13 +12,14 @@ body, html {
     color: var(--main-color);
     overflow-x: hidden;
     font-family: "Raleway", system-ui;
-    background-color: #f8f8f8;
+    background-color: var(--background-light)
     ;
 }
 
-h1, h2 {
+h1, h2, h3 {
     font-family: "Unbounded", sans-serif;
 }
+
 
 main {
     margin-left: 20px;  
@@ -53,7 +54,7 @@ main {
     width: 100vw;
 }
 
-/* Ajout d'un voile noir sur l'image */
+/* Ajout d'un voile sur l'image */
 .overlay {
     position: absolute;
     top: 0;
@@ -114,7 +115,7 @@ header h2 {
     text-align: center;
     display: flex;
     flex-wrap: nowrap;
-    width: 60%;
+    width: 80%;
     justify-content: center;
 }
 
@@ -125,28 +126,31 @@ header h2 {
     box-shadow: var(--box-shadow);
     height: calc(400px - 40px);
     max-width: calc(100% - 40px);
-}
-
-.ctg-1 {
     width: 100%;
+    background: linear-gradient(rgba(37, 37, 37, 0.5), rgba(37, 37, 37, 0.5)), 
+                url(https://saint-etienne.climb-up.fr/wp-content/uploads/2024/03/P6A5249-scaled-e1708525464501-768x673.jpeg) no-repeat center center;
+    background-size: cover;
+    color: var(--text-color);
+    text-align: left;
+    padding: 30px;
 }
 
 .categorie h3 {
     margin: 0;
-    font-size: 2em;
+    font-size: 1.5em;
+}
+
+.categorie .arrow-right {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 4em; 
     color: white;
-    text-align: left;
-    padding: 30px;
-
+    text-decoration: none;
+    transition: transform 0.3s ease; /* Transition pour le mouvement */
 }
 
-.trait{
-    border-style: solid;
-}
-
-.trait ul {
-    list-style-type: none;
-    padding: 20px;
+.categorie .arrow-right:hover {
+    transform: translateX(10px); 
 }
 
 /* Formulaire */
@@ -169,8 +173,14 @@ header h2 {
 /* Champs de formulaire */
 .form-container form {
     display: flex;
-    flex-direction: column; /* Alignement vertical des éléments */
-    gap: 15px; /* Espacement entre les champs */
+    flex-direction: column; 
+    gap: 15px; 
+}
+
+/* Groupe de champs */
+.form-group {
+    display: flex; 
+    justify-content: space-between; 
 }
 
 /* Style des champs d'entrée */
@@ -179,6 +189,13 @@ header h2 {
     border: 2px solid var(--main-color);
     border-radius: 5px; 
     font-size: 1em;
+    flex: 1; 
+    margin-right: 10px;
+}
+
+/* Évite que le dernier champ ait une marge à droite */
+.form-group input:last-child {
+    margin-right: 0; /* Aucun espace après le dernier champ */
 }
 
 /* Bouton Formulaire */
@@ -191,12 +208,15 @@ header h2 {
     font-size: 1.2em;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    align-self: flex-end; 
+    width: auto; 
 }
 
 .form-container button:hover {
     background-color: #096191; /* Couleur de fond au survol */
     color: var(--text-color);
 }
+
 
 /* Boutons site général */
 
@@ -239,7 +259,7 @@ header h2 {
 .arrow {
     display: inline-block;
     margin-top: 20px;
-    font-size: 5em; /* Taille de la flèche */
+    font-size: 5em; 
     color: white;
     text-decoration: none;
     animation: blink 1.5s infinite; /* Animation de clignotement */
@@ -259,12 +279,31 @@ header h2 {
     100% { opacity: 1; } 
 }
 
+.description-container {
+    display: flex;
+    align-items: flex-end; 
+    justify-content: space-between; /* Assure la bonne répartition */
+   
+    width: 80%;
+    margin: 10px auto; 
+    padding: 10px 20px;
+}
+
 .description {
-    margin: 20px auto; 
-    max-width: 800px; 
+    max-width: 100%; 
     text-align: left; 
     line-height: 1.5; 
-    padding: 10px; 
+    padding: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.495); 
+    margin: 20px auto;
+    flex: 2; 
+}
+
+.logo {
+    max-width: 100%; 
+    height: 80%; 
+    margin-left: 20px; 
 }
 
 /* Footer */
@@ -291,8 +330,8 @@ footer {
     }
 
     .activity-container {
-        flex-direction: column; /* Colonne au lieu de ligne */
-        align-items: center; /* Centrer les éléments */
+        flex-direction: column; 
+        align-items: center; 
     }
 
     .activity-image {
@@ -307,15 +346,17 @@ footer {
     }
 
     .register-button {
-        width: auto; /* Ajuste la largeur du bouton à la taille du texte */
-        padding: 10px 20px; /* Espacement intérieur pour le bouton */
+        width: auto; 
+        padding: 10px 20px; 
     }
 }
 
 /* Conteneur de l'activité */
 .activity-container {
-    display: flex;
-    background-color: var(--background-light);
+    background: linear-gradient(rgba(37, 37, 37, 0.5), rgba(37, 37, 37, 0.5)), 
+                url(https://saint-etienne.climb-up.fr/wp-content/uploads/2024/03/P6A5249-scaled-e1708525464501-768x673.jpeg) no-repeat center center;
+    background-size: cover;
+    color: var(--text-color);
     border-radius: 10px;
     box-shadow: var(--box-shadow);
     margin: 20px auto;
@@ -324,15 +365,6 @@ footer {
     clear: both; /* S'assure que le conteneur est en dessous du header */
 }
 
-.activity-image {
-    width: 50%;
-    margin-right: 20px;
-    border-radius: 5px;
-}
-
-.activity-details {
-    flex: 1; /* Prendre le reste de l'espace disponible */
-}
 
 .activity-title {
     margin-bottom: 10px;
@@ -341,12 +373,13 @@ footer {
 .activity-description {
     margin-bottom: 10px; 
     line-height: 1.5; 
+    max-width: 50%;
 }
 
 .activity-date,
 .activity-time {
-    margin-bottom: 10px; /* Marge en bas */
-    font-size: 0.9em; /* Taille de la police réduite */
+    margin-bottom: 10px; 
+    font-size: 0.9em; 
 }
 
 /* Bouton d'inscription */
