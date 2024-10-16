@@ -1,0 +1,450 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap");
+/* Style général */
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  color: var(--main-color);
+  overflow-x: hidden;
+  font-family: "Raleway", system-ui;
+  background-color: #f8f8f8;
+}
+
+h1,
+h2 {
+  font-family: "Unbounded", sans-serif;
+}
+
+main {
+  margin-left: 20px;
+  margin-right: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Container des slides */
+.slides-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 200vw; /* 2 pages de 100% de largeur chacune */
+  overflow-y: hidden; /* Cache la barre de défilement verticale */
+  height: 100vh; /* Plein écran */
+}
+
+.slide {
+  width: 100vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Première slide avec l'image en fond */
+#page1 {
+  background: url(https://saint-etienne.climb-up.fr/wp-content/uploads/2024/03/P6A7944-1024x683.png) no-repeat center center;
+  background-size: cover;
+  width: 100vw;
+}
+
+/* Ajout d'un voile noir sur l'image */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 58, 78, 0.5); /* Opacité */
+  z-index: 1;
+}
+
+/* Header sur la deuxième page */
+header {
+  background-color: var(--main-color);
+  color: var(--text-color);
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  width: 100vw;
+  min-height: 75px;
+  display: flex;
+  justify-content: space-between;
+  text-wrap: nowrap;
+  align-items: center;
+}
+
+header a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+header h2:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+header h2 {
+  font-size: 1em;
+  margin: 20px 3vw;
+}
+
+/* Ajout de marge pour éviter que le contenu soit caché par le header*/
+#page2 .container {
+  margin-top: 20px;
+}
+
+/* Deuxième slide */
+#page2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+}
+
+.pa-container-grp {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 60%;
+  justify-content: center;
+}
+.pa-container-grp .ctg-1 {
+  background-image: url(/frontend/site_vitrine/img/img-card-1.jpg);
+  background-position: right;
+}
+.pa-container-grp .ctg-2 {
+  background-image: url(/frontend/site_vitrine/img/img-card-2.jpg);
+  background-position: right top;
+}
+.pa-container-grp .ctg-3 {
+  background-image: url(/frontend/site_vitrine/img/img-card-3.jpg);
+  background-position: center;
+}
+.pa-container-grp .ctg {
+  margin: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
+  height: 360px;
+  transition: width 0.3s ease;
+  color: white;
+  font-size: 1.5em;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.pa-container-grp .ctg h3 {
+  margin: 30px;
+  z-index: 99;
+  position: relative;
+}
+.pa-container-grp .ctg .overlay-ctg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  pointer-events: none;
+}
+.pa-container-grp .ctg::after {
+  opacity: 0;
+  content: "→";
+  transition: all 0.3s ease;
+  position: absolute;
+  right: 40px;
+  top: 90%;
+  font-size: 2em;
+  color: white;
+}
+.pa-container-grp .ctg:hover::after {
+  opacity: 1;
+  transform: translateY(-90%);
+}
+
+.trait {
+  border-style: solid;
+}
+
+.trait ul {
+  list-style-type: none;
+  padding: 20px;
+}
+
+/* Formulaire */
+.form-container {
+  background-color: var(--main-color);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  max-width: 600px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+/* Titre */
+.form-container h1 {
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+/* Champs de formulaire */
+.form-container form {
+  display: flex;
+  flex-direction: column; /* Alignement vertical des éléments */
+  gap: 15px; /* Espacement entre les champs */
+}
+
+/* Style des champs d'entrée */
+.form-container input {
+  padding: 10px;
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+/* Bouton Formulaire */
+.form-container button {
+  background-color: var(--text-color);
+  color: var(--main-color);
+  padding: 12px;
+  border: none;
+  border-radius: var(--button-radius);
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #096191; /* Couleur de fond au survol */
+  color: var(--text-color);
+}
+
+/* Boutons site général */
+.btn {
+  display: inline-block;
+  padding: 15px 30px;
+  margin: 10px;
+  background-color: var(--main-color);
+  color: var(--text-color);
+  border-radius: var(--button-radius);
+  text-decoration: none;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #096191;
+}
+
+.buttons {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* Texte sur l'image de fond */
+.hero-text {
+  text-align: center;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-text h1 {
+  font-size: 4em;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Flèche pour glisser vers la droite */
+.arrow {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 5em; /* Taille de la flèche */
+  color: white;
+  text-decoration: none;
+  animation: blink 1.5s infinite; /* Animation de clignotement */
+  transition: transform 0.3s ease;
+  animation-play-state: running; /* Animation active par défaut */
+}
+
+.arrow:hover {
+  transform: translateX(10px);
+  animation-play-state: paused; /* Pause l'animation de clignotement */
+  opacity: 1 !important; /* Force l'opacité à 1 lors du hover*/
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.description {
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: left;
+  line-height: 1.5;
+  padding: 10px;
+}
+
+/* Footer */
+footer {
+  position: relative;
+  background-color: var(--main-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 5px 0;
+  font-size: 0.8em;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive pour mobile*/
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2.5em;
+  }
+  .arrow {
+    font-size: 1.5em;
+  }
+  .activity-container {
+    flex-direction: column; /* Colonne au lieu de ligne */
+    align-items: center; /* Centrer les éléments */
+  }
+  .activity-image {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .activity-details {
+    width: 100%;
+    text-align: center;
+  }
+  .register-button {
+    width: auto; /* Ajuste la largeur du bouton à la taille du texte */
+    padding: 10px 20px; /* Espacement intérieur pour le bouton */
+  }
+}
+/* Conteneur de l'activité */
+.activity-container {
+  display: flex;
+  background-color: var(--background-light);
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  margin: 20px auto;
+  padding: 20px;
+  max-width: var(--container-max-width);
+  clear: both; /* S'assure que le conteneur est en dessous du header */
+}
+
+.activity-image {
+  width: 50%;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.activity-details {
+  flex: 1; /* Prendre le reste de l'espace disponible */
+}
+
+.activity-title {
+  margin-bottom: 10px;
+}
+
+.activity-description {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.activity-date,
+.activity-time {
+  margin-bottom: 10px; /* Marge en bas */
+  font-size: 0.9em; /* Taille de la police réduite */
+}
+
+/* Bouton d'inscription */
+.register-button {
+  display: inline-block;
+  background-color: var(--main-color);
+  color: var(--text-color);
+  padding: 10px 20px;
+  border-radius: var(--button-radius);
+  text-decoration: none; /* Pas de soulignement */
+  transition: background-color 0.3s ease; /* Transition pour le changement de couleur */
+}
+
+.register-button:hover {
+  background-color: #096191;
+}
+
+/* Dropdown dans la navbar */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 0px 16px 2px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 100%;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  overflow: hidden;
+}
+
+.dropdown-menu a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 12px 16px;
+}
+
+.dropdown-menu a:hover {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.hd-flex {
+  position: relative;
+  display: flex;
+  right: 0;
+  justify-content: space-between;
+  padding-right: 10%;
+}
+
+.hd-logo {
+  position: relative;
+  left: 0;
+  padding-left: 10%;
+}
+
+@media screen and (max-width: 768px) {
+  .hd-flex {
+    display: none;
+  }
+  .hd-logo {
+    position: relative;
+    left: 0;
+  }
+}/*# sourceMappingURL=accueil.css.map */
