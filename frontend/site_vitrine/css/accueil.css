@@ -139,10 +139,17 @@ header h2 {
   position: relative;
   cursor: pointer;
 }
-.pa-container-grp .ctg h3 {
+.pa-container-grp .ctg h3, .pa-container-grp .ctg p {
   margin: 30px;
   z-index: 99;
   position: relative;
+}
+.pa-container-grp .ctg p {
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.pa-container-grp .ctg:hover p {
+  opacity: 1;
 }
 .pa-container-grp .ctg .overlay-ctg {
   position: absolute;
