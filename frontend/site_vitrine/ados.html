@@ -1,30 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adolescents</title>
-    <link rel="stylesheet" href="./css/root.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/root.css" />
     <script src="./js/jquery-3.5.1.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/index.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <a href="index.html"><h2>La Grimpette</h2></a>
+      <a href="index.html" class="hd-logo">
+        <h2>La Grimpette</h2>
+      </a>
+      <div class="hd-flex">
+        <a href="inscrits.html"><h3>Inscrits</h3></a>
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle">
+            <h3>Activités <span class="arrow-dd">&#9660;</span></h3>
+          </a>
+          <div class="dropdown-menu">
+            <a href="enfants.html">Enfants</a>
+            <a href="ados.html">Ados</a>
+            <a href="adultes.html">Adultes</a>
+          </div>
+        </div>
+        <a href="contact.html"><h3>Contact</h3></a>
+      </div>
     </header>
 
-    <main>
-        <p>Aucune activité proposée pour le moment</p>
-    </main>
+    <body>
+      <p>Aucune activité proposée pour le moment</p>
+    </body>
 
-    
-
-    <footer>
-        <div class="footer-content">
-            <p>© 2024 La Grimpette. Tous droits réservés.</p>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <h2>La Grimpette</h2>
         </div>
+        <div class="footer-links">
+          <a href="index.html">Accueil</a>
+          <a href="inscrits.html">Inscrits</a>
+          <a href="enfants.html">Enfants</a>
+          <a href="ados.html">Ados</a>
+          <a href="adultes.html">Adultes</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.facebook.com" target="_blank"
+            ><img src="img/facebook-la-grimpette.png" alt="Facebook"
+          /></a>
+          <a href="https://www.instagram.com" target="_blank"
+            ><img src="img/insta-la-grimpette.png" alt="Instagram"
+          /></a>
+          <a href="https://www.twitter.com" target="_blank"
+            ><img src="img/x-la-grimpette.jpg" alt="Twitter"
+          /></a>
+        </div>
+      </div>
     </footer>
-</body>
+  </body>
 </html>
