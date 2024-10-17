@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 26 sep. 2024 à 13:53
+-- Généré le : jeu. 17 oct. 2024 à 12:24
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS `preinscription` (
   `nom_client` varchar(50) NOT NULL,
   `prenom_client` varchar(50) NOT NULL,
   `cours_client` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `numero_tel_client` int NOT NULL,
-  `mail` varchar(150) NOT NULL,
+  `tel_client` int NOT NULL,
+  `mail_client` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_client`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
