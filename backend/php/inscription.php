@@ -3,7 +3,7 @@ include("conf_bdd.php");
 	$nom = $_POST['nom'];
 	$prenom = $_POST['prenom'];
 	$mail = $_POST['email'];
-	$formation = $_POST['formation'];
+	$telephone = $_POST['telephone'];
 
 	try {
 		$bdd = new PDO("mysql:host=$servername;dbname=$dbname",
@@ -11,16 +11,16 @@ include("conf_bdd.php");
 		$bdd->setAttribute(PDO::ATTR_ERRMODE, 
 		PDO::ERRMODE_EXCEPTION);
 		
-		$prepare = $bdd->prepare("INSERT INTO inscription (nom, prenom, mail, formation) 
-		VALUES (:nom, :prenom, :mail, :formation)");
-		$prepare->bindParam(':nom', $nom);
-		$prepare->bindParam(':prenom', $prenom);
-		$prepare->bindParam(':mail', $mail);
-		$prepare->bindParam(':formation', $formation);
+		$prepare = $bdd->prepare("INSERT INTO preinscription (nom_client, prenom_client, mail_client, tel_client) 
+		VALUES (:nom_client, :prenom_client, :mail_client, :tel_client)");
+		$prepare->bindParam(':nom_client', $nom);
+		$prepare->bindParam(':prenom_client', $prenom);
+		$prepare->bindParam(':mail_client', $mail);
+		$prepare->bindParam(':tel_client', $telephone);
 		$prepare->execute();
 		$bdd = null; 
 		include("save.php");
-		header('location:inscription.htm');
+		header('location:inscrits.htm');
 		}
 	catch(PDOException $erreur)
 		{

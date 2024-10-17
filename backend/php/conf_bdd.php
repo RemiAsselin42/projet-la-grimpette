@@ -1,7 +1,7 @@
 
 <?php
     $servername = 'localhost'; 
-    $dbname = 'site';	
+    $dbname = 'inscription_user';	
     $user = 'root';				
     $pass = '';					
 ?>
