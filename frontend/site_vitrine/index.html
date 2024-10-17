@@ -1,24 +1,247 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/root.css">
-    <link rel="stylesheet" href="./css/style.css">
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Grimpette</title>
+    <link rel="stylesheet" href="./css/root.css" />
     <script src="./js/jquery-3.5.1.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/index.js"></script>
-</head>
-    <body>
-        <h1>Magnifique site "La Grimpette" client :D</h1>
-        <h1 id='formulaire'>Formulaire de contact</h1>
-        <form id='form-inscription'>
-          <input placeholder='Nom' type='text' id='nom' name='nom' required />
-          <input placeholder='Prénom' type='text' id='prenom' name='prenom' required />
-          <input placeholder='Email' type='email' id='email' name='email' required />
-          <input placeholder='Téléphone' type='tel' id='telephone' name='telephone' required />
-          <button type='submit'>Envoyer</button>
-        </form>
-    </body>
+  </head>
+
+  <body>
+    <div class="slides-container">
+      <!-- Première page -->
+      <section id="page1" class="slide">
+        <div class="overlay"></div>
+        <div class="hero-text">
+          <h1>La Grimpette</h1>
+          <a href="#" class="arrow" id="slideRight">&#8594;</a>
+        </div>
+      </section>
+
+      <!-- Deuxième page : Choix des catégories -->
+      <section id="page2" class="slide">
+        <header>
+          <a href="index.html" class="hd-logo">
+            <h2>La Grimpette</h2>
+          </a>
+          <div class="hd-flex">
+            <div class="dropdown">
+              <a href="#" class="dropdown-toggle">
+                <h3>Activités <span class="arrow-dd">&#9660;</span></h3>
+              </a>
+              <div class="dropdown-menu">
+                <a href="enfants.html">Enfants</a>
+                <a href="ados.html">Ados</a>
+                <a href="adultes.html">Adultes</a>
+              </div>
+            </div>
+            <a href="inscrits.html"><h3>Inscrits</h3></a>
+            <a href="contact.html"><h3>Contact</h3></a>
+          </div>
+        </header>
+
+        <h2 class="titre-pr">Bienvenue à La Grimpette</h2>
+        <div class="description-container">
+          <div class="description">
+            <div class="description-text">
+              <b>Votre club d'escalade</b> dédié à tous les passionnés
+              d'aventure et de sensations fortes. Que vous soyez débutant ou
+              grimpeur expérimenté, nous offrons des cours et des activités
+              adaptés à tous les âges et niveaux. Rejoignez-nous pour développer
+              vos compétences, rencontrer de nouveaux amis et partager des
+              moments inoubliables en pleine nature !
+            </div>
+          </div>
+          <img
+            src="img/logo-la-grimpette.png"
+            alt="Logo La Grimpette"
+            class="logo"
+          />
+        </div>
+
+        <div>
+          <div class="titre">
+            <h2 class="titre-sc">Choisissez votre groupe</h2>
+            <div class="trait"></div>
+          </div>
+        </div>
+
+        <div class="pa-container-grp">
+          <div class="ctg ctg-1" onClick="window.location.href='enfants.html'">
+            <h3>Enfants</h3>
+            <p>
+              Des activités ludiques et éducatives pour éveiller la curiosité et
+              l'imagination des plus jeunes.
+            </p>
+            <div class="overlay-ctg"></div>
+          </div>
+          <div class="ctg ctg-2" onClick="window.location.href='ados.html'">
+            <h3>Ados</h3>
+            <p>
+              Des expériences dynamiques et enrichissantes pour développer
+              l'esprit d'équipe et la confiance en soi.
+            </p>
+            <div class="overlay-ctg"></div>
+          </div>
+          <div class="ctg ctg-3" onClick="window.location.href='adultes.html'">
+            <h3>Adultes</h3>
+            <p>
+              Des moments de détente et de convivialité pour se ressourcer et
+              partager des passions.
+            </p>
+            <div class="overlay-ctg"></div>
+          </div>
+        </div>
+        <div class="pa-container-qsn">
+          <div class="titre">
+            <h2 class="titre-sc">Qui sommes-nous ?</h2>
+            <div class="trait"></div>
+          </div>
+          <div class="texte-qsn">
+            <p>
+              Bienvenue chez <strong> La Grimpette </strong>, un club d'escalade
+              fondé en 2020 par deux amis d'enfance,
+              <strong> Julie Morel </strong> et
+              <strong> Maxime Dupont </strong>. Passionnés de grimpe et désireux
+              de partager leur amour pour ce sport, ils ont créé un lieu
+              accessible à tous, des enfants aux adultes, dans une ambiance
+              chaleureuse et détendue. Leur vision : offrir un espace où chacun
+              peut s’amuser, progresser et repousser ses limites, sans se
+              prendre trop au sérieux.
+            </p>
+            <h3>
+              <strong><u>Une équipe de passionnés</u></strong>
+            </h3>
+            <p>
+              L'équipe de La Grimpette est composée de
+              <strong> coachs expérimentés </strong> et d’un personnel
+              accueillant, tous unis par une même passion pour l’escalade. Que
+              vous soyez débutant ou grimpeur aguerri, nos moniteurs sont là
+              pour vous accompagner à chaque étape. Ils animent des
+              <strong> cours adaptés à tous les niveaux </strong> , ainsi que
+              des stages pour les enfants, afin de leur transmettre les bases de
+              l'escalade sur voie et du bloc en toute sécurité et dans la bonne
+              humeur.
+            </p>
+            <h3>
+              <strong><u>Un espace conçu pour tous</u></strong>
+            </h3>
+            <p>
+              Notre salle propose des
+              <strong> voies pour tous les niveaux </strong>, qui sont
+              régulièrement renouvelées, offrant des défis pour tous. Que vous
+              veniez pour vous dépasser ou simplement pour grimper entre amis,
+              vous trouverez des parcours adaptés à vos envies.
+              <strong> Un espace dédié aux enfants </strong> permet aux plus
+              jeunes de découvrir l’escalade de manière ludique et sécurisée.
+            </p>
+            <h3>
+              <strong>
+                <u>Une ambiance conviviale et des événements réguliers</u>
+              </strong>
+            </h3>
+            <p>
+              Au-delà de la pratique sportive, La Grimpette se distingue par son
+              <strong> ambiance conviviale </strong> . Ici, pas de pression,
+              juste le plaisir de grimper ensemble et de partager de bons
+              moments. Après l'effort, détendez-vous dans notre
+              <strong> espace café </strong> pour discuter de vos ascensions ou
+              simplement vous relaxer.
+            </p>
+            <p>
+              Nous organisons également des
+              <strong> événements réguliers </strong>: soirées à thème,
+              compétitions amicales, rencontres avec des grimpeurs expérimentés,
+              pour dynamiser la communauté et créer des moments de partage.
+            </p>
+            <h3>
+              <strong><u>Rejoignez-nous !</u></strong>
+            </h3>
+            <p>
+              Que vous soyez un grimpeur passionné ou un curieux souhaitant
+              découvrir l'escalade, <strong> La Grimpette </strong> vous ouvre
+              ses portes pour vivre une expérience unique. Venez grimper,
+              partager et découvrir un lieu où la convivialité est aussi
+              importante que la performance !
+            </p>
+            <img src="img/equipe.jpg" />
+          </div>
+
+          <div class="titre">
+            <h2 class="titre-sc">Informations supplémentaires</h2>
+            <div class="trait"></div>
+          </div>
+          <div class="zone-contact">
+            <div class="info-contact">
+              <a href="./contact.html"
+                ><button class="button">Contactez-nous</button></a
+              >
+              <div class="info-contact-txt">
+                <h3>Adresse</h3>
+                <p>
+                  La Grimpette<br />
+                  Saint-Firmin<br />
+                  71670
+                </p>
+                <h3>Téléphone</h3>
+                <p>06 12 34 56 78</p>
+                <h3>Email</h3>
+                <p>info@la-grimpette.com</p>
+                <h3>Horaires d'ouverture</h3>
+                <p>
+                  Lundi à Vendredi : 10h - 22h<br />
+                  Samedi : 14h - 21h
+                </p>
+              </div>
+            </div>
+            <div class="div-iframe">
+              <iframe
+                width="100%"
+                height="600"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0"
+                src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=La%20Grimpette%2071670%20Saint-Firmin+(La%20Grimpette)&amp;t=&amp;z=11&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                ><a href="https://www.gps.ie/">gps devices</a></iframe
+              >
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="footer-container">
+            <div class="footer-logo">
+              <a href="index.html">
+                <h2>La Grimpette</h2>
+              </a>
+            </div>
+
+            <div class="footer-links">
+              <a href="index.html">Accueil</a>
+              <a href="inscrits.html">Inscrits</a>
+              <a href="enfants.html">Enfants</a>
+              <a href="ados.html">Ados</a>
+              <a href="adultes.html">Adultes</a>
+              <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-social">
+              <a href="https://www.facebook.com" target="_blank"
+                ><img src="img/facebook-la-grimpette.png" alt="Facebook"
+              /></a>
+              <a href="https://www.instagram.com" target="_blank"
+                ><img src="img/insta-la-grimpette.png" alt="Instagram"
+              /></a>
+              <a href="https://www.twitter.com" target="_blank"
+                ><img src="img/x-la-grimpette.jpg" alt="Twitter"
+              /></a>
+            </div>
+          </div>
+        </footer>
+      </section>
+    </div>
+    <script src="./js/script.js"></script>
+  </body>
 </html>

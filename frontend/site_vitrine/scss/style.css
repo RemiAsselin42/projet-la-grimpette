@@ -1,0 +1,48 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap");
+/* Style général */
+* {
+  box-sizing: border-box;
+  scrollbar-color: #08415c transparent;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  color: var(--main-color);
+  overflow-x: hidden;
+  font-family: "Raleway", system-ui;
+  background-color: #f8f8f8;
+}
+
+h1,
+h2 {
+  font-family: "Unbounded", sans-serif;
+}
+
+main {
+  margin-left: 20px;
+  margin-right: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Container des slides */
+.slides-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 200vw; /* 2 pages de 100% de largeur chacune */
+  overflow-y: hidden; /* Cache la barre de défilement verticale */
+  height: 100vh; /* Plein écran */
+}
+
+.slide {
+  width: 100vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}/*# sourceMappingURL=style.css.map */

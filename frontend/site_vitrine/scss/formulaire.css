@@ -1,0 +1,62 @@
+@charset "UTF-8";
+/* Formulaire */
+.form-container {
+  background-color: var(--main-color);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  max-width: var(--container-max-width);
+  margin: 100px auto;
+  text-align: center;
+}
+
+/* Titre */
+.form-container h1 {
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+/* Champs de formulaire */
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.form-container form div {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Style des champs d'entrée */
+.form-container input {
+  padding: 10px;
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  font-size: 1em;
+  margin: 5px;
+  width: 90%;
+}
+
+/* Bouton Formulaire */
+.form-container button {
+  background-color: var(--text-color);
+  color: var(--main-color);
+  padding: 12px;
+  border: none;
+  border-radius: var(--button-radius);
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 20px;
+  margin-left: -10px;
+  width: 30%;
+  left: 100%;
+  transform: translateX(-100%);
+  position: relative;
+  font-weight: 800;
+}
+
+.form-container button:hover {
+  background-color: #096191; /* Couleur de fond au survol */
+  color: var(--text-color);
+}/*# sourceMappingURL=formulaire.css.map */

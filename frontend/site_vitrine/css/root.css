@@ -1,0 +1,18 @@
+@import '/frontend/site_vitrine/scss/style.css';
+@import '/frontend/site_vitrine/scss/header.css';
+@import '/frontend/site_vitrine/scss/footer.css';
+@import '/frontend/site_vitrine/scss/page-photo.css';
+@import '/frontend/site_vitrine/scss/page-principale.css';
+@import '/frontend/site_vitrine/scss/activites.css';
+@import '/frontend/site_vitrine/scss/formulaire.css';
+
+:root {
+    --main-color: #08415C;
+    --text-color: white;
+    --background-light: #def9ff;
+    --container-width: 80%;
+    --container-max-width: 800px;
+    --button-radius: 25px;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

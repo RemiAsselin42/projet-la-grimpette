@@ -1,0 +1,93 @@
+/* Première slide avec l'image en fond */
+#page1 {
+  background: url(https://saint-etienne.climb-up.fr/wp-content/uploads/2024/03/P6A7944-1024x683.png)
+    no-repeat center center;
+  background-size: cover;
+  width: 100vw;
+}
+
+/* Ajout d'un voile noir sur l'image */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 58, 78, 0.5); /* Opacité */
+  z-index: 1;
+}
+
+/* Texte sur l'image de fond */
+.hero-text {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-text h1 {
+  font-size: 4em;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Flèche pour glisser vers la droite */
+.arrow {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 5em; /* Taille de la flèche */
+  color: white;
+  text-decoration: none;
+  animation: blink 1.5s infinite; /* Animation de clignotement */
+  transition: transform 0.3s ease;
+  animation-play-state: running; /* Animation active par défaut */
+}
+
+.arrow:hover {
+  transform: translateX(10px);
+  animation-play-state: paused; /* Pause l'animation de clignotement */
+  opacity: 1 !important; /* Force l'opacité à 1 lors du hover*/
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Responsive pour mobile*/
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2.5em;
+  }
+
+  .arrow {
+    font-size: 1.5em;
+  }
+
+  .activity-container {
+    flex-direction: column; /* Colonne au lieu de ligne */
+    align-items: center; /* Centrer les éléments */
+  }
+
+  .activity-image {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .activity-details {
+    width: 100%;
+    text-align: center;
+  }
+
+  .register-button {
+    width: auto; /* Ajuste la largeur du bouton à la taille du texte */
+    padding: 10px 20px; /* Espacement intérieur pour le bouton */
+  }
+}

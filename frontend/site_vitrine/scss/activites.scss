@@ -1,0 +1,106 @@
+/* Conteneur de l'activité */
+.activity-container {
+  position: relative;
+  display: flex;
+  background-image: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.8) 80%
+    ),
+    url(/frontend/site_vitrine/img/activite1.jpg);
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  margin: 20px auto;
+  padding: 20px;
+  max-width: var(--container-max-width);
+  height: 400px;
+  clear: both;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.activity-container {
+  -webkit-mask-image: linear-gradient(
+    45deg,
+    #000 25%,
+    rgba(0, 0, 0, 0.1) 50%,
+    #000 75%
+  );
+  mask-image: linear-gradient(
+    45deg,
+    #000 25%,
+    rgba(0, 0, 0, 0.1) 50%,
+    #000 75%
+  );
+  -webkit-mask-size: 800%;
+  mask-size: 800%;
+  -webkit-mask-position: 0;
+  mask-position: 0;
+}
+
+.activity-container:hover {
+  transition: mask-position 1.5s ease, -webkit-mask-position 1.5s ease,
+    transform 0.3s ease;
+  -webkit-mask-position: 120%;
+  mask-position: 120%;
+  transform: scale(1.02);
+}
+
+.activity-container:not(:hover) {
+  -webkit-mask-size: 800%;
+  mask-size: 800%;
+  -webkit-mask-position: 0;
+  mask-position: 0;
+}
+
+.activity-details {
+  position: relative; /* Nécessaire pour que le contenu soit au-dessus de l'overlay */
+  z-index: 2; /* Place le contenu au-dessus de l'overlay */
+  flex: 1; /* Prendre le reste de l'espace disponible */
+  color: white;
+}
+
+.activity-title {
+  margin: 35px;
+  font-size: 2em;
+}
+
+.activity-description {
+  margin: 0 35px;
+  line-height: 1.5;
+}
+
+.activity-date,
+.activity-time {
+  margin: 0px 35px;
+  font-size: 1.2em;
+  top: 35%;
+  transform: translateY(-35%);
+  position: relative;
+}
+
+/* Bouton d'inscription */
+.register-button {
+  display: inline-block;
+  background-color: #ffffffc4;
+  color: var(--main-color);
+  font-size: 1.8em;
+  font-weight: 800;
+  padding: 15px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 100%;
+  right: 35px;
+  margin-top: -35px;
+  transform: translateY(-100%);
+  text-wrap: nowrap;
+  width: fit-content;
+}
+
+.register-button:hover {
+  background-color: #ffffff;
+  transform: translateY(-100%) scale(1.05);
+  border-radius: 50px;
+}
