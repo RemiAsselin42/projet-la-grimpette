@@ -1,0 +1,51 @@
+main {
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+
+  #inscriptions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+
+    thead {
+      background-color: var(--main-color);
+
+      th {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+        font-weight: bold;
+        color: var(--text-color);
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+        &:nth-child(odd) {
+          background-color: #fff;
+        }
+
+        &:hover {
+          background-color: #f1f1f1;
+        }
+
+        td {
+          padding: 10px;
+          border: 1px solid #ddd;
+          text-align: left;
+        }
+      }
+    }
+  }
+}

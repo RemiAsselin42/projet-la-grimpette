@@ -7,7 +7,7 @@
       rgba(0, 0, 0, 0.4),
       rgba(0, 0, 0, 0.8) 80%
     ),
-    url(/frontend/site_vitrine/img/activite1.jpg);
+    url(../img/activite1.jpg);
   border-radius: 10px;
   box-shadow: var(--box-shadow);
   margin: 20px auto;
@@ -39,7 +39,7 @@
 }
 
 .activity-container:hover {
-  transition: mask-position 1.5s ease, -webkit-mask-position 1.5s ease,
+  transition: mask-position 0.8s ease-out, -webkit-mask-position 0.8s ease-out,
     transform 0.3s ease;
   -webkit-mask-position: 120%;
   mask-position: 120%;
@@ -54,9 +54,9 @@
 }
 
 .activity-details {
-  position: relative; /* Nécessaire pour que le contenu soit au-dessus de l'overlay */
-  z-index: 2; /* Place le contenu au-dessus de l'overlay */
-  flex: 1; /* Prendre le reste de l'espace disponible */
+  position: relative;
+  z-index: 2;
+  flex: 1;
   color: white;
 }
 

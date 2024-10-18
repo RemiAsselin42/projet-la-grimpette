@@ -1,6 +1,5 @@
-@charset "UTF-8";
-/* Formulaire */
-.form-container {
+/* Contact Form */
+.contact-container {
   box-shadow: var(--box-shadow);
   max-width: var(--container-max-width);
   margin: 100px auto;
@@ -8,37 +7,40 @@
   background-color: var(--main-color);
   border-radius: 15px;
   text-align: center;
+  font-family: Arial, sans-serif;
 }
 
-/* Titre */
-.form-container h1 {
+.contact-container h1 {
   margin-bottom: 30px;
   color: var(--text-color);
 }
 
-/* Champs de formulaire */
-.form-container form {
+.contact-form {
   display: flex;
   flex-direction: column;
   width: 100%;
-}
-.form-container form div {
-  display: flex;
-  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-/* Style des champs d'entrée */
-.form-container input {
+.contact-form label {
+  font-weight: bold;
+  text-align: left;
+  margin-left: 5%;
+  color: var(--text-color);
+}
+
+.contact-form input,
+.contact-form textarea {
   width: 90%;
-  margin: 5px;
+  margin: 5px auto;
   padding: 10px;
   border: 2px solid var(--main-color);
   border-radius: 5px;
   font-size: 1em;
 }
 
-/* Bouton Formulaire */
-.form-container button {
+.contact-form button {
   position: relative;
   left: 100%;
   transform: translateX(-100%);
@@ -56,7 +58,11 @@
   color: var(--main-color);
 }
 
-.form-container button:hover {
+.contact-form button:hover {
   background-color: #096191; /* Couleur de fond au survol */
   color: var(--text-color);
-}/*# sourceMappingURL=formulaire.css.map */
+}
+
+.map-container {
+  margin-top: 20px;
+}/*# sourceMappingURL=contact.css.map */

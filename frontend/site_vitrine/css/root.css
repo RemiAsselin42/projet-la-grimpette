@@ -1,10 +1,13 @@
-@import '/frontend/site_vitrine/scss/style.css';
-@import '/frontend/site_vitrine/scss/header.css';
-@import '/frontend/site_vitrine/scss/footer.css';
-@import '/frontend/site_vitrine/scss/page-photo.css';
-@import '/frontend/site_vitrine/scss/page-principale.css';
-@import '/frontend/site_vitrine/scss/activites.css';
-@import '/frontend/site_vitrine/scss/formulaire.css';
+@import '../scss/style.css';
+@import '../scss/header.css';
+@import '../scss/footer.css';
+@import '../scss/page-photo.css';
+@import '../scss/page-principale.css';
+@import '../scss/activites.css';
+@import '../scss/formulaire.css';
+@import '../scss/success.css';
+@import '../scss/inscrits.css';
+@import '../scss/contact.css';
 
 :root {
     --main-color: #08415C;
