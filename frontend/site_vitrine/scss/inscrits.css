@@ -2,7 +2,7 @@ main h2 {
   text-align: center;
   margin-bottom: 20px;
   font-size: 24px;
-  color: #333;
+  color: var(--main-color);
 }
 main #inscriptions-table {
   width: 100%;

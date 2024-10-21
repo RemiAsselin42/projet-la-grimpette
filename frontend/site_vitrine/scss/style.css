@@ -16,6 +16,19 @@ html {
   background-color: #f8f8f8;
 }
 
+body,
+html {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  flex: 1;
+}
+
 h1,
 h2 {
   font-family: "Unbounded", sans-serif;

@@ -8,7 +8,7 @@
   box-shadow: var(--box-shadow);
   margin: 20px auto;
   padding: 20px;
-  max-width: var(--container-max-width);
+  width: var(--container-max-width);
   height: 400px;
   clear: both;
   overflow: hidden;
@@ -45,9 +45,12 @@
   color: white;
 }
 
-.activity-title {
+.activity-title,
+main h2 {
   margin: 35px;
   font-size: 2em;
+  color: white;
+  text-align: left;
 }
 
 .activity-description {
@@ -62,6 +65,13 @@
   top: 35%;
   transform: translateY(-35%);
   position: relative;
+}
+
+.aucune-activite {
+  text-align: center;
+  margin: 50px 0;
+  font-size: 1.5em;
+  font-weight: 800;
 }
 
 /* Bouton d'inscription */

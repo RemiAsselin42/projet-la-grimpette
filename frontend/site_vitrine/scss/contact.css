@@ -1,7 +1,7 @@
 /* Contact Form */
 .contact-container {
   box-shadow: var(--box-shadow);
-  max-width: var(--container-max-width);
+  width: 45vw;
   margin: 100px auto;
   padding: 40px;
   background-color: var(--main-color);
@@ -17,10 +17,10 @@
 
 .contact-form {
   display: flex;
-  flex-direction: column;
   width: 100%;
   gap: 10px;
   margin-bottom: 20px;
+  flex-direction: column;
 }
 
 .contact-form label {

@@ -2,7 +2,7 @@
 /* Formulaire */
 .form-container {
   box-shadow: var(--box-shadow);
-  max-width: var(--container-max-width);
+  width: var(--container-max-width);
   margin: 100px auto;
   padding: 40px;
   background-color: var(--main-color);
