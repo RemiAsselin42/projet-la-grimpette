@@ -74,11 +74,11 @@
             />
           </div>
           <input
-            placeholder="Cours"
             type="cours_client"
             id="cours"
             name="cours_client"
             required
+            style="display: none"
           />
           <button type="submit">Envoyer</button>
         </form>
@@ -111,48 +111,80 @@
         </div>
       </div>
     </footer>
-
     <script>
-            document
-              .getElementById("inscriptionForm")
-              .addEventListener("submit", handleSubmit);
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const activityId = urlParams.get("activityId");
+        console.log(activityId);
+        document.getElementById("cours").value = activityId;
+        document
+          .getElementById("inscriptionForm")
+          .addEventListener("submit", handleSubmit);
 
-            async function handleSubmit(e) {
-              e.preventDefault(); // Empêche la soumission classique du formulaire
+        async function handleSubmit(e) {
+          e.preventDefault();
 
-              const formData = {
-                nom: document.querySelector('input[name="nom"]').value,
-                email: document.querySelector('input[name="email"]').value,
-              };
+          if (
+            activityId == "" ||
+            activityId == null ||
+            activityId == undefined
+          ) {
+            alert(
+              "Veuillez sélectionner une activité avant de vous inscrire !"
+            );
+            return;
+          }
 
-              // Validation des champs
-              if (!Object.values(formData).every((value) => value.trim() !== "")) {
-                alert(`Veuillez remplir tous les champs du formulaire !`);
-                return;
-              }
+          const formData = new FormData();
+          formData.append(
+            "nom_client",
+            document.querySelector('input[name="nom_client"]').value
+          );
+          formData.append(
+            "prenom_client",
+            document.querySelector('input[name="prenom_client"]').value
+          );
+          formData.append(
+            "cours_client",
+            document.querySelector('input[name="cours_client"]').value
+          );
+          formData.append(
+            "tel_client",
+            document.querySelector('input[name="tel_client"]').value
+          );
+          formData.append(
+            "email_client",
+            document.querySelector('input[name="email_client"]').value
+          );
 
-              try {
-                const response = await axios.post(
-      <<<<<<< HEAD
-                  "http://localhost:80/projet-la-grimpette/backend/php/inscription.php",
-      =======
-                  "http://localhost:80/PHP-B3/inscription.php",
-      >>>>>>> 560b183516b813e0726547433b36f1a9e57a22d0
-                  formData
-                );
+          console.log(formData);
 
-                if (response.data.success) {
-                  console.log("Inscription réussie requête envoyée");
-                  window.alert("Inscription réussie !");
-                } else {
-                  console.error("Inscription ratée mais requête envoyée");
-                  window.alert("Inscription ratée mais requête envoyée");
-                }
-              } catch (error) {
-                console.error("Connexion échouée requête non envoyée");
-                window.alert("Connexion échouée requête non envoyée");
-              }
+          if (
+            !Array.from(formData.values()).every((value) => value.trim() !== "")
+          ) {
+            alert(`Veuillez remplir tous les champs du formulaire !`);
+            return;
+          }
+
+          try {
+            const response = await axios.post(
+              "http://localhost:80/projet-la-grimpette/backend/php/inscription.php",
+              formData
+            );
+
+            if (response.data.success) {
+              console.log("Inscription réussie requête envoyée");
+              window.alert("Inscription réussie !");
+            } else {
+              console.error("Inscription ratée mais requête envoyée");
+              window.alert("Inscription ratée mais requête envoyée");
             }
+          } catch (error) {
+            console.error("Connexion échouée requête non envoyée");
+            window.alert("Connexion échouée requête non envoyée");
+          }
+        }
+      });
     </script>
   </body>
 </html>

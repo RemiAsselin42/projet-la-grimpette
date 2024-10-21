@@ -41,8 +41,24 @@
           </p>
           <p class="activity-date"><strong>Date :</strong> 15 Octobre 2024</p>
           <p class="activity-time"><strong>Horaire :</strong> 10h00 - 12h00</p>
-          <a href="formulaire.html" class="register-button">S'inscrire</a>
+          <a
+            href="formulaire.html"
+            class="register-button"
+            data-activity-id="123"
+            onclick="addActivityIdToUrl(event)"
+            >S'inscrire</a
+          >
         </div>
+        <script>
+          function addActivityIdToUrl(event) {
+            event.preventDefault();
+            const button = event.currentTarget;
+            const activityId = button.getAttribute("data-activity-id");
+            const url = new URL(button.href);
+            url.searchParams.append("activityId", activityId);
+            window.location.href = url.toString();
+          }
+        </script>
       </div>
 
       <div class="activity-container">
