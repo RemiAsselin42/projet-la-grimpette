@@ -1,31 +1,46 @@
 <?php
-include("conf_bdd2.php");
+$allowed_origins = [
+    'https://localhost:5173',
+    'http://localhost:5173',
+];
 
-$utilisateur = $_POST['utilisateur'];
-$mdp = $_POST['mdp'];
-$mdpc = hash('sha512', $mdp);
+if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed_origins)) {
+    header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
+} else {
+    header('Access-Control-Allow-Origin: http://localhost:5173');
+}
 
-try 
-{
-    $bdd = new PDO("mysql:host=$host;dbname=$database", $username, $password);
-	$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	
-	foreach($bdd->query('SELECT idu from utilisateurs where utilisateur="'.$utilisateur.'" and mot="'.$mdpc.'"') as $row) 
-	{		
-	}
-	$bdd = null;   
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Max-Age: 1000');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token, Authorization');
 
-	if (isset($row[0])){
- 		session_start();
-		$_SESSION['idu'] = $row[0];
-		
-		header('location:formadmin.php');
-	}
-	else header('location:../index.htm'); 
-} 
-catch (PDOException $e) 
-{
-    print "Erreur !: " . $e->getMessage() . "<br/>";
-    die();
+include("conf_bdd_connexion.php");
+
+$utilisateur = $_POST['utilisateur'] ?? '';
+$mdp = $_POST['mdp'] ?? '';
+
+if (empty($utilisateur) || empty($mdp)) {
+    echo json_encode(['success' => false, 'message' => 'Nom d\'utilisateur ou mot de passe manquant']);
+    exit;
+}
+
+try {
+    $bdd = new PDO("mysql:host=$servername;dbname=$dbname", $user, $pass);
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $stmt = $bdd->prepare('SELECT id_utilisateur, mdp FROM utilisateur WHERE nom = :utilisateur');
+    $stmt->execute(['utilisateur' => $utilisateur]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($row && password_verify($mdp, $row['mdp'])) {
+        session_start();
+        $_SESSION['idu'] = $row['id_utilisateur'];
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Nom d\'utilisateur ou mot de passe incorrect']);
+    }
+} catch (PDOException $e) {
+    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
 }
 ?>
