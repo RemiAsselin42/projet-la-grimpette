@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <title>Quiz</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Quiz</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-<?php
+    <?php
 //On démarre une nouvelle session
 session_start();
 
@@ -39,23 +41,23 @@ if(isset($_SESSION['idu']))
 		{	
 		}
 		?>
-		<h1> QUIZ </h1>
-		<nav class="navbar navbar-inverse">
-		  <div class="container-fluid">
-			<ul class="nav navbar-nav">
-			  <li class="active"><a href="quiz.php">Quiz</a></li>
-			  <li><a href="decon.php">Déconnexion</a></li>
-			</ul>
-		  </div>
-		</nav>
-	  <?php		
+    <h1> QUIZ </h1>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="quiz.php">Quiz</a></li>
+                <li><a href="decon.php">Déconnexion</a></li>
+            </ul>
+        </div>
+    </nav>
+    <?php		
 		echo '<form action="trait.php" method="post">';
 
-        echo '<p><b> Inscription <label for="inscription">''</label></b><br/>';
-        echo '<input type="radio" id="nom" > Nom : ''<br/>';
-        echo '<input type="radio" id="prenom" > Prénom : ''<br/>';
-        echo '<input type="radio" id="email" > E-Mail : ''<br/>';
-        echo '<input type="radio" id="tel" > Téléphone : ''<br/></p>';
+		echo '<p><b> Inscription <label for="inscription"></label></b><br/>';
+		echo '<input type="radio" id="nom"> Nom : <br/>';
+		echo '<input type="radio" id="prenom"> Prénom : <br/>';
+		echo '<input type="radio" id="email"> E-Mail : <br/>';
+		echo '<input type="radio" id="tel"> Téléphone : <br/></p>';
 
 		$bdd = null;   // fermeture connexion
 		echo '<div>
