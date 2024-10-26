@@ -1,12 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap");
 
-body,
-html {
-  height: 100%;
-  margin: 0;
+#page-login {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 }
 
 .background-image {
@@ -32,10 +30,7 @@ html {
 }
 
 .login-container {
-  display: flex;
-  flex-direction: column;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   height: fit-content;
   width: fit-content;
   min-height: 375px;
@@ -44,7 +39,6 @@ html {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  position: relative;
   text-align: center;
 }
 
@@ -130,6 +124,12 @@ form.shake {
   transform: scale(1.02);
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#btnConnexion:active {
+  transform: scale(1);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) inset;
 }
 
 .btnCorrect {

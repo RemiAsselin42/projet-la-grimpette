@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import "./Login.css";
+import "../root.css";
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -42,12 +42,12 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div>
+    <div id="page-login">
       <div className="background-image">
         <div className="overlay"></div>
       </div>
       <div className="login-container">
-        <h2>Connexion</h2>
+        <h2>La Grimpette</h2>
         <form onSubmit={handleSubmit} className={error ? "shake" : ""}>
           <div className="input-form">
             <p>Nom d`Utilisateur</p>
@@ -65,7 +65,7 @@ const Login = ({ onLogin }) => {
             <div className="password-container">
               <input
                 type={showPassword ? "text" : "password"}
-                placeholder="********"
+                placeholder="••••••"
                 className="password"
                 autoComplete="current-password"
                 value={password}

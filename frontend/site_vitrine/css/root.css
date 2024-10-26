@@ -1,21 +1,23 @@
-@import '../scss/style.css';
-@import '../scss/header.css';
-@import '../scss/footer.css';
-@import '../scss/page-photo.css';
-@import '../scss/page-principale.css';
-@import '../scss/activites.css';
-@import '../scss/formulaire.css';
-@import '../scss/success.css';
-@import '../scss/inscrits.css';
-@import '../scss/contact.css';
+@import "../scss/style.css";
+@import "../scss/header.css";
+@import "../scss/footer.css";
+@import "../scss/page-photo.css";
+@import "../scss/page-principale.css";
+@import "../scss/activites.css";
+@import "../scss/formulaire.css";
+@import "../scss/success.css";
+@import "../scss/inscrits.css";
+@import "../scss/contact.css";
 
 :root {
-    --main-color: #08415C;
-    --text-color: white;
-    --background-light: #def9ff;
-    --container-width: 80%;
-    --container-max-width: 800px;
-    --button-radius: 25px;
-    --border-radius: 8px;
-    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --main-color: #08415c;
+  --text-color: white;
+  --background-light: #def9ff;
+  --container-width: 80%;
+  --container-max-width: 800px;
+  --button-radius: 25px;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --font-title: "Unbounded", sans-serif;
+  --font-text: "Raleway", system-ui;
 }

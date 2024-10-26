@@ -1,0 +1,21 @@
+@import "App.css";
+@import "index.css";
+@import "./pages/Login.css";
+@import "./composant/nav-activites.css";
+
+:root {
+  --main-color: #08415c;
+  --main-color-dark: #6b6b6b;
+  --text-color: white;
+  --background-light: #def9ff;
+  --background-dark: #f0f0f0;
+  --background-extra-dark: #d3d3d3;
+
+  --container-width: 80%;
+  --container-max-width: 800px;
+  --button-radius: 25px;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --font-title: "Unbounded", sans-serif;
+  --font-text: "Raleway", system-ui;
+}
