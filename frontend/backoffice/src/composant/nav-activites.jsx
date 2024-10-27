@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const NavMenu = ({ setSelectedSection, selectedSection }) => {
   return (
-    <nav>
+    <nav id="navActivites">
       <ul>
         <li
           className={selectedSection === "activites" ? "active" : ""}

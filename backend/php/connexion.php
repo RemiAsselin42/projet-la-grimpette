@@ -1,15 +1,5 @@
 <?php
-$allowed_origins = [
-    'https://localhost:5173',
-    'http://localhost:5173',
-];
-
-if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed_origins)) {
-    header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
-} else {
-    header('Access-Control-Allow-Origin: *');
-}
-
+header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Max-Age: 1000');

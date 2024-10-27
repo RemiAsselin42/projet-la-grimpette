@@ -1,0 +1,124 @@
+#page-activite-ajouter form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 40px;
+  margin: 0 auto;
+  max-width: calc(100vw - 325px);
+  max-height: calc(100vh - 130px - 215px);
+  overflow: auto;
+}
+
+#page-activite-ajouter form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+#page-activite-ajouter .form-grid {
+  display: grid;
+  grid-template-columns: 8fr 2fr 2fr;
+  gap: 20px;
+}
+
+#page-activite-ajouter .form-grid-2 {
+  display: grid;
+  grid-template-columns: 10fr 2fr;
+  gap: 20px;
+}
+
+#page-activite-ajouter .form-radio {
+  background-color: white;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 0 #00000031;
+}
+
+#page-activite-ajouter .form-radio input {
+  margin: 0 10px 0 20px;
+}
+
+#page-activite-ajouter .form-radio label {
+  font-size: 1em;
+  margin: 10px 15px 10px 5px;
+}
+
+#page-activite-ajouter label {
+  font-family: var(--font-texte);
+  color: var(--main-color);
+  margin: 0 0 15px 15px;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+#page-activite-ajouter input[type="text"],
+#page-activite-ajouter input[type="date"],
+#page-activite-ajouter input[type="time"] {
+  border-radius: var(--button-radius);
+  min-height: 50px;
+  padding: 0px 20px;
+  border: none;
+  outline: none;
+  background-color: white;
+  box-shadow: 2px 2px 5px 0 #00000031 inset;
+  font-family: var(--font-texte);
+  font-weight: 500;
+  font-size: 1em;
+}
+
+#page-activite-ajouter input[type="radio"] {
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+#page-activite-ajouter input[type="file"] {
+  border: none;
+  box-shadow: 0 4px 10px 0 #0000001a;
+  width: fit-content;
+  background-color: white;
+  cursor: pointer;
+  padding: 20px 0px 20px 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 0 #00000031;
+  font-family: var(--font-texte);
+  font-weight: 700;
+  font-size: 1em;
+}
+
+#page-activite-ajouter textarea {
+  box-shadow: 2px 2px 5px 0 #00000031 inset;
+  resize: vertical;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  min-height: 35px;
+  height: 100px;
+  max-height: 200px;
+  padding: 10px;
+  font-family: var(--font-texte);
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+#page-activite-ajouter button {
+  background-color: var(--main-color);
+  color: var(--text-color);
+  padding: 20px 30px;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-texte);
+  font-weight: 600;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  left: 100%;
+  transform: translateX(-100%);
+  position: relative;
+  bottom: 0;
+}
+
+#page-activite-ajouter button:hover {
+  background-color: var(--main-color-dark);
+}

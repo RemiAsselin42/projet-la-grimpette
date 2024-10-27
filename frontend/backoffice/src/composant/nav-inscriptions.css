@@ -1,4 +1,4 @@
-.main-content.activites #navActivites ul {
+.main-content.inscriptions ul {
   position: relative;
   display: flex;
   flex-wrap: nowrap;
@@ -7,7 +7,7 @@
   padding: 0;
 }
 
-.main-content.activites #navActivites ul li {
+.main-content.inscriptions ul li {
   position: relative;
   list-style: none;
   background-color: var(--background-extra-dark);
@@ -22,7 +22,7 @@
   cursor: pointer;
 }
 
-.main-content.activites #navActivites ul li.active {
+.main-content.inscriptions ul li.active {
   position: relative;
   list-style: none;
   background-color: var(--background-dark);
@@ -32,8 +32,8 @@
   z-index: 99;
 }
 
-.main-content.activites #navActivites ul li.active:after,
-.main-content.activites #navActivites ul li.active:before {
+.main-content.inscriptions ul li.active:after,
+.main-content.inscriptions ul li.active:before {
   content: "";
   position: absolute;
   height: 50%;
@@ -44,28 +44,27 @@
   pointer-events: none;
 }
 
-.main-content.activites #navActivites ul li.active:after {
+.main-content.inscriptions ul li.active:after {
   left: 100%;
   border-radius: 0 0 0 10px;
   box-shadow: -20px 1px 0 var(--background-dark);
 }
 
-.main-content.activites #navActivites ul li.active:before {
+.main-content.inscriptions ul li.active:before {
   right: 100%;
   border-radius: 0 0 10px 0;
   box-shadow: 20px 1px 0 var(--background-dark);
 }
 
-/* .main-content.activites-section ul li.active:before {
+/* .main-content.inscriptions-section ul li.active:before {
   display: none;
 } */
 
-.main-content.activites #navActivites li p {
+.main-content.inscriptions li p {
   text-decoration: none;
   color: var(--gray-color-dark);
   display: block;
 }
-
-.main-content.activites #navActivites li.active p {
+.main-content.inscriptions li.active p {
   color: var(--main-color);
 }

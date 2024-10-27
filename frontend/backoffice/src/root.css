@@ -2,10 +2,14 @@
 @import "index.css";
 @import "./pages/Login.css";
 @import "./composant/nav-activites.css";
+@import "./composant/nav-inscriptions.css";
+@import "./composant/section-activites.css";
+@import "./composant/section-activites-ajouter.css";
 
 :root {
   --main-color: #08415c;
-  --main-color-dark: #6b6b6b;
+  --main-color-dark: #04293a;
+  --gray-color-dark: #6b6b6b;
   --text-color: white;
   --background-light: #def9ff;
   --background-dark: #f0f0f0;

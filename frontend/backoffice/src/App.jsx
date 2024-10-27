@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import Login from "./pages/Login";
-import NavMenu from "./composant/nav-activites";
+import NavActivite from "./composant/nav-activites";
+import Navinscriptions from "./composant/nav-inscriptions";
+
+import SectionActivites from "./composant/section-activites";
+import SectionActivitesAjouter from "./composant/section-activites-ajouter";
+
 import "./root.css";
 
 function App() {
@@ -28,25 +33,66 @@ function App() {
 
   const renderContent = () => {
     switch (selectedSection) {
-      case "inscription":
+      // Inscriptions
+
+      case "inscriptions":
         return {
           content: (
-            <div className="inscription-content">
-              <p>Contenu de la section Inscription</p>
+            <div>
+              <Navinscriptions
+                setSelectedSection={setSelectedSection}
+                selectedSection={selectedSection}
+              />
+              <div className="inscriptions-content">
+                <p>Contenu de la section : liste des Inscriptions</p>
+              </div>
             </div>
           ),
-          className: "inscription-section",
+          className: "inscriptions-section inscriptions",
         };
+      case "inscriptions-valide":
+        return {
+          content: (
+            <div>
+              <Navinscriptions
+                setSelectedSection={setSelectedSection}
+                selectedSection={selectedSection}
+              />
+              <div className="inscriptions-content">
+                <p>Contenu de la section : Inscriptions validées</p>
+              </div>
+            </div>
+          ),
+          className: "inscriptions-section inscriptions",
+        };
+      case "inscriptions-refuse":
+        return {
+          content: (
+            <div>
+              <Navinscriptions
+                setSelectedSection={setSelectedSection}
+                selectedSection={selectedSection}
+              />
+              <div className="inscriptions-content">
+                <p>Contenu de la section : Inscriptions refusées</p>
+              </div>
+            </div>
+          ),
+          className: "modifier-section inscriptions",
+        };
+
+      // Activites
+
       case "activites":
         return {
           content: (
             <div>
-              <NavMenu
+              <NavActivite
                 setSelectedSection={setSelectedSection}
                 selectedSection={selectedSection}
               />
               <div className="activites-content">
-                <p>Contenu de la section Activités</p>
+                <SectionActivites />
               </div>
             </div>
           ),
@@ -56,12 +102,12 @@ function App() {
         return {
           content: (
             <div>
-              <NavMenu
+              <NavActivite
                 setSelectedSection={setSelectedSection}
                 selectedSection={selectedSection}
               />
               <div className="activites-content">
-                <p>Contenu de la section Ajouter</p>
+                <SectionActivitesAjouter />
               </div>
             </div>
           ),
@@ -71,7 +117,7 @@ function App() {
         return {
           content: (
             <div>
-              <NavMenu
+              <NavActivite
                 setSelectedSection={setSelectedSection}
                 selectedSection={selectedSection}
               />
@@ -86,7 +132,7 @@ function App() {
         return {
           content: (
             <div>
-              <NavMenu
+              <NavActivite
                 setSelectedSection={setSelectedSection}
                 selectedSection={selectedSection}
               />
@@ -97,6 +143,9 @@ function App() {
           ),
           className: "supprimer-section activites",
         };
+
+      // Page home
+
       default:
         return {
           content: (
@@ -115,6 +164,8 @@ function App() {
 
   const { content, className } = renderContent();
 
+  // Nav-bar + header
+
   return (
     <div className="App">
       {isAuthenticated ? (
@@ -131,15 +182,30 @@ function App() {
                   className="logo"
                   onClick={() => setSelectedSection("home")}
                 />
-
                 <hr />
-
-                <p onClick={() => setSelectedSection("inscription")}>
-                  Inscription
+                <p
+                  className="noBottomMargin"
+                  onClick={() => setSelectedSection("inscriptions")}
+                >
+                  Inscriptions
                 </p>
-
+                <ul>
+                  <li>
+                    <p
+                      onClick={() => setSelectedSection("inscriptions-valide")}
+                    >
+                      Validées
+                    </p>
+                  </li>
+                  <li>
+                    <p
+                      onClick={() => setSelectedSection("inscriptions-refuse")}
+                    >
+                      Refusées
+                    </p>
+                  </li>
+                </ul>
                 <hr />
-
                 <p
                   className="noBottomMargin"
                   onClick={() => setSelectedSection("activites")}
@@ -165,14 +231,15 @@ function App() {
                     </p>
                   </li>
                 </ul>
-
                 <div className="deconnexion">
                   <hr />
-
                   <p onClick={handleLogout}>Déconnexion</p>
                 </div>
               </nav>
             </div>
+
+            {/*Contenu de la page*/}
+
             <div className={`main-content ${className}`}>{content}</div>
           </main>
         </div>

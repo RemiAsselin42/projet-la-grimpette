@@ -7,7 +7,7 @@
   height: 100vh;
 }
 
-.background-image {
+#page-login .background-image {
   background: url(https://saint-etienne.climb-up.fr/wp-content/uploads/2024/03/P6A7944-1024x683.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -18,7 +18,7 @@
   left: 0;
 }
 
-.overlay {
+#page-login .overlay {
   position: absolute;
   z-index: 1;
   top: 0;
@@ -29,7 +29,7 @@
   backdrop-filter: blur(10px);
 }
 
-.login-container {
+#page-login .login-container {
   position: relative;
   height: fit-content;
   width: fit-content;
@@ -42,7 +42,7 @@
   text-align: center;
 }
 
-h2 {
+#page-login h2 {
   color: white;
   font-family: "Raleway", sans-serif;
   font-size: 2em;
@@ -51,20 +51,20 @@ h2 {
   text-underline-offset: 0.2em;
 }
 
-form {
+#page-login form {
   display: flex;
   flex-direction: column;
   width: 100%;
   text-align: left;
 }
 
-.input-form {
+#page-login.input-form {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
 }
 
-input {
+#page-login input {
   margin-top: 0.5rem;
   padding: 0.5rem;
   border: none;
@@ -75,13 +75,13 @@ input {
   box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
-.password-container {
+#page-login .password-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.toggle-password {
+#page-login .toggle-password {
   position: relative;
   min-width: 48px;
   min-height: 48px;
@@ -96,19 +96,19 @@ input {
   box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
-.input-form p {
+#page-login .input-form p {
   color: white;
   font-family: "Raleway", sans-serif;
   font-size: 1em;
   font-weight: 700;
-  margin: 0;
+  margin: 10px 0 0 0;
 }
 
-form.shake {
+#page-login form.shake {
   animation: shake 0.8s ease-in-out;
 }
 
-#btnConnexion {
+#page-login #btnConnexion {
   margin-top: 2em;
   padding: 0.5rem 1rem;
   border: none;
@@ -120,28 +120,28 @@ form.shake {
   transition: all 0.3s ease;
 }
 
-#btnConnexion:hover {
+#page-login #btnConnexion:hover {
   transform: scale(1.02);
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#btnConnexion:active {
+#page-login #btnConnexion:active {
   transform: scale(1);
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) inset;
 }
 
-.btnCorrect {
+#page-login .btnCorrect {
   background-color: #fff;
   color: #08415c;
 }
 
-.btnCorrect:hover {
+#page-login .btnCorrect:hover {
   background-color: #f3f3f3;
 }
 
-.btnError {
+#page-login .btnError {
   background-color: rgb(158, 0, 0);
   color: white;
 }

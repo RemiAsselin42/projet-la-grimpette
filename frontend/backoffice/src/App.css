@@ -80,7 +80,7 @@ main {
   border: 0;
   height: 3px;
   background-color: white;
-  margin: 20px 0;
+  margin: 27px 0 20px;
 }
 
 .side-bar .deconnexion {
@@ -144,9 +144,10 @@ main {
   font-size: 1.5em;
 }
 
-/* PAGE ACTIVITES */
+/* PAGES inscriptions et activites */
 
-.main-content.activites .activites-content {
+.main-content.activites .activites-content,
+.main-content.inscriptions .inscriptions-content {
   overflow: auto;
   background-color: var(--background-dark);
   min-height: calc(100vh - 130px - 115px);
@@ -157,25 +158,8 @@ main {
   border-radius: 10px;
 }
 
-.main-content.activites .activites-content p {
-  margin: 0;
-  padding: 20px;
-}
-
-/* PAGE INSCRIPTION */
-
-.inscription-content {
-  overflow: auto;
-  background-color: var(--background-dark);
-  min-height: calc(100vh - 130px - 55px);
-  max-height: 100vh;
-  width: 100%;
-  top: 0;
-  position: relative;
-  border-radius: 10px;
-}
-
-.inscription-content p {
+.main-content.activites .activites-content p,
+.main-content.inscriptions .inscriptions-content p {
   margin: 0;
   padding: 20px;
 }
