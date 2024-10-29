@@ -1,4 +1,6 @@
 <?php
+// http://localhost:80/projet-la-grimpette/backend/php/setup-mdp.php
+
 include("conf_bdd_connexion.php");
 
 $utilisateur = 'admin';
@@ -24,3 +26,4 @@ try {
     echo "Erreur : " . $e->getMessage();
 }
 ?>
+

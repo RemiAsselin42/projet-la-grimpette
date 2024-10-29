@@ -15,7 +15,7 @@ try {
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Requête pour récupérer les données
-    $stmt = $bdd->prepare("SELECT id_activite, nom_activite, date, heure, description, categorie FROM activite");
+    $stmt = $bdd->prepare("SELECT id_activite, nom_activite, date, heure, description, categorie, image_path FROM activite");
     $stmt->execute();
 
     // Récupération des résultats

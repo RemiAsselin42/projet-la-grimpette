@@ -124,7 +124,7 @@ const SectionActivitesAjouter = () => {
           <label>Image:</label>
           <input
             type="file"
-            onChange={(e) => setImage(e.target.files)}
+            onChange={(e) => setImage(e.target.files[0])}
             accept="image/*"
             required
           />

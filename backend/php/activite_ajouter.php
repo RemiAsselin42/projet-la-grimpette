@@ -15,14 +15,14 @@ $categorie = $_POST['categorie'];
 $image_path = '';
 
 if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-    $target_dir = "uploads/";
+    $target_dir = "../../frontend/site_vitrine/public/uploads/";
     $imageFileType = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
     $target_file = $target_dir . uniqid() . '.' . $imageFileType;
 
     // Convertir l'image en JPEG ou PNG si nécessaire
     if ($imageFileType == 'jpeg' || $imageFileType == 'jpg' || $imageFileType == 'png') {
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            $image_path = $target_file;
+        if (move_uploaded_file($_FILES['image']["tmp_name"], $target_file)) {
+            $image_path = 'uploads/' . basename($target_file); // Chemin relatif pour le frontend
         } else {
             echo "Erreur lors du téléchargement de l'image.";
             exit;
@@ -46,9 +46,8 @@ try {
     $stmt->bindParam(':categorie', $categorie);
     $stmt->bindParam(':image_path', $image_path);
     $stmt->execute();
-
     echo "Activité ajoutée avec succès.";
-} catch (PDOException $erreur) {
-    echo 'Erreur PDO : ' . $erreur->getMessage();
+} catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
 }
 ?>

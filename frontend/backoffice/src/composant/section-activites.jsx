@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import "./section-activites.css";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const SectionActivites = () => {
   const [activites, setActivites] = useState([]);
@@ -30,6 +29,10 @@ const SectionActivites = () => {
 
   if (error) {
     return <p>Erreur lors du chargement des activités : {error}</p>;
+  }
+
+  if (!Array.isArray(activites)) {
+    return <p>Erreur: Les données des activités ne sont pas valides.</p>;
   }
 
   return (

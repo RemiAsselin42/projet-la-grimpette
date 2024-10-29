@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 21 oct. 2024 à 12:00
--- Version du serveur : 8.2.0
--- Version de PHP : 8.2.13
+-- Généré le : mar. 29 oct. 2024 à 22:57
+-- Version du serveur : 8.3.0
+-- Version de PHP : 8.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,13 +29,23 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `activite`;
 CREATE TABLE IF NOT EXISTS `activite` (
-  `id_activite` int NOT NULL,
+  `id_activite` int NOT NULL AUTO_INCREMENT,
   `nom_activite` varchar(150) NOT NULL,
   `date` date NOT NULL,
-  `heure` time NOT NULL,
   `description` varchar(255) NOT NULL,
+  `heure` time NOT NULL,
+  `categorie` int NOT NULL,
+  `image_path` text NOT NULL,
   PRIMARY KEY (`id_activite`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `activite`
+--
+
+INSERT INTO `activite` (`id_activite`, `nom_activite`, `date`, `description`, `heure`, `categorie`, `image_path`) VALUES
+(1, 'Cours enfant 1', '2025-01-01', 'Description Cours enfant 1', '12:00:00', 1, ''),
+(2, 'Cours ado 1', '2025-01-01', 'Description Cours ado 1', '12:00:00', 2, '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
