@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 29 oct. 2024 à 22:57
+-- Généré le : jeu. 31 oct. 2024 à 21:57
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -35,17 +35,19 @@ CREATE TABLE IF NOT EXISTS `activite` (
   `description` varchar(255) NOT NULL,
   `heure` time NOT NULL,
   `categorie` int NOT NULL,
-  `image_path` text NOT NULL,
+  `image` longblob NOT NULL,
   PRIMARY KEY (`id_activite`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `activite`
 --
 
-INSERT INTO `activite` (`id_activite`, `nom_activite`, `date`, `description`, `heure`, `categorie`, `image_path`) VALUES
+INSERT INTO `activite` (`id_activite`, `nom_activite`, `date`, `description`, `heure`, `categorie`, `image`) VALUES
 (1, 'Cours enfant 1', '2025-01-01', 'Description Cours enfant 1', '12:00:00', 1, ''),
-(2, 'Cours ado 1', '2025-01-01', 'Description Cours ado 1', '12:00:00', 2, '');
+(2, 'Cours ado 1', '2025-01-01', 'Description Cours ado 1', '12:00:00', 2, ''),
+(3, 'test ', '2025-01-01', 'test', '12:00:00', 3, ''),
+(4, 'Test', '2025-01-01', 'Test', '12:00:00', 3, '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
