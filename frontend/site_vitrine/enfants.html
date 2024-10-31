@@ -79,7 +79,9 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      fetch("http://localhost:80/projet-la-grimpette/backend/php/activite.php")
+      fetch(
+        "http://localhost:80/projet-la-grimpette/backend/php/activites/activite.php"
+      )
         .then((response) => response.json())
         .then((data) => {
           const container = document.querySelector(".activity-container-main");

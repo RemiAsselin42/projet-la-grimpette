@@ -9,7 +9,7 @@ const SectionInscriptionsRefusees = () => {
     const fetchInscriptions = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:80/projet-la-grimpette/backend/php/inscription_refus.php"
+          "http://localhost:80/projet-la-grimpette/backend/php/inscriptions/inscription_refus.php"
         );
         setInscriptions(response.data);
       } catch (error) {

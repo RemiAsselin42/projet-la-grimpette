@@ -1,5 +1,5 @@
 <?php
-include("conf_bdd.php");
+include("conf_bdd_inscriptions.php");
 
 $nom = $_POST['nom_client'];
 $prenom = $_POST['prenom_client'];
@@ -28,7 +28,7 @@ try {
 
     $bdd = null; 
     include("save.php");
-    header('location:../../frontend/site_vitrine/success.html');
+    header('location:../../../frontend/site_vitrine/success.html');
 } catch (PDOException $erreur) {
     echo 'Erreur PDO : ' . $erreur->getMessage();
 } catch (Exception $e) {

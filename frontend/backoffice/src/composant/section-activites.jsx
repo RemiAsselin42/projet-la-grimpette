@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const SectionActivites = () => {
   const [activites, setActivites] = useState([]);
@@ -10,7 +10,7 @@ const SectionActivites = () => {
     const fetchActivites = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:80/projet-la-grimpette/backend/php/activite.php"
+          "http://localhost:80/projet-la-grimpette/backend/php/activites/activite.php"
         );
         setActivites(response.data);
         setLoading(false);

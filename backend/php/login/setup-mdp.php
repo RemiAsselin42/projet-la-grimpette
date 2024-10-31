@@ -1,5 +1,5 @@
 <?php
-// http://localhost:80/projet-la-grimpette/backend/php/setup-mdp.php
+// http://localhost:80/projet-la-grimpette/backend/php/login/setup-mdp.php
 
 include("conf_bdd_connexion.php");
 

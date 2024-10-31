@@ -31,7 +31,7 @@ function App() {
     setIsAuthenticated(false);
     localStorage.removeItem("isAuthenticated");
     window.location.href =
-      "http://localhost:80/projet-la-grimpette/backend/php/deconnexion.php";
+      "http://localhost:80/projet-la-grimpette/backend/php/login/deconnexion.php";
   };
 
   const renderContent = () => {

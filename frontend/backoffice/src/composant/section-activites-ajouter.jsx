@@ -22,7 +22,7 @@ const SectionActivitesAjouter = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:80/projet-la-grimpette/backend/php/activite_ajouter.php",
+        "http://localhost:80/projet-la-grimpette/backend/php/activites/activite_ajouter.php",
         formData,
         {
           headers: {

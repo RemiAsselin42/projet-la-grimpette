@@ -5,7 +5,7 @@ header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Max-Age: 1000');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token, Authorization');
 
-include("conf_bdd.php");
+include("conf_bdd_inscriptions.php");
 
 header('Content-Type: application/json');
 
@@ -23,8 +23,8 @@ try {
     $inscription = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($inscription) {
-        // Insert into inscription_valide table
-        $stmt = $bdd->prepare("INSERT INTO inscription_valide (id_client, nom_client, prenom_client, cours_client, tel_client, mail_client) VALUES (:id, :nom, :prenom, :cours, :tel, :mail)");
+        // Insert into inscription_refus table
+        $stmt = $bdd->prepare("INSERT INTO inscription_refus (id_client, nom_client, prenom_client, cours_client, tel_client, mail_client) VALUES (:id, :nom, :prenom, :cours, :tel, :mail)");
         $stmt->bindParam(':id', $inscription['id_client']);
         $stmt->bindParam(':nom', $inscription['nom_client']);
         $stmt->bindParam(':prenom', $inscription['prenom_client']);

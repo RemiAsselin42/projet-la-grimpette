@@ -14,7 +14,7 @@ const Login = ({ onLogin }) => {
     event.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:80/projet-la-grimpette/backend/php/connexion.php",
+        "http://localhost:80/projet-la-grimpette/backend/php/login/connexion.php",
         {
           method: "POST",
           headers: {

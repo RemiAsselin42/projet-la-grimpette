@@ -11,7 +11,7 @@ const SectionInscriptions = () => {
     const fetchInscriptions = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:80/projet-la-grimpette/backend/php/get_inscriptions.php"
+          "http://localhost:80/projet-la-grimpette/backend/php/inscriptions/get_inscriptions.php"
         );
         setInscriptions(response.data);
       } catch (error) {
@@ -25,7 +25,7 @@ const SectionInscriptions = () => {
   const handleValidate = async (id) => {
     try {
       await axios.post(
-        "http://localhost:80/projet-la-grimpette/backend/php/validate_inscription.php",
+        "http://localhost:80/projet-la-grimpette/backend/php/inscriptions/validate_inscription.php",
         { id }
       );
       setInscriptions(
@@ -39,7 +39,7 @@ const SectionInscriptions = () => {
   const handleRefuse = async (id) => {
     try {
       await axios.post(
-        "http://localhost:80/projet-la-grimpette/backend/php/refuse_inscription.php",
+        "http://localhost:80/projet-la-grimpette/backend/php/inscriptions/refuse_inscription.php",
         { id }
       );
       setInscriptions(
