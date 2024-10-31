@@ -15,15 +15,21 @@ try {
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Requête pour récupérer les données
-    $stmt = $bdd->prepare("SELECT id_activite, nom_activite, date, heure, description, categorie, image_path FROM activite");
+    $stmt = $bdd->prepare("SELECT id_activite, nom_activite, date, heure, description, categorie, image FROM activite");
     $stmt->execute();
 
     // Récupération des résultats
     $activites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Encoder les images en base64
+    foreach ($activites as &$activite) {
+        if (!empty($activite['image'])) {
+            $activite['image'] = 'data:image/jpeg;base64,' . base64_encode($activite['image']);
+        }
+    }
 
     // Renvoi des résultats en JSON
     echo json_encode($activites);
 } catch (PDOException $erreur) {
     echo json_encode(['error' => $erreur->getMessage()]);
 }
-?>

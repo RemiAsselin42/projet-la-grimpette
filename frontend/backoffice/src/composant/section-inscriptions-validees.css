@@ -1,0 +1,60 @@
+#section-inscriptions-validees {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: calc(100vw - 325px);
+  max-height: calc(100vh - 130px - 215px);
+  overflow: auto;
+}
+
+#section-inscriptions-validees h2 {
+  margin: 20px;
+  font-size: 24px;
+  color: var(--main-color);
+}
+
+#section-inscriptions-validees table {
+  width: 100%;
+  min-width: calc(100vw - 325px);
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+#section-inscriptions-validees th,
+#section-inscriptions-validees td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#section-inscriptions-validees tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#section-inscriptions-validees tr:hover {
+  background-color: #e7e7e7;
+}
+
+#section-inscriptions-validees th,
+#section-inscriptions-validees td {
+  text-align: left;
+}
+
+#section-inscriptions-validees th {
+  background-color: var(--main-color);
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+#section-inscriptions-validees td {
+  color: #333;
+}
+
+#section-inscriptions-validees table {
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

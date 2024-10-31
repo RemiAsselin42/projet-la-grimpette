@@ -12,42 +12,47 @@ $date = $_POST['date'];
 $heure = $_POST['heure'];
 $description = $_POST['description'];
 $categorie = $_POST['categorie'];
-$image_path = '';
+$image_data = null;
 
-if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-    $target_dir = "../../frontend/site_vitrine/public/uploads/";
-    $imageFileType = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
-    $target_file = $target_dir . uniqid() . '.' . $imageFileType;
+if (isset($_FILES['image'])) {
+    if ($_FILES['image']['error'] == 0) {
+        $imageFileType = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
 
-    // Convertir l'image en JPEG ou PNG si nécessaire
-    if ($imageFileType == 'jpeg' || $imageFileType == 'jpg' || $imageFileType == 'png') {
-        if (move_uploaded_file($_FILES['image']["tmp_name"], $target_file)) {
-            $image_path = 'uploads/' . basename($target_file); // Chemin relatif pour le frontend
+        // Convertir l'image en JPEG ou PNG si nécessaire
+        if ($imageFileType == 'jpeg' || $imageFileType == 'jpg' || $imageFileType == 'png') {
+            $image_data = file_get_contents($_FILES['image']["tmp_name"]);
         } else {
-            echo "Erreur lors du téléchargement de l'image.";
+            echo "Format d'image non supporté.";
             exit;
         }
     } else {
-        echo "Format d'image non supporté.";
+        echo "Erreur lors de l'upload de l'image : " . $_FILES['image']['error'];
         exit;
     }
+} else {
+    echo "Aucun fichier image reçu.";
+    exit;
+}
+
+if ($image_data === null) {
+    echo "Erreur : L'image ne peut pas être vide.";
+    exit;
 }
 
 try {
     $bdd = new PDO("mysql:host=$servername;dbname=$dbname", $user, $pass);
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $bdd->prepare("INSERT INTO activite (nom_activite, date, heure, description, categorie, image_path) 
-    VALUES (:nom, :date, :heure, :description, :categorie, :image_path)");
+    $stmt = $bdd->prepare("INSERT INTO activite (nom_activite, date, heure, description, categorie, image) 
+    VALUES (:nom, :date, :heure, :description, :categorie, :image_data)");
     $stmt->bindParam(':nom', $nom);
     $stmt->bindParam(':date', $date);
     $stmt->bindParam(':heure', $heure);
     $stmt->bindParam(':description', $description);
     $stmt->bindParam(':categorie', $categorie);
-    $stmt->bindParam(':image_path', $image_path);
+    $stmt->bindParam(':image_data', $image_data, PDO::PARAM_LOB);
     $stmt->execute();
     echo "Activité ajoutée avec succès.";
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
-?>

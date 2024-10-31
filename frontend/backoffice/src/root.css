@@ -5,6 +5,9 @@
 @import "./composant/nav-inscriptions.css";
 @import "./composant/section-activites.css";
 @import "./composant/section-activites-ajouter.css";
+@import "./composant/section-inscriptions.css";
+@import "./composant/section-inscriptions-validees.css";
+@import "./composant/section-inscriptions-refusees.css";
 
 :root {
   --main-color: #08415c;
@@ -14,6 +17,9 @@
   --background-light: #def9ff;
   --background-dark: #f0f0f0;
   --background-extra-dark: #d3d3d3;
+
+  --color-green : #28af45;
+  --color-red : #b42e2e;
 
   --container-width: 80%;
   --container-max-width: 800px;

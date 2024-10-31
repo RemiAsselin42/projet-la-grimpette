@@ -18,7 +18,7 @@ const SectionActivitesAjouter = () => {
     formData.append("heure", heure);
     formData.append("description", description);
     formData.append("categorie", categorie);
-    formData.append("image_path", image);
+    formData.append("image", image);
 
     try {
       const response = await axios.post(
@@ -45,7 +45,7 @@ const SectionActivitesAjouter = () => {
 
   return (
     <div id="page-activite-ajouter">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="form-grid">
           <div>
             <label>Nom de l&apos;activité:</label>
@@ -124,7 +124,10 @@ const SectionActivitesAjouter = () => {
           <label>Image:</label>
           <input
             type="file"
-            onChange={(e) => setImage(e.target.files[0])}
+            onChange={(e) => {
+              console.log(e.target.files[0]);
+              setImage(e.target.files[0]);
+            }}
             accept="image/*"
             required
           />

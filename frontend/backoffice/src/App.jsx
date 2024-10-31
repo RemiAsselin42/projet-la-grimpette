@@ -5,6 +5,9 @@ import Navinscriptions from "./composant/nav-inscriptions";
 
 import SectionActivites from "./composant/section-activites";
 import SectionActivitesAjouter from "./composant/section-activites-ajouter";
+import SectionInscriptions from "./composant/section-inscriptions";
+import SectionInscriptionsValidees from "./composant/section-inscriptions-validees";
+import SectionInscriptionsRefusees from "./composant/section-inscriptions-refusees";
 
 import "./root.css";
 
@@ -44,7 +47,7 @@ function App() {
                 selectedSection={selectedSection}
               />
               <div className="inscriptions-content">
-                <p>Contenu de la section : liste des Inscriptions</p>
+                <SectionInscriptions />
               </div>
             </div>
           ),
@@ -59,7 +62,7 @@ function App() {
                 selectedSection={selectedSection}
               />
               <div className="inscriptions-content">
-                <p>Contenu de la section : Inscriptions validées</p>
+                <SectionInscriptionsValidees />
               </div>
             </div>
           ),
@@ -74,7 +77,7 @@ function App() {
                 selectedSection={selectedSection}
               />
               <div className="inscriptions-content">
-                <p>Contenu de la section : Inscriptions refusées</p>
+                <SectionInscriptionsRefusees />
               </div>
             </div>
           ),
