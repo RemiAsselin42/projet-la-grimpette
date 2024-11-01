@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import "./section-activites-ajouter.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SectionActivitesAjouter = () => {
   const [nom, setNom] = useState("");
@@ -9,6 +11,7 @@ const SectionActivitesAjouter = () => {
   const [description, setDescription] = useState("");
   const [categorie, setCategorie] = useState("");
   const [image, setImage] = useState(null);
+  const fileInputRef = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +34,11 @@ const SectionActivitesAjouter = () => {
         }
       );
       console.log(response.data);
+
+      toast.success("Activité ajoutée avec succès !", {
+        position: "top-right",
+      });
+
       // Reset form fields
       setNom("");
       setDate("");
@@ -38,6 +46,7 @@ const SectionActivitesAjouter = () => {
       setDescription("");
       setCategorie("");
       setImage(null);
+      fileInputRef.current.value = "";
     } catch (error) {
       console.error("Erreur lors de l'ajout de l'activité:", error);
     }
@@ -124,16 +133,15 @@ const SectionActivitesAjouter = () => {
           <label>Image:</label>
           <input
             type="file"
-            onChange={(e) => {
-              console.log(e.target.files[0]);
-              setImage(e.target.files[0]);
-            }}
+            ref={fileInputRef}
+            onChange={(e) => setImage(e.target.files[0])}
             accept="image/*"
             required
           />
         </div>
         <button type="submit">Ajouter l&apos;activité</button>
       </form>
+      <ToastContainer />
     </div>
   );
 };
