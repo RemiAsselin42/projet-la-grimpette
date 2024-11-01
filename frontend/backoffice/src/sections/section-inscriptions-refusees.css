@@ -2,11 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 20px;
-  margin: 0 auto;
+  padding: 0 20px;
+  margin: 20px 0;
   max-width: calc(100vw - 325px);
-  max-height: calc(100vh - 130px - 215px);
-  overflow: auto;
+  max-height: calc(100vh - 280px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 #section-inscriptions-refusees h2 {
@@ -16,10 +18,10 @@
 }
 
 #section-inscriptions-refusees table {
-  width: 100%;
   min-width: calc(100vw - 325px);
+  max-width: calc(100vw - 325px);
+  width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
 }
 
 #section-inscriptions-refusees th,

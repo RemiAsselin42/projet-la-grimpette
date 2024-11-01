@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SectionInscriptions = () => {
   const [inscriptions, setInscriptions] = useState([]);
@@ -31,6 +34,9 @@ const SectionInscriptions = () => {
       setInscriptions(
         inscriptions.filter((inscription) => inscription.id_client !== id)
       );
+      toast.success("Inscription validée !", {
+        position: "top-right",
+      });
     } catch (error) {
       setError(error.message);
     }
@@ -45,8 +51,24 @@ const SectionInscriptions = () => {
       setInscriptions(
         inscriptions.filter((inscription) => inscription.id_client !== id)
       );
+      toast.success("Inscription refusée !", {
+        position: "top-right",
+      });
     } catch (error) {
       setError(error.message);
+    }
+  };
+
+  const getCategorieText = (categorie) => {
+    switch (categorie) {
+      case 1:
+        return "Enfant";
+      case 2:
+        return "Ados";
+      case 3:
+        return "Adulte";
+      default:
+        return "Inconnue";
     }
   };
 
@@ -54,7 +76,7 @@ const SectionInscriptions = () => {
     <div id="section-inscriptions">
       <h2>Liste des Inscriptions</h2>
       {error && <p>Erreur lors du chargement des inscriptions : {error}</p>}
-      {inscriptions.length === 0 ? (
+      {Array.isArray(inscriptions) && inscriptions.length === 0 ? (
         <div>
           <table>
             <thead>
@@ -63,6 +85,7 @@ const SectionInscriptions = () => {
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Cours</th>
+                <th>Catégorie</th>
                 <th>Téléphone</th>
                 <th>Email</th>
                 <th>Actions</th>
@@ -70,7 +93,7 @@ const SectionInscriptions = () => {
             </thead>
             <tbody>
               <tr>
-                <td colSpan="7" style={{ textAlign: "center" }}>
+                <td colSpan="8" style={{ textAlign: "center" }}>
                   Pas de nouvelles inscriptions pour le moment.
                 </td>
               </tr>
@@ -84,38 +107,42 @@ const SectionInscriptions = () => {
               <th>Nom</th>
               <th>Prénom</th>
               <th>Cours</th>
+              <th>Catégorie</th>
               <th>Téléphone</th>
               <th>Email</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {inscriptions.map((inscription) => (
-              <tr key={inscription.id_client}>
-                <td>{inscription.nom_client}</td>
-                <td>{inscription.prenom_client}</td>
-                <td>{inscription.cours_client}</td>
-                <td>{inscription.tel_client}</td>
-                <td>{inscription.mail_client}</td>
-                <td className="btnValidations">
-                  <button
-                    onClick={() => handleValidate(inscription.id_client)}
-                    className="btnValider"
-                  >
-                    <FontAwesomeIcon icon={faCheck} />
-                  </button>
-                  <button
-                    onClick={() => handleRefuse(inscription.id_client)}
-                    className="btnRefuser"
-                  >
-                    <FontAwesomeIcon icon={faTimes} />
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {Array.isArray(inscriptions) &&
+              inscriptions.map((inscription) => (
+                <tr key={inscription.id_client}>
+                  <td>{inscription.nom_client}</td>
+                  <td>{inscription.prenom_client}</td>
+                  <td>{inscription.nom_activite}</td>
+                  <td>{getCategorieText(inscription.categorie)}</td>
+                  <td>0{inscription.tel_client}</td>
+                  <td>{inscription.mail_client}</td>
+                  <td className="btnValidations">
+                    <button
+                      onClick={() => handleValidate(inscription.id_client)}
+                      className="btnValider"
+                    >
+                      <FontAwesomeIcon icon={faCheck} />
+                    </button>
+                    <button
+                      onClick={() => handleRefuse(inscription.id_client)}
+                      className="btnRefuser"
+                    >
+                      <FontAwesomeIcon icon={faTimes} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       )}
+      <ToastContainer />
     </div>
   );
 };

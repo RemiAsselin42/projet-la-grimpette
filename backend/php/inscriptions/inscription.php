@@ -4,14 +4,14 @@ include("conf_bdd_inscriptions.php");
 $nom = $_POST['nom_client'];
 $prenom = $_POST['prenom_client'];
 $cours = $_POST['cours_client'];
-$telephone = $_POST['tel_client'];
+$telephone = str_replace(' ', '', $_POST['tel_client']); // Supprimer les espaces
 $mail = $_POST['email_client'];
 
 try {
     $bdd = new PDO("mysql:host=$servername;dbname=$dbname", $user, $pass);
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	echo "Cours : " . $cours . "<br>";
+    echo "Cours : " . $cours . "<br>";
 
     if (empty($nom) || empty($prenom) || empty($mail) || empty($telephone) || empty($cours)) {
         throw new Exception('Tous les champs sont obligatoires.');
@@ -26,7 +26,7 @@ try {
     $prepare->bindParam(':mail_client', $mail);
     $prepare->execute();
 
-    $bdd = null; 
+    $bdd = null;
     include("save.php");
     header('location:../../../frontend/site_vitrine/success.html');
 } catch (PDOException $erreur) {
@@ -34,3 +34,4 @@ try {
 } catch (Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
 }
+?>
