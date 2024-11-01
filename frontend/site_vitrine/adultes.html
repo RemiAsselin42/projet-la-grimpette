@@ -85,7 +85,7 @@
         .then((response) => response.json())
         .then((data) => {
           const container = document.querySelector(".activity-container-main");
-          container.innerHTML = "";
+          container.innerHTML = "<h2>Activités Adultes</h2>";
 
           if (data.error) {
             container.innerHTML = `<p>${data.error}</p>`;
@@ -93,12 +93,17 @@
             let hasActivities = false;
 
             data.forEach((activite) => {
-              // Vérifie si la catégorie est égale à 1
+              // Vérifie si la catégorie est égale à Adultes
               if (activite.categorie == "3") {
                 hasActivities = true;
 
                 const activityDiv = document.createElement("div");
                 activityDiv.classList.add("activity-container");
+                activityDiv.classList.add(`activity-${activite.id_activite}`);
+                activityDiv.dataset.activityId = activite.id_activite;
+                activityDiv.style.backgroundImage = `linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) 80%), url(${activite.image})`;
+                activityDiv.style.backgroundSize = "cover";
+                activityDiv.style.backgroundPosition = "center";
 
                 activityDiv.innerHTML = `
                   <div class="activity-details">
