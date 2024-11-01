@@ -11,13 +11,13 @@ html {
   margin: 0;
   padding: 0;
   background-color: #f8f8f8;
-  font-family: "Raleway", system-ui;
+  font-family: var(--font-text);
   color: var(--main-color);
 }
 
 h1,
 h2 {
-  font-family: "Unbounded", sans-serif;
+  font-family: var(--font-title);
 }
 
 main {

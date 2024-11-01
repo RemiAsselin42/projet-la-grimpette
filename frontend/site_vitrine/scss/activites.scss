@@ -2,12 +2,6 @@
 .activity-container {
   position: relative;
   display: flex;
-  background-image: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.8) 80%
-    ),
-    url(../img/activite1.jpg);
   border-radius: 10px;
   box-shadow: var(--box-shadow);
   margin: 20px auto;
@@ -43,7 +37,7 @@
     transform 0.3s ease;
   -webkit-mask-position: 120%;
   mask-position: 120%;
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .activity-container:not(:hover) {
