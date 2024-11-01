@@ -3,11 +3,11 @@ import Login from "./pages/Login";
 import NavActivite from "./composant/nav-activites";
 import Navinscriptions from "./composant/nav-inscriptions";
 
-import SectionActivites from "./composant/section-activites";
-import SectionActivitesAjouter from "./composant/section-activites-ajouter";
-import SectionInscriptions from "./composant/section-inscriptions";
-import SectionInscriptionsValidees from "./composant/section-inscriptions-validees";
-import SectionInscriptionsRefusees from "./composant/section-inscriptions-refusees";
+import SectionActivites from "./sections/section-activites";
+import SectionActivitesAjouter from "./sections/section-activites-ajouter";
+import SectionInscriptions from "./sections/section-inscriptions";
+import SectionInscriptionsValidees from "./sections/section-inscriptions-validees";
+import SectionInscriptionsRefusees from "./sections/section-inscriptions-refusees";
 
 import "./root.css";
 

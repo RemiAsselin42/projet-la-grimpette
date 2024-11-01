@@ -106,7 +106,7 @@ main {
 
 .side-bar .deconnexion p:hover {
   text-decoration: none;
-  background-color: #b42e2e;
+  background-color: var(--color-red);
   color: white;
   transition: all 0.3s ease;
 }
