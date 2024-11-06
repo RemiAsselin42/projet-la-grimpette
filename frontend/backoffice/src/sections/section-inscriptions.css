@@ -103,3 +103,30 @@
 #section-inscriptions .btnValidations button:not(:hover) {
   filter: brightness(0.9);
 }
+
+/* Styles pour le sélecteur d'activités */
+#section-inscriptions .activite-select-section {
+  margin-left: 20px;
+}
+
+#section-inscriptions #activite-select {
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#section-inscriptions #activite-select:focus {
+  border-color: var(--main-color);
+}
+
+#section-inscriptions label[for="activite-select"] {
+  margin-right: 10px;
+  font-size: 16px;
+  color: var(--main-color);
+}

@@ -8,6 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 const SectionInscriptions = () => {
   const [inscriptions, setInscriptions] = useState([]);
+  const [activites, setActivites] = useState([]);
+  const [selectedActivite, setSelectedActivite] = useState("");
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -22,7 +24,19 @@ const SectionInscriptions = () => {
       }
     };
 
+    const fetchActivites = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:80/projet-la-grimpette/backend/php/activites/activite.php"
+        );
+        setActivites(response.data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
     fetchInscriptions();
+    fetchActivites();
   }, []);
 
   const handleValidate = async (id) => {
@@ -72,11 +86,37 @@ const SectionInscriptions = () => {
     }
   };
 
+  const handleActiviteChange = (event) => {
+    setSelectedActivite(event.target.value);
+  };
+
+  const filteredInscriptions = selectedActivite
+    ? inscriptions.filter(
+        (inscription) => inscription.nom_activite === selectedActivite
+      )
+    : inscriptions;
+
   return (
     <div id="section-inscriptions">
       <h2>Liste des Inscriptions</h2>
       {error && <p>Erreur lors du chargement des inscriptions : {error}</p>}
-      {Array.isArray(inscriptions) && inscriptions.length === 0 ? (
+      <div className="activite-select-section">
+        <label htmlFor="activite-select">Sélectionnez une activité :</label>
+        <select
+          id="activite-select"
+          value={selectedActivite}
+          onChange={handleActiviteChange}
+        >
+          <option value="">Toutes les activités</option>
+          {activites.map((activite) => (
+            <option key={activite.id_activite} value={activite.nom_activite}>
+              {activite.nom_activite}
+            </option>
+          ))}
+        </select>
+      </div>
+      {Array.isArray(filteredInscriptions) &&
+      filteredInscriptions.length === 0 ? (
         <div>
           <table>
             <thead>
@@ -114,8 +154,8 @@ const SectionInscriptions = () => {
             </tr>
           </thead>
           <tbody>
-            {Array.isArray(inscriptions) &&
-              inscriptions.map((inscription) => (
+            {Array.isArray(filteredInscriptions) &&
+              filteredInscriptions.map((inscription) => (
                 <tr key={inscription.id_client}>
                   <td>{inscription.nom_client}</td>
                   <td>{inscription.prenom_client}</td>

@@ -8,6 +8,9 @@
 @import "./sections/section-inscriptions.css";
 @import "./sections/section-inscriptions-validees.css";
 @import "./sections/section-inscriptions-refusees.css";
+@import "./sections/section-activites-modifier.css";
+@import "./sections/section-activites-supprimer.css";
+@import "./composant/confirm-alert-custom.css";
 
 :root {
   --main-color: #08415c;

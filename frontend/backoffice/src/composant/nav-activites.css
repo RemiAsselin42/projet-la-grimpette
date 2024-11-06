@@ -36,7 +36,7 @@
 .main-content.activites #navActivites ul li.active:before {
   content: "";
   position: absolute;
-  height: 50%;
+  height: 49%;
   transform: translateY(100%);
   width: 30px;
   background-color: transparent;

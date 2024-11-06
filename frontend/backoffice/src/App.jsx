@@ -8,12 +8,15 @@ import SectionActivitesAjouter from "./sections/section-activites-ajouter";
 import SectionInscriptions from "./sections/section-inscriptions";
 import SectionInscriptionsValidees from "./sections/section-inscriptions-validees";
 import SectionInscriptionsRefusees from "./sections/section-inscriptions-refusees";
+import SectionActivitesModifier from "./sections/section-activites-modifier";
+import SectionActivitesSupprimer from "./sections/section-activites-supprimer";
 
 import "./root.css";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedSection, setSelectedSection] = useState("home");
+  const [selectedActiviteId, setSelectedActiviteId] = useState(null);
 
   useEffect(() => {
     const authStatus = localStorage.getItem("isAuthenticated");
@@ -125,7 +128,9 @@ function App() {
                 selectedSection={selectedSection}
               />
               <div className="activites-content">
-                <p>Contenu de la section Modifier</p>
+                <SectionActivitesModifier
+                  selectedActiviteId={selectedActiviteId}
+                />
               </div>
             </div>
           ),
@@ -140,7 +145,7 @@ function App() {
                 selectedSection={selectedSection}
               />
               <div className="activites-content">
-                <p>Contenu de la section Supprimer</p>
+                <SectionActivitesSupprimer />
               </div>
             </div>
           ),

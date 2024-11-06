@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const SectionActivites = () => {
+const SectionActivites = ({ activite }) => {
   const [activites, setActivites] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -35,16 +35,37 @@ const SectionActivites = () => {
     return <p>Erreur: Les données des activités ne sont pas valides.</p>;
   }
 
+  const handleMouseEnter = (e) => {
+    e.currentTarget.classList.add("expanded");
+  };
+
+  const handleMouseLeave = (e) => {
+    e.currentTarget.classList.remove("expanded");
+  };
+
   return (
     <div id="section-activites">
       <h2>Liste des Activités</h2>
       <ul>
         {activites.map((activite) => (
-          <li key={activite.id_activite}>
-            <h3>{activite.nom_activite}</h3>
-            <p>Date: {activite.date}</p>
-            <p>Heure: {activite.heure}</p>
-            <p>Description: {activite.description}</p>
+          <li
+            key={activite.id_activite}
+            className="activite"
+            id={`div-activites-${activite.id_activite}`}
+            style={{
+              backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) 80%), url(${activite.image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="activity-details">
+              <h3>{activite.nom_activite}</h3>
+              <p>Date: {activite.date}</p>
+              <p>Heure: {activite.heure}</p>
+              <p>Description: {activite.description}</p>
+            </div>
           </li>
         ))}
       </ul>

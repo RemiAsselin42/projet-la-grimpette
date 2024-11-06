@@ -21,19 +21,25 @@
 }
 
 #section-activites li {
-  list-style: none;
-  background-color: white;
+  position: relative;
+  display: flex;
   border-radius: 10px;
-  margin: 20px;
+  box-shadow: var(--box-shadow);
+  margin: 20px auto;
   padding: 20px;
+  height: 300px;
+  clear: both;
+  overflow: hidden;
+  color: white;
 }
 
 #section-activites li h3 {
-  font-size: 1.2em;
+  font-size: 2em;
   font-weight: 700;
   margin: 0 0 15px 0;
 }
 
 #section-activites li p {
   padding: 5px 0;
+  font-size: 1.2em;
 }

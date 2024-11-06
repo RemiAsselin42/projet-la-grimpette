@@ -1,0 +1,61 @@
+#section-activites-modifier {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 40px;
+  margin: 0 auto;
+  max-width: calc(100vw - 325px);
+  max-height: calc(100vh - 130px - 215px);
+  overflow: auto;
+}
+
+#section-activites-modifier h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#section-activites-modifier form {
+  display: flex;
+  flex-direction: column;
+}
+
+#section-activites-modifier form > div {
+  margin-bottom: 15px;
+}
+
+#section-activites-modifier input,
+#section-activites-modifier textarea,
+#section-activites-modifier select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#section-activites-modifier button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#section-activites-modifier button:hover {
+  background-color: #0056b3;
+}
+
+#section-activites-modifier .activite-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px 0 rgb(0 0 0 / 15%);
+  padding: 20px;
+}
+
+#section-activites-modifier .activite-details input,
+#section-activites-modifier .activite-details textarea {
+  flex: 1 1 45%;
+}
