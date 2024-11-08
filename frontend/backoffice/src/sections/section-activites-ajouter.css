@@ -1,8 +1,8 @@
-#page-activite-ajouter form {
+#page-activite-ajouter {
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 40px;
+  padding: 20px 40px;
   margin: 0 auto;
   max-width: calc(100vw - 325px);
   max-height: calc(100vh - 130px - 215px);

@@ -14,11 +14,11 @@ const SectionActivitesModifier = () => {
     const fetchActivites = async () => {
       try {
         const response = await axios.get(
-          "http://localhost/projet-la-grimpette/backend/php/activites/get_all_activites.php"
+          "http://localhost:80/projet-la-grimpette/backend/php/activites/activite.php"
         );
         setActivites(response.data);
-      } catch (error) {
-        console.error("Erreur lors du chargement des activités :", error);
+      } catch (err) {
+        console.log(err.message);
       }
     };
 
@@ -49,7 +49,7 @@ const SectionActivitesModifier = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
+      await axios.post(
         "http://localhost/projet-la-grimpette/backend/php/activites/update_activite.php",
         {
           id: selectedActiviteId,
@@ -70,6 +70,7 @@ const SectionActivitesModifier = () => {
       console.error("Erreur lors de la modification de l'activité :", error);
     }
   };
+
   return (
     <div id="section-activites-modifier">
       <h2>Modifier une Activité</h2>
@@ -92,10 +93,10 @@ const SectionActivitesModifier = () => {
         {selectedActiviteId && (
           <>
             <div>
-              <label>Nom de l'activité :</label>
+              <label>Nom de l&apos;activité :</label>
               <input
                 type="text"
-                defaultValue={nom || ""}
+                defaultValue={nom}
                 onChange={(e) => setNom(e.target.value)}
                 required
               />
@@ -103,7 +104,7 @@ const SectionActivitesModifier = () => {
             <div>
               <label>Description :</label>
               <textarea
-                value={description || ""}
+                defaultValue={description}
                 onChange={(e) => setDescription(e.target.value)}
                 required
               />
@@ -112,7 +113,7 @@ const SectionActivitesModifier = () => {
               <label>Date :</label>
               <input
                 type="date"
-                value={date || ""}
+                defaultValue={date}
                 onChange={(e) => setDate(e.target.value)}
                 required
               />
@@ -121,7 +122,7 @@ const SectionActivitesModifier = () => {
               <label>Heure :</label>
               <input
                 type="time"
-                value={heure || ""}
+                defaultValue={heure}
                 onChange={(e) => setHeure(e.target.value)}
                 required
               />

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
-const SectionActivites = ({ activite }) => {
+const SectionActivites = () => {
   const [activites, setActivites] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -35,14 +35,6 @@ const SectionActivites = ({ activite }) => {
     return <p>Erreur: Les données des activités ne sont pas valides.</p>;
   }
 
-  const handleMouseEnter = (e) => {
-    e.currentTarget.classList.add("expanded");
-  };
-
-  const handleMouseLeave = (e) => {
-    e.currentTarget.classList.remove("expanded");
-  };
-
   return (
     <div id="section-activites">
       <h2>Liste des Activités</h2>
@@ -57,8 +49,6 @@ const SectionActivites = ({ activite }) => {
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
           >
             <div className="activity-details">
               <h3>{activite.nom_activite}</h3>

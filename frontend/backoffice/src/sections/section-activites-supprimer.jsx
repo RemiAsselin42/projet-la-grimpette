@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,7 +9,7 @@ const SectionActivitesSupprimer = () => {
   const [activites, setActivites] = useState([]);
   const [selectedActiviteId, setSelectedActiviteId] = useState("");
   const [selectedActivite, setSelectedActivite] = useState(null);
-  const [message, setMessage] = useState("");
+  const [setMessage] = useState("");
 
   useEffect(() => {
     const fetchActivites = async () => {
@@ -33,10 +33,8 @@ const SectionActivitesSupprimer = () => {
           "http://localhost:80/projet-la-grimpette/backend/php/activites/activite.php"
         );
         setActivites(response.data);
-        setLoading(false);
       } catch (err) {
-        setError(err.message);
-        setLoading(false);
+        console.log(err.message);
       }
     };
 
@@ -100,7 +98,7 @@ const SectionActivitesSupprimer = () => {
 
   return (
     <div id="section-activites-supprimer">
-      <h2>Supprimer une activité</h2>
+      <h2>Supprimer une Activité</h2>
       <form onSubmit={handleSubmit}>
         <div className="selecteur-activites">
           <select

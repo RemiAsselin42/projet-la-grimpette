@@ -54,6 +54,7 @@ const SectionActivitesAjouter = () => {
 
   return (
     <div id="page-activite-ajouter">
+      <h2>Ajouter une Activité</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="form-grid">
           <div>
@@ -130,7 +131,7 @@ const SectionActivitesAjouter = () => {
           </div>
         </div>
         <div>
-          <label>Image:</label>
+          <label>Image (max 16mo) :</label>
           <input
             type="file"
             ref={fileInputRef}
