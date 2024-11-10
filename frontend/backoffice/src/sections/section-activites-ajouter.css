@@ -102,7 +102,7 @@
   font-size: 0.9em;
 }
 
-#page-activite-ajouter button {
+#page-activite-ajouter .btnAjouter {
   background-color: var(--main-color);
   color: var(--text-color);
   padding: 20px 30px;
@@ -117,8 +117,10 @@
   transform: translateX(-100%);
   position: relative;
   bottom: 0;
+  min-width: fit-content;
+  width: 15vw;
 }
 
-#page-activite-ajouter button:hover {
+#page-activite-ajouter .btnAjouter:hover {
   background-color: var(--main-color-dark);
 }

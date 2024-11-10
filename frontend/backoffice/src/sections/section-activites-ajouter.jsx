@@ -140,7 +140,9 @@ const SectionActivitesAjouter = () => {
             required
           />
         </div>
-        <button type="submit">Ajouter l&apos;activité</button>
+        <button className="btnAjouter" type="submit">
+          Ajouter l&apos;activité
+        </button>
       </form>
       <ToastContainer />
     </div>

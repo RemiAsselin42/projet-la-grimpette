@@ -9,7 +9,6 @@ const SectionActivitesSupprimer = () => {
   const [activites, setActivites] = useState([]);
   const [selectedActiviteId, setSelectedActiviteId] = useState("");
   const [selectedActivite, setSelectedActivite] = useState(null);
-  const [setMessage] = useState("");
 
   useEffect(() => {
     const fetchActivites = async () => {
@@ -63,7 +62,7 @@ const SectionActivitesSupprimer = () => {
           },
         }
       );
-      setMessage(response.data.message);
+      console.log(response.data.message);
       setActivites(
         activites.filter(
           (activite) => activite.id_activite !== selectedActiviteId
@@ -129,7 +128,11 @@ const SectionActivitesSupprimer = () => {
             </ul>
           </div>
         )}
-        {selectedActiviteId && <button type="submit">Supprimer</button>}
+        {selectedActiviteId && (
+          <button className="btnSupprimer" type="submit">
+            Supprimer
+          </button>
+        )}
       </form>
       <ToastContainer />
     </div>
