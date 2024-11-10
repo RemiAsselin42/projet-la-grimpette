@@ -10,18 +10,14 @@ include("conf_bdd_activite.php");
 header('Content-Type: application/json');
 
 try {
-    // Connexion à la base de données
     $bdd = new PDO("mysql:host=$servername;dbname=$dbname", $user, $pass);
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Requête pour récupérer les données
     $stmt = $bdd->prepare("SELECT id_activite, nom_activite, date, heure, description, categorie, image FROM activite");
     $stmt->execute();
 
-    // Récupération des résultats
     $activites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Encoder les images en base64
     foreach ($activites as &$activite) {
         if (!empty($activite['image'])) {
             $activite['image'] = 'data:image/jpeg;base64,' . base64_encode($activite['image']);
