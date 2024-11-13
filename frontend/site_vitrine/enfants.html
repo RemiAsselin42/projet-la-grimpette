@@ -30,49 +30,23 @@
       </div>
     </header>
 
-    <body>
-      <div class="activity-container">
-        <div class="activity-details">
-          <h2 class="activity-title">Titre de l'Activité</h2>
-          <p class="activity-description">
-            Description détaillée de l'activité. Cette activité est conçue pour
-            les participants de tous niveaux et vise à améliorer leurs
-            compétences tout en s'amusant.
-          </p>
-          <p class="activity-date"><strong>Date :</strong> 15 Octobre 2024</p>
-          <p class="activity-time"><strong>Horaire :</strong> 10h00 - 12h00</p>
-          <a href="formulaire.html" class="register-button">S'inscrire</a>
+    <main>
+      <div class="activity-container-main">
+        <div class="activity-container">
+          <!-- Les activités seront insérées ici par JavaScript -->
         </div>
       </div>
-
-      <div class="activity-container">
-        <div class="activity-details">
-          <h2 class="activity-title">Titre de l'Activité</h2>
-          <p class="activity-description">
-            Description détaillée de l'activité. Cette activité est conçue pour
-            les participants de tous niveaux et vise à améliorer leurs
-            compétences tout en s'amusant.
-          </p>
-          <p class="activity-date"><strong>Date :</strong> 15 Octobre 2024</p>
-          <p class="activity-time"><strong>Horaire :</strong> 10h00 - 12h00</p>
-          <a href="formulaire.html" class="register-button">S'inscrire</a>
-        </div>
-      </div>
-
-      <div class="activity-container">
-        <div class="activity-details">
-          <h2 class="activity-title">Titre de l'Activité</h2>
-          <p class="activity-description">
-            Description détaillée de l'activité. Cette activité est conçue pour
-            les participants de tous niveaux et vise à améliorer leurs
-            compétences tout en s'amusant.
-          </p>
-          <p class="activity-date"><strong>Date :</strong> 15 Octobre 2024</p>
-          <p class="activity-time"><strong>Horaire :</strong> 10h00 - 12h00</p>
-          <a href="formulaire.html" class="register-button">S'inscrire</a>
-        </div>
-      </div>
-    </body>
+      <script>
+        function addActivityIdToUrl(event) {
+          event.preventDefault();
+          const button = event.currentTarget;
+          const activityId = button.getAttribute("data-activity-id");
+          const url = new URL(button.href);
+          url.searchParams.append("activityId", activityId);
+          window.location.href = url.toString();
+        }
+      </script>
+    </main>
 
     <footer class="footer">
       <div class="footer-container">
@@ -102,4 +76,68 @@
     </footer>
     <script src="./js/script.js"></script>
   </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch(
+        "http://localhost:80/projet-la-grimpette/backend/php/activites/activite.php"
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          const container = document.querySelector(".activity-container-main");
+          container.innerHTML = "<h2>Activités enfant</h2>";
+
+          if (data.error) {
+            container.innerHTML = `<p>${data.error}</p>`;
+          } else {
+            let hasActivities = false;
+
+            data.forEach((activite) => {
+              // Vérifie si la catégorie est égale à Enfants
+              if (activite.categorie == "1") {
+                hasActivities = true;
+
+                const activityDiv = document.createElement("div");
+                activityDiv.classList.add("activity-container");
+                activityDiv.classList.add(`activity-${activite.id_activite}`);
+                activityDiv.dataset.activityId = activite.id_activite;
+                activityDiv.style.backgroundImage = `linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) 80%), url(${activite.image})`;
+                activityDiv.style.backgroundSize = "cover";
+                activityDiv.style.backgroundPosition = "center";
+
+                activityDiv.innerHTML = `
+                  <div class="activity-details">
+                    <h2 class="activity-title">${activite.nom_activite}</h2>
+                    <p class="activity-description">${activite.description}</p>
+                    <p class="activity-date"><strong>Date :</strong> ${activite.date}</p>
+                    <p class="activity-time"><strong>Horaire :</strong> ${activite.heure}</p>
+                    <a href="formulaire.html" class="register-button" data-activity-id="${activite.id_activite}" onclick="addActivityIdToUrl(event)">S'inscrire</a>
+                  </div>
+                `;
+
+                container.appendChild(activityDiv);
+              }
+            });
+
+            if (!hasActivities) {
+              container.innerHTML = `<p class="aucune-activite">Aucune activité trouvée.</p>`;
+            }
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          const container = document.querySelector(".activity-container-main");
+          container.innerHTML = `<p>Erreur lors de la récupération des données.</p>`;
+        });
+    });
+
+    function addActivityIdToUrl(event) {
+      event.preventDefault();
+      const button = event.currentTarget;
+      const activityId = button.getAttribute("data-activity-id");
+      const url = new URL(button.href);
+      url.searchParams.append("activityId", activityId);
+      window.location.href = url.toString();
+    }
+  </script>
 </html>

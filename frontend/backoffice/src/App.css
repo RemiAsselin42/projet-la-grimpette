@@ -1,0 +1,165 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+}
+
+.app-header {
+  background-color: var(--main-color);
+  max-height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  font-family: var(--font-title);
+  font-size: 1.2em;
+  color: white;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 10px;
+}
+
+.app-header h1 {
+  margin-left: 50px;
+}
+
+main {
+  display: flex;
+}
+
+.side-bar {
+  position: relative;
+  background-color: var(--main-color);
+  width: fit-content;
+  max-width: 200px;
+  border-radius: 10px;
+  padding: 20px;
+  margin-left: 15px;
+  height: calc(100vh - 130px - 95px);
+
+  font-family: var(--font-text);
+  font-size: 1.5em;
+  font-weight: 700;
+  color: white;
+}
+
+.side-bar .logo {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.side-bar p {
+  cursor: pointer;
+}
+
+.side-bar p:hover {
+  text-decoration: underline;
+}
+
+.side-bar li {
+  list-style: none;
+}
+
+.side-bar li p {
+  font-size: 0.9em;
+  font-weight: 600;
+  margin: 10px;
+}
+
+.noBottomMargin {
+  margin-bottom: 0;
+}
+
+.side-bar ul {
+  margin: 0;
+  border-left: white solid 3px;
+  padding-left: 10px;
+}
+
+.side-bar hr {
+  border: 0;
+  height: 3px;
+  background-color: white;
+  margin: 27px 0 20px;
+}
+
+.side-bar .deconnexion {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+}
+
+.side-bar .deconnexion p {
+  background-color: white;
+  color: var(--main-color);
+  padding: 10px;
+  border-radius: 50px;
+  font-size: 0.8em;
+  text-align: center;
+  margin: 0 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.side-bar .deconnexion p:hover {
+  text-decoration: none;
+  background-color: var(--color-red);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.main-content {
+  margin: 0 15px;
+  height: calc(100vh - 130px - 55px);
+  width: 100%;
+  font-family: var(--font-text);
+  border-radius: 10px;
+  color: var(--main-color);
+}
+
+/* PAGE HOME */
+
+.main-content.home-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  text-align: center;
+  background-color: var(--background-dark);
+}
+
+.main-content.home-section h2 {
+  font-family: var(--font-text);
+  font-size: 3em;
+  font-weight: 700;
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+.main-content.home-section p {
+  font-size: 1.5em;
+}
+
+/* PAGES inscriptions et activites */
+
+.main-content.activites .activites-content,
+.main-content.inscriptions .inscriptions-content {
+  overflow: auto;
+  background-color: var(--background-dark);
+  min-height: calc(100vh - 130px - 115px);
+  max-height: 100vh;
+  width: 100%;
+  top: 0;
+  position: relative;
+  border-radius: 10px;
+}
+
+.main-content.activites .activites-content p,
+.main-content.inscriptions .inscriptions-content p {
+  margin: 0;
+  padding: 20px;
+}

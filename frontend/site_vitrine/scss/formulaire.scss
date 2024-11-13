@@ -1,11 +1,11 @@
 /* Formulaire */
 .form-container {
-  background-color: var(--main-color);
-  padding: 40px;
-  border-radius: 15px;
   box-shadow: var(--box-shadow);
-  max-width: var(--container-max-width);
+  width: var(--container-max-width);
   margin: 100px auto;
+  padding: 40px;
+  background-color: var(--main-color);
+  border-radius: 15px;
   text-align: center;
 }
 
@@ -20,7 +20,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-
   div {
     display: flex;
     justify-content: space-between;
@@ -29,31 +28,31 @@
 
 /* Style des champs d'entrée */
 .form-container input {
+  width: 90%;
+  margin: 5px;
   padding: 10px;
   border: 2px solid var(--main-color);
   border-radius: 5px;
   font-size: 1em;
-  margin: 5px;
-  width: 90%;
 }
 
 /* Bouton Formulaire */
 .form-container button {
-  background-color: var(--text-color);
-  color: var(--main-color);
+  position: relative;
+  left: 100%;
+  transform: translateX(-100%);
+  width: 30%;
+  margin: 20px;
+  margin-left: -10px;
   padding: 12px;
+  transition: background-color 0.3s ease;
+  background-color: var(--text-color);
+  cursor: pointer;
   border: none;
   border-radius: var(--button-radius);
   font-size: 1.2em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 20px;
-  margin-left: -10px;
-  width: 30%;
-  left: 100%;
-  transform: translateX(-100%);
-  position: relative;
   font-weight: 800;
+  color: var(--main-color);
 }
 
 .form-container button:hover {

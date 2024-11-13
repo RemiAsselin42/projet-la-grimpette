@@ -1,0 +1,70 @@
+.main-content.inscriptions ul {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: end;
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.main-content.inscriptions ul li {
+  position: relative;
+  list-style: none;
+  background-color: var(--background-extra-dark);
+  border-radius: 10px 10px 0 0;
+  padding: 5px 20px;
+  box-shadow: 4px -4px 8px rgba(0, 0, 0, 0.1) inset;
+  font-size: 1em;
+  font-weight: 700;
+  bottom: 0;
+  transform: translateY(10px);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.main-content.inscriptions ul li.active {
+  position: relative;
+  list-style: none;
+  background-color: var(--background-dark);
+  box-shadow: none;
+  transform: translateY(0);
+  transition: transform 0.2s ease;
+  z-index: 99;
+}
+
+.main-content.inscriptions ul li.active:after,
+.main-content.inscriptions ul li.active:before {
+  content: "";
+  position: absolute;
+  height: 50%;
+  transform: translateY(100%);
+  width: 30px;
+  background-color: transparent;
+  top: 0;
+  pointer-events: none;
+}
+
+.main-content.inscriptions ul li.active:after {
+  left: 100%;
+  border-radius: 0 0 0 10px;
+  box-shadow: -20px 1px 0 var(--background-dark);
+}
+
+.main-content.inscriptions ul li.active:before {
+  right: 100%;
+  border-radius: 0 0 10px 0;
+  box-shadow: 20px 1px 0 var(--background-dark);
+}
+
+/* .main-content.inscriptions-section ul li.active:before {
+  display: none;
+} */
+
+.main-content.inscriptions li p {
+  text-decoration: none;
+  color: var(--gray-color-dark);
+  display: block;
+}
+.main-content.inscriptions li.active p {
+  color: var(--main-color);
+}

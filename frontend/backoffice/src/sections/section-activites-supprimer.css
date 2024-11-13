@@ -1,0 +1,56 @@
+#section-activites-supprimer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 20px 40px;
+  margin: 0 auto;
+  max-width: calc(100vw - 325px);
+  max-height: calc(100vh - 130px - 215px);
+  overflow: auto;
+}
+
+#section-activites-supprimer h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+#section-activites-supprimer form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#section-activites-supprimer form > div {
+  margin-bottom: 15px;
+}
+
+#section-activites-supprimer select {
+  width: fit-content;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#section-activites-supprimer .btnSupprimer {
+  background-color: var(--color-red);
+  color: var(--text-color);
+  padding: 20px 30px;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-texte);
+  font-weight: 600;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  left: 100%;
+  transform: translateX(-100%);
+  position: relative;
+  bottom: 0;
+  min-width: fit-content;
+  width: 15vw;
+}
+
+#section-activites-supprimer .btnSupprimer:hover {
+  filter: brightness(1.2);
+}

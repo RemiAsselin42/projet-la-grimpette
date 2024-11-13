@@ -1,0 +1,46 @@
+#section-activites {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 20px 40px;
+  margin: 20px auto;
+  max-width: calc(100vw - 325px);
+  max-height: calc(100vh - 130px - 215px);
+  overflow: auto;
+}
+
+#section-activites h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+}
+
+#section-activites ul {
+  padding: 0;
+  margin: 0;
+}
+
+#section-activites li {
+  position: relative;
+  display: flex;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  margin: 20px auto;
+  padding: 20px;
+  height: 300px;
+  clear: both;
+  overflow: hidden;
+  color: white;
+  max-width: 50vw;
+}
+
+#section-activites li h3 {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+}
+
+#section-activites li p {
+  padding: 5px 0;
+  font-size: 1.2em;
+}

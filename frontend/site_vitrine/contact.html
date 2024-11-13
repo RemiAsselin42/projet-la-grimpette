@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,5 +9,84 @@
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/script.js"></script>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <a href="index.html" class="hd-logo">
+        <h2>La Grimpette</h2>
+      </a>
+      <div class="hd-flex">
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle">
+            <h3>Activités <span class="arrow-dd">&#9660;</span></h3>
+          </a>
+          <div class="dropdown-menu">
+            <a href="enfants.html">Enfants</a>
+            <a href="ados.html">Ados</a>
+            <a href="adultes.html">Adultes</a>
+          </div>
+        </div>
+        <a href="inscrits.html"><h3>Inscrits</h3></a>
+        <a href="contact.html"><h3>Contact</h3></a>
+      </div>
+    </header>
+
+    <main>
+      <div class="contact-container">
+        <h1>Contactez-nous !</h1>
+        <form class="contact-form">
+          <label for="name">NOM Prénom :</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Votre Email :</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="subject">Objet du message :</label>
+          <input type="text" id="subject" name="subject" required />
+
+          <label for="message">Message :</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+
+          <button type="submit">Envoyer</button>
+        </form>
+        <div class="map-container">
+          <iframe
+            width="100%"
+            height="600"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=La%20Grimpette%2071670%20Saint-Firmin+(La%20Grimpette)&amp;t=&amp;z=11&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+          ></iframe>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <h2>La Grimpette</h2>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Accueil</a>
+          <a href="inscrits.html">Inscrits</a>
+          <a href="enfants.html">Enfants</a>
+          <a href="ados.html">Ados</a>
+          <a href="adultes.html">Adultes</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.facebook.com" target="_blank"
+            ><img src="img/facebook-la-grimpette.png" alt="Facebook"
+          /></a>
+          <a href="https://www.instagram.com" target="_blank"
+            ><img src="img/insta-la-grimpette.png" alt="Instagram"
+          /></a>
+          <a href="https://www.twitter.com" target="_blank"
+            ><img src="img/x-la-grimpette.jpg" alt="Twitter"
+          /></a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

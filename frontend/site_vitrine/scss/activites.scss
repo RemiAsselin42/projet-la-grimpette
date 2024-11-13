@@ -2,17 +2,11 @@
 .activity-container {
   position: relative;
   display: flex;
-  background-image: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.8) 80%
-    ),
-    url(/frontend/site_vitrine/img/activite1.jpg);
   border-radius: 10px;
   box-shadow: var(--box-shadow);
   margin: 20px auto;
   padding: 20px;
-  max-width: var(--container-max-width);
+  width: var(--container-max-width);
   height: 400px;
   clear: both;
   overflow: hidden;
@@ -39,11 +33,11 @@
 }
 
 .activity-container:hover {
-  transition: mask-position 1.5s ease, -webkit-mask-position 1.5s ease,
+  transition: mask-position 0.8s ease-out, -webkit-mask-position 0.8s ease-out,
     transform 0.3s ease;
   -webkit-mask-position: 120%;
   mask-position: 120%;
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .activity-container:not(:hover) {
@@ -54,15 +48,18 @@
 }
 
 .activity-details {
-  position: relative; /* Nécessaire pour que le contenu soit au-dessus de l'overlay */
-  z-index: 2; /* Place le contenu au-dessus de l'overlay */
-  flex: 1; /* Prendre le reste de l'espace disponible */
+  position: relative;
+  z-index: 2;
+  flex: 1;
   color: white;
 }
 
-.activity-title {
+.activity-title,
+main h2 {
   margin: 35px;
   font-size: 2em;
+  color: white;
+  text-align: left;
 }
 
 .activity-description {
@@ -77,6 +74,13 @@
   top: 35%;
   transform: translateY(-35%);
   position: relative;
+}
+
+.aucune-activite {
+  text-align: center;
+  margin: 50px 0;
+  font-size: 1.5em;
+  font-weight: 800;
 }
 
 /* Bouton d'inscription */

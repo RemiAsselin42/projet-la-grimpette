@@ -1,0 +1,55 @@
+.container-success {
+  background-color: #e6ffed;
+  border: 2px solid #28a745;
+  border-radius: 10px;
+  padding: 50px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 60vw;
+  margin: 50px auto;
+
+  p {
+    font-size: 1.2em;
+    color: #155724;
+  }
+
+  a {
+    color: #218838;
+    transition: color 0.3s ease;
+    font-weight: 600;
+    &:hover {
+      color: #155724;
+      transition: color 0.3s ease;
+    }
+  }
+
+  h2 {
+    color: #155724;
+    margin: 0;
+  }
+
+  .activite-success {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #155724;
+  }
+
+  a.home-button {
+    position: relative;
+    margin: 50px;
+    padding: 20px 30px;
+    font-size: 1.5em;
+    font-weight: 600;
+    background-color: #218838;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: var(--main-color);
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+  }
+}

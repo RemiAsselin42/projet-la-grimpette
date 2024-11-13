@@ -1,0 +1,62 @@
+#section-inscriptions-refusees {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 0 20px;
+  margin: 20px 0;
+  max-width: calc(100vw - 325px);
+  max-height: calc(100vh - 280px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+#section-inscriptions-refusees h2 {
+  margin: 20px;
+  font-size: 24px;
+  color: var(--main-color);
+}
+
+#section-inscriptions-refusees table {
+  min-width: calc(100vw - 325px);
+  max-width: calc(100vw - 325px);
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#section-inscriptions-refusees th,
+#section-inscriptions-refusees td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#section-inscriptions-refusees tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#section-inscriptions-refusees tr:hover {
+  background-color: #e7e7e7;
+}
+
+#section-inscriptions-refusees th,
+#section-inscriptions-refusees td {
+  text-align: left;
+}
+
+#section-inscriptions-refusees th {
+  background-color: var(--main-color);
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+#section-inscriptions-refusees td {
+  color: #333;
+}
+
+#section-inscriptions-refusees table {
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
