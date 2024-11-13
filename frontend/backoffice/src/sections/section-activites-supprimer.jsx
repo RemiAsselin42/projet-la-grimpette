@@ -26,21 +26,6 @@ const SectionActivitesSupprimer = () => {
   }, []);
 
   useEffect(() => {
-    const fetchActivites = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:80/projet-la-grimpette/backend/php/activites/activite.php"
-        );
-        setActivites(response.data);
-      } catch (err) {
-        console.log(err.message);
-      }
-    };
-
-    fetchActivites();
-  }, []);
-
-  useEffect(() => {
     if (selectedActiviteId) {
       const activite = activites.find(
         (activite) => activite.id_activite === selectedActiviteId
@@ -62,7 +47,8 @@ const SectionActivitesSupprimer = () => {
           },
         }
       );
-      console.log(response.data.message);
+      console.log(response.data); // Affiche la réponse complète
+      console.log(response.data.message); // Affiche le message spécifique
       setActivites(
         activites.filter(
           (activite) => activite.id_activite !== selectedActiviteId
