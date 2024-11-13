@@ -35,4 +35,3 @@ if ($id > 0) {
     error_log("ID invalide");
     echo json_encode(['error' => 'ID invalide']);
 }
-?>
