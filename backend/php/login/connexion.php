@@ -23,12 +23,16 @@ try {
     $stmt->execute(['utilisateur' => $utilisateur]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($row && password_verify($mdp, $row['mdp'])) {
-        session_start();
-        $_SESSION['idu'] = $row['id_utilisateur'];
-        echo json_encode(['success' => true]);
+    if ($row) {
+        if (password_verify($mdp, $row['mdp'])) {
+            session_start();
+            $_SESSION['idu'] = $row['id_utilisateur'];
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Mot de passe incorrect']);
+        }
     } else {
-        echo json_encode(['success' => false, 'message' => 'Nom d\'utilisateur ou mot de passe incorrect']);
+        echo json_encode(['success' => false, 'message' => 'Nom d\'utilisateur incorrect']);
     }
 } catch (PDOException $e) {
     echo json_encode(['success' => false, 'message' => $e->getMessage()]);

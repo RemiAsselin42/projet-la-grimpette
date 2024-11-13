@@ -5,7 +5,7 @@ include("conf_bdd_connexion.php");
 
 $utilisateur = 'admin';
 $prenom = 'Admin';
-$mdp = 'coucou123'; // Mot de passe à changer
+$mdp = 'Admin123'; // Mot de passe à changer
 $mdpc = password_hash($mdp, PASSWORD_DEFAULT);
 $mail = 'admin@example.com';
 
