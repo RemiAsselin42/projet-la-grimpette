@@ -1,0 +1,127 @@
+@media screen and (max-width: 768px) {
+  /* Ajout de marge pour éviter que le contenu soit caché par le header*/
+  #page2 .container {
+    margin-top: 20px;
+  }
+
+  /* Deuxième slide */
+  #page2 {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    h2.titre-pr {
+      font-size: 2.7em;
+    }
+
+    h2.titre-sc {
+      font-size: 2em;
+    }
+  }
+
+  .description-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 60vw;
+    height: 200px;
+    margin: 20px 0;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .description-text {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    scrollbar-width: thin;
+    scrollbar-color: #08415c20 transparent;
+    display: block;
+    overflow: auto;
+    max-height: 100%;
+    margin-right: 0px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 1.2em;
+    line-height: 1.5;
+    text-align: left;
+    width: calc(100vw - 40px);
+  }
+
+  .logo {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    height: 100%;
+    max-height: 184px;
+    border-radius: 10px;
+  }
+
+  .pa-container-grp {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+  }
+
+  .titre {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    text-wrap: nowrap;
+  }
+
+  .trait {
+    display: none;
+    width: 100%;
+    margin-left: 40px;
+    border-bottom: 3px solid var(--main-color);
+  }
+
+  .zone-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 60vw;
+    margin: 20px 0;
+    .info-contact {
+      width: 100%;
+      padding: 0px;
+      font-size: 1.2em;
+      .info-contact-txt {
+        margin: 20px;
+        padding: 10px;
+        border: var(--main-color) 3px solid;
+        border-radius: 10px;
+        p {
+          margin: 10px;
+        }
+      }
+    }
+
+    .div-iframe {
+      box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      width: 65%;
+      border-radius: 15px;
+      iframe {
+        height: 100%;
+      }
+    }
+  }
+
+  .pa-container-qsn {
+    margin-left: 0px;
+    width: calc(100vw - 10px);
+    img {
+      width: 100%;
+    }
+  }
+
+  .logo {
+    display: none;
+  }
+}
