@@ -4,7 +4,7 @@ include("conf_bdd_inscriptions.php");
 $nom = $_POST['nom_client'];
 $prenom = $_POST['prenom_client'];
 $cours = $_POST['cours_client'];
-$telephone = str_replace(' ', '', $_POST['tel_client']); // Supprimer les espaces
+$telephone = str_replace(' ', '', $_POST['tel_client']);
 $mail = $_POST['email_client'];
 
 try {
@@ -34,4 +34,3 @@ try {
 } catch (Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
 }
-?>
