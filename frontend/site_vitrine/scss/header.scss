@@ -12,6 +12,7 @@ header {
   background-color: var(--main-color);
   color: var(--text-color);
   text-wrap: nowrap;
+
   a {
     color: var(--text-color);
     text-decoration: none;
@@ -49,17 +50,6 @@ header {
   padding-left: 10%;
 }
 
-@media screen and (max-width: 768px) {
-  .hd-flex {
-    display: none;
-  }
-
-  .hd-logo {
-    position: relative;
-    left: 0;
-  }
-}
-
 /* Dropdown dans la navbar */
 
 .dropdown {
@@ -71,6 +61,11 @@ header {
   cursor: pointer;
   color: rgb(255, 255, 255);
   text-decoration: none;
+
+  .fa-caret-down {
+    margin-left: 5px;
+    font-size: 16px;
+  }
 }
 
 .dropdown-menu {
@@ -88,11 +83,83 @@ header {
 .dropdown-menu a {
   display: block;
   padding: 12px 16px;
-  color: black;
+  color: var(--main-color);
   text-decoration: none;
 }
 
 .dropdown-menu a:hover {
   background-color: var(--main-color);
   color: white;
+}
+
+.burger-menu {
+  display: none;
+  cursor: pointer;
+  padding: 15px;
+
+  .burger-icon {
+    font-size: 24px;
+    color: var(--text-color);
+  }
+}
+
+.sliding-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background-color: var(--main-color);
+  transition: right 0.3s ease-in-out;
+  z-index: 2000;
+
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    h2 {
+      color: var(--text-color);
+      margin: 0;
+    }
+
+    .close-menu {
+      cursor: pointer;
+      font-size: 24px;
+      color: var(--text-color);
+    }
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    a {
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 15px 0;
+      font-size: 1.2em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.sliding-menu.active {
+  right: 0;
+}
+
+.burger-menu,
+.sliding-menu {
+  display: none;
 }

@@ -8,11 +8,20 @@
 @import "../scss/success.css";
 @import "../scss/inscrits.css";
 @import "../scss/contact.css";
+@import "./responsive.css";
 
 :root {
   --main-color: #08415c;
+  --main-color-dark: #04293a;
+  --gray-color-dark: #6b6b6b;
   --text-color: white;
   --background-light: #def9ff;
+  --background-dark: #f0f0f0;
+  --background-extra-dark: #d3d3d3;
+
+  --color-green: #28af45;
+  --color-red: #b42e2e;
+
   --container-width: 80%;
   --container-max-width: 800px;
   --button-radius: 25px;

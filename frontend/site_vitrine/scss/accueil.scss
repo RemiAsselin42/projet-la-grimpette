@@ -23,15 +23,14 @@ h2 {
 
 main {
   max-width: 1200px;
-  margin-right: auto;
-  margin-left: 20px;
 }
 
 /* Container des slides */
 .slides-container {
   display: flex;
-  overflow-y: hidden;
+  overflow-x: hidden;
   width: 200vw;
+  max-width: 200vw;
   height: 100vh;
   transition: transform 0.5s ease;
 }

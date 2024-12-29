@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adultes</title>
     <link rel="stylesheet" href="./css/root.css" />
-    <script src="./js/jquery-3.5.1.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <script src="./js/script.js"></script>
   </head>
   <body>
@@ -16,9 +18,10 @@
       </a>
       <div class="hd-flex">
         <div class="dropdown">
-          <a href="#" class="dropdown-toggle">
-            <h3>Activités <span class="arrow-dd">&#9660;</span></h3>
-          </a>
+          <h3 class="dropdown-toggle">
+            Activités
+            <i class="fa-solid fa-caret-down"></i>
+          </h3>
           <div class="dropdown-menu">
             <a href="enfants.html">Enfants</a>
             <a href="ados.html">Ados</a>
@@ -28,7 +31,28 @@
         <a href="inscrits.html"><h3>Inscrits</h3></a>
         <a href="contact.html"><h3>Contact</h3></a>
       </div>
+      <div class="burger-menu">
+        <div class="burger-icon">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
     </header>
+
+    <div class="sliding-menu">
+      <div class="menu-header">
+        <h2>Menu</h2>
+        <div class="close-menu">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <nav>
+        <a href="inscrits.html">Inscrits</a>
+        <a href="enfants.html">Enfants</a>
+        <a href="ados.html">Ados</a>
+        <a href="adultes.html">Adultes</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
 
     <main>
       <div class="activity-container-main">
@@ -97,6 +121,17 @@
               if (activite.categorie == "3") {
                 hasActivities = true;
 
+                // Formatage de l'heure et de la date
+                const heureSansSecondes = activite.heure
+                  .slice(0, 5)
+                  .split(":")
+                  .join("h");
+                const formattedDate = activite.date
+                  .split("-")
+                  .reverse()
+                  .join("/");
+                const isPastActivity = new Date(activite.date) < new Date();
+
                 const activityDiv = document.createElement("div");
                 activityDiv.classList.add("activity-container");
                 activityDiv.classList.add(`activity-${activite.id_activite}`);
@@ -106,14 +141,18 @@
                 activityDiv.style.backgroundPosition = "center";
 
                 activityDiv.innerHTML = `
-                  <div class="activity-details">
-                    <h2 class="activity-title">${activite.nom_activite}</h2>
-                    <p class="activity-description">${activite.description}</p>
-                    <p class="activity-date"><strong>Date :</strong> ${activite.date}</p>
-                    <p class="activity-time"><strong>Horaire :</strong> ${activite.heure}</p>
-                    <a href="formulaire.html" class="register-button" data-activity-id="${activite.id_activite}" onclick="addActivityIdToUrl(event)">S'inscrire</a>
-                  </div>
-                `;
+      <div class="activity-details">
+        <h3 class="activity-title">${activite.nom_activite}</h3>
+        <p class="activity-description">${activite.description}</p>
+        <p class="activity-date"><strong>Date :</strong> ${formattedDate}</p>
+        <p class="activity-time"><strong>Horaire :</strong> ${heureSansSecondes}</p>
+        ${
+          !isPastActivity
+            ? `<a href="formulaire.html" class="register-button" data-activity-id="${activite.id_activite}" onclick="addActivityIdToUrl(event)">S'inscrire</a>`
+            : '<p class="past-activity">Activité terminée</p>'
+        }
+      </div>
+    `;
 
                 container.appendChild(activityDiv);
               }

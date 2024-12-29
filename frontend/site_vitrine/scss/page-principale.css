@@ -23,7 +23,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 60vw;
+  width: 80vw;
   height: 200px;
   margin: 20px 0;
 }
@@ -61,7 +61,7 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  width: 60%;
+  width: 80vw;
 }
 .pa-container-grp .ctg-1 {
   background-image: url(../img/img-card-1.jpg);
@@ -127,7 +127,7 @@
 }
 
 .pa-container-qsn {
-  width: 60%;
+  width: 80vw;
 }
 .pa-container-qsn .texte-qsn {
   margin-left: 20px;
@@ -147,7 +147,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60vw;
+  width: 80vw;
   text-wrap: nowrap;
 }
 
@@ -165,7 +165,7 @@
 .zone-contact {
   display: flex;
   justify-content: space-around;
-  width: 60vw;
+  width: 80vw;
   margin: 20px 0;
 }
 .zone-contact .info-contact {

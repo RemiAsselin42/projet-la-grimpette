@@ -1,13 +1,12 @@
 /* Contact Form */
 .contact-container {
   box-shadow: var(--box-shadow);
-  width: 45vw;
+  width: 75vw;
   margin: 100px auto;
   padding: 40px;
   background-color: var(--main-color);
   border-radius: 15px;
   text-align: center;
-  font-family: Arial, sans-serif;
 }
 
 .contact-container h1 {
@@ -46,7 +45,7 @@
   transform: translateX(-100%);
   width: 30%;
   margin: 20px;
-  margin-left: -10px;
+  margin-left: -50px;
   padding: 12px;
   transition: background-color 0.3s ease;
   background-color: var(--text-color);
@@ -64,5 +63,8 @@
 }
 
 .map-container {
-  margin-top: 20px;
+  margin: 20px 50px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 400px;
 }/*# sourceMappingURL=contact.css.map */
