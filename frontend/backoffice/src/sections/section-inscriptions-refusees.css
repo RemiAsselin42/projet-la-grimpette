@@ -6,7 +6,6 @@
   margin: 20px 0;
   max-width: calc(100vw - 325px);
   max-height: calc(100vh - 280px);
-  overflow-x: hidden;
   overflow-y: auto;
   scrollbar-width: thin;
 }

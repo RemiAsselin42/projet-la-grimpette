@@ -38,6 +38,34 @@ try {
         $stmt->bindParam(':id', $id);
         $stmt->execute();
 
+        // Now retrieve all valid inscriptions without a JOIN
+        $stmt = $bdd->prepare("
+            SELECT id_client, nom_client, prenom_client, cours_client
+            FROM inscription_valide
+        ");
+        $stmt->execute();
+        $validInscriptions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Include config for liste_activites and connect
+        include("../activites/conf_bdd_activite.php");
+        $bdd_activites = new PDO("mysql:host=$servername;dbname=$dbname", $user, $pass);
+        $bdd_activites->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Replace ID with course name
+        foreach ($validInscriptions as &$row) {
+            $stmt2 = $bdd_activites->prepare("SELECT nom_activite FROM activite WHERE id_activite = :id_activite");
+            $stmt2->bindParam(':id_activite', $row['cours_client']);
+            $stmt2->execute();
+            $act = $stmt2->fetch(PDO::FETCH_ASSOC);
+            if ($act) {
+                $row['cours_client'] = $act['nom_activite'];
+            }
+        }
+        unset($row);
+
+        // Write them to JSON
+        file_put_contents("C:/wamp64/www/projet-la-grimpette/backend/json/incriptions_valides.json", json_encode($validInscriptions));
+
         echo json_encode(['success' => true]);
     } else {
         echo json_encode(['error' => 'Inscription not found']);

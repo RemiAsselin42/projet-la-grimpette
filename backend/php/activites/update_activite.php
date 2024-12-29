@@ -10,10 +10,6 @@ include("conf_bdd_activite.php");
 $input = file_get_contents("php://input");
 $data = json_decode($input, true);
 
-// Ajoutez des logs pour vérifier ce qui est reçu
-error_log("Input data: " . $input);
-error_log("Decoded data: " . print_r($data, true));
-
 if (is_null($data)) {
     echo json_encode(["error" => "Invalid input data"]);
     exit;
@@ -35,6 +31,7 @@ try {
     $bdd = new PDO("mysql:host=$servername;dbname=$dbname", $user, $pass);
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    // Mise à jour de l'activité
     $stmt = $bdd->prepare("UPDATE activite SET nom_activite = :nom, description = :description, date = :date, heure = :heure, categorie = :categorie WHERE id_activite = :id");
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':nom', $nom);
@@ -44,7 +41,9 @@ try {
     $stmt->bindParam(':categorie', $categorie);
     $stmt->execute();
 
-    echo json_encode(["success" => true]);
+    // Appel au script de mise à jour du fichier JSON
+    file_get_contents("http://localhost/projet-la-grimpette/backend/php/updateDataJson.php");
+
 } catch (PDOException $e) {
     echo json_encode(["error" => $e->getMessage()]);
 }

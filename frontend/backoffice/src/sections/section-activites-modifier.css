@@ -5,7 +5,7 @@
   padding: 20px 40px;
   margin: 0 auto;
   max-width: calc(100vw - 325px);
-  max-height: calc(100vh - 130px - 215px);
+  max-height: calc(100vh - 130px - 155px);
   overflow: auto;
 }
 
@@ -99,7 +99,7 @@
 #section-activites-modifier .btnModifier {
   background-color: var(--main-color);
   color: var(--text-color);
-  padding: 20px 30px;
+  padding: 17px 30px;
   border: none;
   border-radius: 50px;
   font-family: var(--font-texte);
@@ -117,13 +117,13 @@
 }
 
 #section-activites-modifier .btnModifier:hover {
-  background-color: var(--main-color-dark);
+  background-color: var(--color-green);
 }
 
 #section-activites-modifier .btnAnnuler {
   background-color: transparent;
   color: var(--main-color);
-  padding: 20px 30px;
+  padding: 15px 30px;
   border: var(--main-color) 2px solid;
   border-radius: 50px;
   font-family: var(--font-texte);

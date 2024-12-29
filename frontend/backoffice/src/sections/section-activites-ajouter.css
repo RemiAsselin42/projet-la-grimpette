@@ -5,20 +5,20 @@
   padding: 20px 40px;
   margin: 0 auto;
   max-width: calc(100vw - 325px);
-  max-height: calc(100vh - 130px - 215px);
+  max-height: calc(100vh - 130px - 155px);
   overflow: auto;
 }
 
 #page-activite-ajouter form div {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   width: 100%;
 }
 
 #page-activite-ajouter .form-grid {
   display: grid;
-  grid-template-columns: 8fr 2fr 2fr;
+  grid-template-columns: 5fr 2fr 2fr 3fr;
   gap: 20px;
 }
 
@@ -32,7 +32,7 @@
   background-color: white;
   width: 100%;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px 0 #00000031;
+  box-shadow: 0 4px 10px 0 #0000001a;
 }
 
 #page-activite-ajouter .form-radio input {
@@ -54,58 +54,49 @@
 
 #page-activite-ajouter input[type="text"],
 #page-activite-ajouter input[type="date"],
-#page-activite-ajouter input[type="time"] {
-  border-radius: var(--button-radius);
+#page-activite-ajouter input[type="time"],
+.file-upload-wrapper {
+  border-radius: 10px;
   min-height: 50px;
   padding: 0px 20px;
   border: none;
   outline: none;
   background-color: white;
-  box-shadow: 2px 2px 5px 0 #00000031 inset;
+  box-shadow: 0 4px 10px 0 #0000001a;
   font-family: var(--font-texte);
   font-weight: 500;
   font-size: 1em;
+  transition: all 0.3s ease;
+  color: var(--main-color);
+  cursor: pointer;
 }
 
 #page-activite-ajouter input[type="radio"] {
   padding: 0;
   border: none;
   outline: none;
-}
-
-#page-activite-ajouter input[type="file"] {
-  border: none;
-  box-shadow: 0 4px 10px 0 #0000001a;
-  width: fit-content;
-  background-color: white;
   cursor: pointer;
-  padding: 20px 0px 20px 20px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px 0 #00000031;
-  font-family: var(--font-texte);
-  font-weight: 700;
-  font-size: 1em;
 }
 
 #page-activite-ajouter textarea {
-  box-shadow: 2px 2px 5px 0 #00000031 inset;
-  resize: vertical;
+  box-shadow: 0 4px 10px 0 #0000001a;
+  resize: none;
   border: none;
   outline: none;
   border-radius: 10px;
-  min-height: 35px;
   height: 100px;
-  max-height: 200px;
+  max-height: 100px;
   padding: 10px;
   font-family: var(--font-texte);
   font-weight: 500;
   font-size: 0.9em;
+  transition: all 0.3s ease;
 }
 
 #page-activite-ajouter .btnAjouter {
   background-color: var(--main-color);
   color: var(--text-color);
-  padding: 20px 30px;
+  padding: 15px 30px;
   border: none;
   border-radius: 50px;
   font-family: var(--font-texte);
@@ -123,4 +114,29 @@
 
 #page-activite-ajouter .btnAjouter:hover {
   background-color: var(--main-color-dark);
+}
+
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.file-name {
+  font-family: var(--font-texte);
+  font-weight: 700;
+  color: var(--main-color);
+  margin-left: 10px;
+  font-size: 0.8em;
+}
+
+.file-upload-wrapper:active,
+.file-upload-wrapper:focus,
+#page-activite-ajouter textarea:focus,
+#page-activite-ajouter input[type="text"]:focus,
+#page-activite-ajouter input[type="date"]:focus,
+#page-activite-ajouter input[type="time"]:focus {
+  box-shadow: 0 0px 0px 0 #0000001a;
+  transition: all 0.3s ease;
 }
