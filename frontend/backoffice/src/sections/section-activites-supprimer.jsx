@@ -9,6 +9,21 @@ const SectionActivitesSupprimer = () => {
   const [activites, setActivites] = useState([]);
   const [selectedActiviteId, setSelectedActiviteId] = useState("");
   const [selectedActivite, setSelectedActivite] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState("");
+
+  const getCategorieLabel = (categorie) => {
+    switch (parseInt(categorie)) {
+      case 1:
+        return "Enfants";
+      case 2:
+        return "Ados";
+      case 3:
+        return "Adultes";
+      default:
+        return "Inconnu";
+    }
+  };
 
   useEffect(() => {
     const fetchActivites = async () => {
@@ -27,14 +42,46 @@ const SectionActivitesSupprimer = () => {
 
   useEffect(() => {
     if (selectedActiviteId) {
-      const activite = activites.find(
-        (activite) => activite.id_activite === selectedActiviteId
-      );
-      setSelectedActivite(activite);
+      const fetchActivite = async () => {
+        setLoading(true);
+        try {
+          const response = await axios.get(
+            `http://localhost/projet-la-grimpette/backend/php/activites/get_activite.php?id=${selectedActiviteId}`
+          );
+
+          if (response.data && typeof response.data === "object") {
+            setSelectedActivite(response.data);
+          } else {
+            console.error("Données inattendues:", response.data);
+          }
+        } catch (error) {
+          console.error("Erreur lors du chargement de l'activité :", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchActivite();
     } else {
       setSelectedActivite(null);
     }
-  }, [selectedActiviteId, activites]);
+  }, [selectedActiviteId]);
+
+  useEffect(() => {
+    if (selectedActiviteId) {
+      const fetchActivites = async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:80/projet-la-grimpette/backend/php/activites/get_activite_image.php?id=${selectedActiviteId}`
+          );
+          setImage(response.data.image || "");
+        } catch (err) {
+          console.log(err.message);
+        }
+      };
+      fetchActivites();
+    }
+  }, [selectedActiviteId]);
 
   const handleDelete = async () => {
     try {
@@ -91,7 +138,7 @@ const SectionActivitesSupprimer = () => {
             onChange={(e) => setSelectedActiviteId(e.target.value)}
             required
           >
-            <option value="">-- Sélectionnez une activité --</option>
+            <option value="">Sélectionnez une activité</option>
             {activites.map((activite) => (
               <option key={activite.id_activite} value={activite.id_activite}>
                 {activite.nom_activite}
@@ -99,20 +146,38 @@ const SectionActivitesSupprimer = () => {
             ))}
           </select>
         </div>
-        {selectedActivite && (
-          <div id="section-activites">
-            <h2>Liste des Activités</h2>
-            <ul>
-              {activites.map((activite) => (
-                <li key={activite.id_activite}>
-                  <h3>{activite.nom_activite}</h3>
-                  <p>Date: {activite.date}</p>
-                  <p>Heure: {activite.heure}</p>
-                  <p>Description: {activite.description}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {loading ? (
+          <p>Chargement...</p>
+        ) : (
+          selectedActivite && (
+            <div id="section-activites">
+              <div
+                className="activite-details"
+                style={{
+                  backgroundImage: `linear-gradient(270deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(${image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <h3>{selectedActivite.nom_activite}</h3>
+                <p>
+                  <b>Date:</b>{" "}
+                  {selectedActivite.date.split("-").reverse().join("/")}
+                </p>
+                <p>
+                  <b>Heure: </b>
+                  {selectedActivite.heure.slice(0, 5).split(":").join("h")}
+                </p>
+                <p>
+                  <b>Description:</b> {selectedActivite.description}
+                </p>
+                <p>
+                  <b>Catégorie:</b>{" "}
+                  {getCategorieLabel(selectedActivite.categorie)}
+                </p>
+              </div>
+            </div>
+          )
         )}
         {selectedActiviteId && (
           <button className="btnSupprimer" type="submit">

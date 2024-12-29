@@ -119,7 +119,7 @@ const SectionActivitesModifier = () => {
           onChange={(e) => setSelectedActiviteId(e.target.value)}
           required
         >
-          <option value="">-- Sélectionnez une activité --</option>
+          <option value="">Sélectionnez une activité</option>
           {Array.isArray(activites) &&
             activites.map((activite) => (
               <option key={activite.id_activite} value={activite.id_activite}>
@@ -135,7 +135,7 @@ const SectionActivitesModifier = () => {
               <div
                 className="modifierActivite"
                 style={{
-                  backgroundImage: `linear-gradient(270deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(${image})`,
+                  backgroundImage: `linear-gradient(270deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(http://localhost/projet-la-grimpette/frontend/backoffice/src/${activite.image})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
