@@ -135,7 +135,7 @@ const SectionActivitesModifier = () => {
               <div
                 className="modifierActivite"
                 style={{
-                  backgroundImage: `linear-gradient(270deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(${image})`,
+                  backgroundImage: `linear-gradient(270deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(http://localhost/projet-la-grimpette/frontend/backoffice/src/${activite.image})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
