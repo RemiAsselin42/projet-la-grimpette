@@ -17,15 +17,32 @@ $categorie = $_POST['categorie'];
 $backofficeDir = "C:/wamp64/www/projet-la-grimpette/frontend/backoffice/src/images/";
 $frontendDir = "C:/wamp64/www/projet-la-grimpette/frontend/site_vitrine/images/";
 
+// Par défaut, on stockera seulement "/images/<nomfichier>" en base
 $imagePath = null;
-$imageFileType = null;
-$tmpImagePath = null;
+
+$activiteId = $bdd->lastInsertId();
+
 
 if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
     $imageFileType = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
-    $tmpImagePath = $_FILES["image"]["tmp_name"];
+    $uniqueFileName = "image-activite-" . $activiteId . "." . $imageFileType;
 
-    if (!in_array($imageFileType, ["jpg", "jpeg", "png", "webp", "bmp", "svg"])) {
+    $targetFileBackoffice = $backofficeDir . $uniqueFileName;
+    $targetFileFrontend = $frontendDir . $uniqueFileName;
+
+    if (in_array($imageFileType, ["jpg", "jpeg", "png", "webp", "bmp", "svg"])) {
+        // Déplacement vers le backoffice
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFileBackoffice)) {
+            // Copie vers le site vitrine
+            copy($targetFileBackoffice, $targetFileFrontend);
+
+            // Stocker seulement "/images/<nomfichier>" dans la base
+            $imagePath = "/images/" . $uniqueFileName;
+        } else {
+            echo "Erreur lors du déplacement du fichier dans le backoffice.";
+            exit;
+        }
+    } else {
         echo "Format d'image non supporté.";
         exit;
     }
@@ -38,41 +55,18 @@ try {
     $bdd = new PDO("mysql:host=$servername;dbname=$dbname", $user, $pass);
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Insérer l'activité sans l'image
     $stmt = $bdd->prepare("INSERT INTO activite 
-        (nom_activite, date, heure, description, categorie) 
-        VALUES (:nom, :date, :heure, :description, :categorie)");
+        (nom_activite, date, heure, description, categorie, image) 
+        VALUES (:nom, :date, :heure, :description, :categorie, :image)");
     $stmt->bindParam(':nom', $nom);
     $stmt->bindParam(':date', $date);
     $stmt->bindParam(':heure', $heure);
     $stmt->bindParam(':description', $description);
     $stmt->bindParam(':categorie', $categorie);
+    $stmt->bindParam(':image', $imagePath);
     $stmt->execute();
 
-    // Récupérer l'id de l'activité créée
-    $activiteId = $bdd->lastInsertId();
-
-    // Nommer l'image en fonction de l'id de l'activité
-    $uniqueFileName = "image-activite-" . $activiteId . "." . $imageFileType;
-    $targetFileBackoffice = $backofficeDir . $uniqueFileName;
-    $targetFileFrontend = $frontendDir . $uniqueFileName;
-
-    // Déplacer l'image vers le backoffice et copier vers le site vitrine
-    if (move_uploaded_file($tmpImagePath, $targetFileBackoffice)) {
-        copy($targetFileBackoffice, $targetFileFrontend);
-
-        // Mettre à jour le chemin de l'image dans la base de données
-        $imagePath = "/images/" . $uniqueFileName;
-        $stmt = $bdd->prepare("UPDATE activite SET image = :image WHERE id_activite = :id");
-        $stmt->bindParam(':image', $imagePath);
-        $stmt->bindParam(':id', $activiteId);
-        $stmt->execute();
-
-        echo "Activité ajoutée avec succès.";
-    } else {
-        echo "Erreur lors du déplacement du fichier.";
-        exit;
-    }
+    echo "Activité ajoutée avec succès.";
 
     // Met à jour le JSON
     file_get_contents("http://localhost/projet-la-grimpette/backend/php/updateDataJson.php");
