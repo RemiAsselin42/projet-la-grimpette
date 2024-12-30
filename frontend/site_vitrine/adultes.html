@@ -146,11 +146,7 @@
         <p class="activity-description">${activite.description}</p>
         <p class="activity-date"><strong>Date :</strong> ${formattedDate}</p>
         <p class="activity-time"><strong>Horaire :</strong> ${heureSansSecondes}</p>
-        ${
-          !isPastActivity
-            ? `<a href="formulaire.html" class="register-button" data-activity-id="${activite.id_activite}" onclick="addActivityIdToUrl(event)">S'inscrire</a>`
-            : '<p class="past-activity">Activité terminée</p>'
-        }
+        <a href="formulaire.html" class="register-button" data-activity-id="${activite.id_activite}" onclick="addActivityIdToUrl(event)">S'inscrire</a>
       </div>
     `;
 
