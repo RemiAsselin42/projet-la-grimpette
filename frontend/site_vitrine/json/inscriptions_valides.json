@@ -10,5 +10,17 @@
         "nom_client": "Coche",
         "prenom_client": "Marianne",
         "cours_client": "S\u00e9ance de renforcement musculaire. "
+    },
+    {
+        "id_client": 9,
+        "nom_client": "Durand",
+        "prenom_client": "Lucie",
+        "cours_client": "S\u00e9ance de renforcement musculaire. "
+    },
+    {
+        "id_client": 22,
+        "nom_client": "Creuset",
+        "prenom_client": "Emilie",
+        "cours_client": "Sortie escalade."
     }
 ]

@@ -38,7 +38,7 @@ try {
     unset($row);
 
     // Définir le chemin du dossier et du fichier
-    $jsonDir = "C:/wamp64/www/projet-la-grimpette/backend/json";
+    $jsonDir = "C:/wamp64/www/projet-la-grimpette/frontend/site_vitrine/json";
     $jsonFile = $jsonDir . "/inscriptions_valides.json";
 
     // Créer le dossier s'il n'existe pas

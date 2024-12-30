@@ -171,7 +171,7 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        fetch("../../backend/json/inscriptions_valides.json")
+        fetch("../json/inscriptions_valides.json")
           .then((response) => response.json())
           .then((data) => {
             originalData = data;

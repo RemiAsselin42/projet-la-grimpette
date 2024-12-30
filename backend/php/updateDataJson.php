@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Credentials: true');
-header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Max-Age: 1000');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token, Authorization');
 header('Content-Type: application/json');
@@ -22,18 +22,18 @@ try {
     }
 
     // Debug: Afficher les données récupérées
-    echo "Données récupérées : " . print_r($activites );
+    echo "Données récupérées : " . print_r($activites);
 
     // Écriture dans le fichier JSON seulement si $activites n'est pas vide
     if (!empty($activites)) {
         $json_data = json_encode($activites, JSON_PRETTY_PRINT);
         file_put_contents(
-            "C:/wamp64/www/projet-la-grimpette/backend/json/activites.json",
+            "C:/wamp64/www/projet-la-grimpette/frontend/site_vitrine/json/activites.json",
             $json_data
         );
 
         // Debug: Vérifier le contenu du fichier JSON
-        $written_data = file_get_contents("C:/wamp64/www/projet-la-grimpette/backend/json/activites.json");
+        $written_data = file_get_contents("C:/wamp64/www/projet-la-grimpette/frontend/site_vitrine/json/activites.json");
         echo "Données écrites dans le fichier JSON : " . $written_data;
 
         echo "success";
