@@ -1,0 +1,14 @@
+[
+    {
+        "id_client": 19,
+        "nom_client": "Moulin",
+        "prenom_client": "Damien",
+        "cours_client": "Cours de bloc."
+    },
+    {
+        "id_client": 23,
+        "nom_client": "Coche",
+        "prenom_client": "Marianne",
+        "cours_client": "S\u00e9ance de renforcement musculaire. "
+    }
+]

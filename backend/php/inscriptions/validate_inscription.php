@@ -64,7 +64,7 @@ try {
         unset($row);
 
         // Write them to JSON
-        file_put_contents("C:/wamp64/www/projet-la-grimpette/backend/json/incriptions_valides.json", json_encode($validInscriptions));
+        file_put_contents("C:/wamp64/www/projet-la-grimpette/backend/json/inscriptions_valides.json", json_encode($validInscriptions));
 
         echo json_encode(['success' => true]);
     } else {

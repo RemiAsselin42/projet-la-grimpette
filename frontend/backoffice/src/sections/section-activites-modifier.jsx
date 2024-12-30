@@ -119,7 +119,7 @@ const SectionActivitesModifier = () => {
           onChange={(e) => setSelectedActiviteId(e.target.value)}
           required
         >
-          <option value="">-- Sélectionnez une activité --</option>
+          <option value="">Sélectionnez une activité</option>
           {Array.isArray(activites) &&
             activites.map((activite) => (
               <option key={activite.id_activite} value={activite.id_activite}>
