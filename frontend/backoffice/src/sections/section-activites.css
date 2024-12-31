@@ -12,7 +12,7 @@
 #section-activites h2 {
   font-size: 1.5em;
   font-weight: 700;
-  margin: 0 0 15px 0;
+  margin: 0 20px 0 0;
 }
 
 #section-activites ul {
@@ -55,6 +55,7 @@
   border-radius: 5px;
   margin-left: 10px;
   transition: background-color 0.3s ease;
+  height: 36px;
 }
 
 #section-activites .btnReload:hover {
@@ -62,7 +63,7 @@
 }
 
 #section-activites .section-title {
-  display: flex;
-  flex-direction: row;
-  height: 36px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
 }

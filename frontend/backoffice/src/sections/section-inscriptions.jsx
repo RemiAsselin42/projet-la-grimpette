@@ -111,7 +111,12 @@ const SectionInscriptions = () => {
 
   return (
     <div id="section-inscriptions">
-      <h2>Liste des Inscriptions</h2>
+      <div className="section-title">
+        <h2>Liste des Inscriptions</h2>
+        <button onClick={handleReload} className="btnReload">
+          <FontAwesomeIcon icon={faSync} />
+        </button>
+      </div>
       {error && <p>Erreur lors du chargement des inscriptions : {error}</p>}
       <div className="activite-select-section">
         <label htmlFor="activite-select">Sélectionnez une activité :</label>
@@ -128,9 +133,6 @@ const SectionInscriptions = () => {
               </option>
             ))}
         </select>
-        <button onClick={handleReload} className="btnReload">
-          <FontAwesomeIcon icon={faSync} />
-        </button>
       </div>
       {Array.isArray(filteredInscriptions) &&
       filteredInscriptions.length === 0 ? (

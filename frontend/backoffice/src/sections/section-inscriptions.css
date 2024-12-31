@@ -111,10 +111,17 @@
   border-radius: 5px;
   margin-left: 10px;
   transition: background-color 0.3s ease;
+  height: 36px;
 }
 
 #section-inscriptions .btnReload:hover {
   background-color: var(--main-color-dark);
+}
+
+#section-inscriptions .section-title {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
 }
 
 #section-inscriptions .activite-select-section {
