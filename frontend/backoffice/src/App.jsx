@@ -179,7 +179,7 @@ function App() {
       {isAuthenticated ? (
         <div>
           <header className="app-header">
-            <h1>La Grimpette - CRM</h1>
+            <h1>La Grimpette - Backoffice</h1>
           </header>
           <main>
             <div className="side-bar">

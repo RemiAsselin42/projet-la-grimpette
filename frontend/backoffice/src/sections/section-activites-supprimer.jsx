@@ -10,7 +10,6 @@ const SectionActivitesSupprimer = () => {
   const [selectedActiviteId, setSelectedActiviteId] = useState("");
   const [selectedActivite, setSelectedActivite] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [image, setImage] = useState("");
 
   const getCategorieLabel = (categorie) => {
     switch (parseInt(categorie)) {
@@ -28,9 +27,7 @@ const SectionActivitesSupprimer = () => {
   useEffect(() => {
     const fetchActivites = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost/projet-la-grimpette/backend/php/activites/get_all_activites.php"
-        );
+        const response = await axios.get("./src/json/activites.json");
         setActivites(response.data);
       } catch (error) {
         console.error("Erreur lors du chargement des activités :", error);
@@ -39,7 +36,6 @@ const SectionActivitesSupprimer = () => {
 
     fetchActivites();
   }, []);
-
   useEffect(() => {
     if (selectedActiviteId) {
       const fetchActivite = async () => {
@@ -64,22 +60,6 @@ const SectionActivitesSupprimer = () => {
       fetchActivite();
     } else {
       setSelectedActivite(null);
-    }
-  }, [selectedActiviteId]);
-
-  useEffect(() => {
-    if (selectedActiviteId) {
-      const fetchActivites = async () => {
-        try {
-          const response = await axios.get(
-            `http://localhost:80/projet-la-grimpette/backend/php/activites/get_activite_image.php?id=${selectedActiviteId}`
-          );
-          setImage(response.data.image || "");
-        } catch (err) {
-          console.log(err.message);
-        }
-      };
-      fetchActivites();
     }
   }, [selectedActiviteId]);
 
@@ -149,12 +129,13 @@ const SectionActivitesSupprimer = () => {
         {loading ? (
           <p>Chargement...</p>
         ) : (
-          selectedActivite && (
+          selectedActivite &&
+          selectedActivite.date && (
             <div id="section-activites">
               <div
                 className="activite-details"
                 style={{
-                  backgroundImage: `linear-gradient(270deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(${image})`,
+                  backgroundImage: `linear-gradient(270deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(./src/images/${selectedActivite.image})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}

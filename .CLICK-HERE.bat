@@ -8,4 +8,4 @@ REM Ouvrir la deuxième fenêtre CMD, exécuter le site front
 start cmd /c "cd frontend\site_vitrine && npx http-server -p 8080"
 
 REM Ouvrir la deuxième fenêtre CMD, exécuter les commandes et fermer la fenêtre
-start cmd /c "cd frontend\site_vitrine && start "" "http://localhost:8080/" && start "" "http://localhost:5173/" && exit"
+start cmd /c "cd frontend\site_vitrine && start "" "http://localhost:5173/" && start "" "http://localhost:8080/" && exit"

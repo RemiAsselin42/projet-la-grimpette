@@ -121,11 +121,12 @@ const SectionInscriptions = () => {
           onChange={handleActiviteChange}
         >
           <option value="">Toutes les activités</option>
-          {activites.map((activite) => (
-            <option key={activite.id_activite} value={activite.nom_activite}>
-              {activite.nom_activite}
-            </option>
-          ))}
+          {Array.isArray(activites) &&
+            activites.map((activite) => (
+              <option key={activite.id_activite} value={activite.nom_activite}>
+                {activite.nom_activite}
+              </option>
+            ))}
         </select>
         <button onClick={handleReload} className="btnReload">
           <FontAwesomeIcon icon={faSync} />

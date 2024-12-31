@@ -95,8 +95,8 @@ const SectionActivites = () => {
               id={`div-activites-${activite.id_activite}`}
               style={{
                 backgroundImage: isPastActivity
-                  ? `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)  ), url(${activite.image})`
-                  : `linear-gradient(270deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(${activite.image})`,
+                  ? `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)  ), url(./src/images/${activite.image})`
+                  : `linear-gradient(270deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(./src/images/${activite.image})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
