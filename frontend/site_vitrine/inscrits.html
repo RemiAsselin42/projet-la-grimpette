@@ -124,38 +124,54 @@
           </thead>
         `;
         html += "<tbody>";
-        data.forEach((item) => {
+        if (data.length === 0) {
           html += `
             <tr>
-              <td>${item.nom_client}</td>
-              <td>${item.prenom_client}</td>
-              <td>${item.cours_client}</td>
+              <td colspan="3" style="text-align:center">Aucune inscription acceptée pour le moment</td>
             </tr>
           `;
-        });
+        } else {
+          data.forEach((item) => {
+            html += `
+              <tr>
+                <td>${item.nom_client}</td>
+                <td>${item.prenom_client}</td>
+                <td>${item.cours_client}</td>
+              </tr>
+            `;
+          });
+        }
         html += "</tbody>";
         document.getElementById("inscriptions-table").innerHTML = html;
 
-        document.getElementById("sort-nom").addEventListener("click", () => {
-          currentData.sort((a, b) => a.nom_client.localeCompare(b.nom_client));
-          renderTable(currentData);
-        });
-        document.getElementById("sort-prenom").addEventListener("click", () => {
-          currentData.sort((a, b) =>
-            a.prenom_client.localeCompare(b.prenom_client)
-          );
-          renderTable(currentData);
-        });
-        document.getElementById("sort-cours").addEventListener("click", () => {
-          currentData.sort((a, b) =>
-            a.cours_client.localeCompare(b.cours_client)
-          );
-          renderTable(currentData);
-        });
+        if (data.length > 0) {
+          document.getElementById("sort-nom").addEventListener("click", () => {
+            currentData.sort((a, b) =>
+              a.nom_client.localeCompare(b.nom_client)
+            );
+            renderTable(currentData);
+          });
+          document
+            .getElementById("sort-prenom")
+            .addEventListener("click", () => {
+              currentData.sort((a, b) =>
+                a.prenom_client.localeCompare(b.prenom_client)
+              );
+              renderTable(currentData);
+            });
+          document
+            .getElementById("sort-cours")
+            .addEventListener("click", () => {
+              currentData.sort((a, b) =>
+                a.cours_client.localeCompare(b.cours_client)
+              );
+              renderTable(currentData);
+            });
+        }
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        fetch("../../backend/json/incriptions_valides.json")
+        fetch("./json/inscriptions_valides.json")
           .then((response) => response.json())
           .then((data) => {
             originalData = data;

@@ -48,7 +48,8 @@ if ($id > 0) {
         $bdd_activites->commit();
 
         // Appel au script de mise à jour du fichier JSON
-        file_get_contents("http://localhost/projet-la-grimpette/backend/php/updateDataJson.php");
+        file_get_contents("http://localhost/projet-la-grimpette/backend/php/activites/reloadActivites.php");
+        file_get_contents("http://localhost/projet-la-grimpette/backend/php/inscriptions/reloadInscriptions.php");
 
     } catch (PDOException $e) {
         // Annuler les transactions en cas d'erreur
@@ -61,7 +62,7 @@ if ($id > 0) {
         error_log("Erreur PDO: " . $e->getMessage());
         echo json_encode(["error" => $e->getMessage()]);
     }
-    
+
 } else {
     error_log("ID invalide");
     echo json_encode(["error" => "ID invalide"]);

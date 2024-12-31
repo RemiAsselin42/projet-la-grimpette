@@ -16,7 +16,7 @@ import "./root.css";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedSection, setSelectedSection] = useState("home");
-  const [selectedActiviteId, setSelectedActiviteId] = useState(null);
+  const [selectedActiviteId] = useState(null);
 
   useEffect(() => {
     const authStatus = localStorage.getItem("isAuthenticated");
@@ -179,7 +179,7 @@ function App() {
       {isAuthenticated ? (
         <div>
           <header className="app-header">
-            <h1>La Grimpette - CRM</h1>
+            <h1>La Grimpette - Backoffice</h1>
           </header>
           <main>
             <div className="side-bar">

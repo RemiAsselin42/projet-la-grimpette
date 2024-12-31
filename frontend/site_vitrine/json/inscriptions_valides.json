@@ -1,0 +1,38 @@
+[
+    {
+        "id_client": 19,
+        "nom_client": "Moulin",
+        "prenom_client": "Damien",
+        "cours_client": "Cours de bloc."
+    },
+    {
+        "id_client": 23,
+        "nom_client": "Coche",
+        "prenom_client": "Marianne",
+        "cours_client": "S\u00e9ance de renforcement musculaire. "
+    },
+    {
+        "id_client": 9,
+        "nom_client": "Durand",
+        "prenom_client": "Lucie",
+        "cours_client": "S\u00e9ance de renforcement musculaire. "
+    },
+    {
+        "id_client": 22,
+        "nom_client": "Creuset",
+        "prenom_client": "Emilie",
+        "cours_client": "Sortie escalade."
+    },
+    {
+        "id_client": 11,
+        "nom_client": "Bernard",
+        "prenom_client": "Jeanne",
+        "cours_client": "Concours de bloc."
+    },
+    {
+        "id_client": 28,
+        "nom_client": "Rodriguez",
+        "prenom_client": "J\u00e9remy",
+        "cours_client": "Concours de bloc."
+    }
+]

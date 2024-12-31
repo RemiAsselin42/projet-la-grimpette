@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes, faSync } from "@fortawesome/free-solid-svg-icons";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,29 +12,29 @@ const SectionInscriptions = () => {
   const [selectedActivite, setSelectedActivite] = useState("");
   const [error, setError] = useState(null);
 
+  const fetchInscriptions = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:80/projet-la-grimpette/backend/php/inscriptions/get_inscriptions.php"
+      );
+      setInscriptions(response.data);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const fetchActivites = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:80/projet-la-grimpette/backend/php/activites/activite.php"
+      );
+      setActivites(response.data);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   useEffect(() => {
-    const fetchInscriptions = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:80/projet-la-grimpette/backend/php/inscriptions/get_inscriptions.php"
-        );
-        setInscriptions(response.data);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-
-    const fetchActivites = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:80/projet-la-grimpette/backend/php/activites/activite.php"
-        );
-        setActivites(response.data);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-
     fetchInscriptions();
     fetchActivites();
   }, []);
@@ -90,6 +90,19 @@ const SectionInscriptions = () => {
     setSelectedActivite(event.target.value);
   };
 
+  const handleReload = async () => {
+    try {
+      await axios.get(
+        "http://localhost:80/projet-la-grimpette/backend/php/inscriptions/reloadInscriptions.php"
+      );
+      toast.success("Inscriptions validées mise à jour !", {
+        position: "top-right",
+      });
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   const filteredInscriptions = selectedActivite
     ? inscriptions.filter(
         (inscription) => inscription.nom_activite === selectedActivite
@@ -98,7 +111,12 @@ const SectionInscriptions = () => {
 
   return (
     <div id="section-inscriptions">
-      <h2>Liste des Inscriptions</h2>
+      <div className="section-title">
+        <h2>Liste des Inscriptions</h2>
+        <button onClick={handleReload} className="btnReload">
+          <FontAwesomeIcon icon={faSync} />
+        </button>
+      </div>
       {error && <p>Erreur lors du chargement des inscriptions : {error}</p>}
       <div className="activite-select-section">
         <label htmlFor="activite-select">Sélectionnez une activité :</label>
@@ -108,11 +126,12 @@ const SectionInscriptions = () => {
           onChange={handleActiviteChange}
         >
           <option value="">Toutes les activités</option>
-          {activites.map((activite) => (
-            <option key={activite.id_activite} value={activite.nom_activite}>
-              {activite.nom_activite}
-            </option>
-          ))}
+          {Array.isArray(activites) &&
+            activites.map((activite) => (
+              <option key={activite.id_activite} value={activite.nom_activite}>
+                {activite.nom_activite}
+              </option>
+            ))}
         </select>
       </div>
       {Array.isArray(filteredInscriptions) &&

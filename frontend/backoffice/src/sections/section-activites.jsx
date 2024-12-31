@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSync } from "@fortawesome/free-solid-svg-icons";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const SectionActivites = () => {
   const [activites, setActivites] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,6 +28,19 @@ const SectionActivites = () => {
 
     fetchActivites();
   }, []);
+
+  const handleReload = async () => {
+    try {
+      await axios.get(
+        "http://localhost:80/projet-la-grimpette/backend/php/activites/reloadActivites.php"
+      );
+      toast.success("Liste des activités mise à jour !", {
+        position: "top-right",
+      });
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   if (loading) {
     return <p>Chargement des activités...</p>;
@@ -54,7 +73,13 @@ const SectionActivites = () => {
 
   return (
     <div id="section-activites">
-      <h2>Liste des Activités</h2>
+      <div className="section-title">
+        <h2>Liste des Activités</h2>
+        <button onClick={handleReload} className="btnReload">
+          <FontAwesomeIcon icon={faSync} />
+        </button>
+      </div>
+
       <ul>
         {sortedActivites.map((activite) => {
           const heureSansSecondes = activite.heure
@@ -70,8 +95,8 @@ const SectionActivites = () => {
               id={`div-activites-${activite.id_activite}`}
               style={{
                 backgroundImage: isPastActivity
-                  ? `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)  ), url(${activite.image})`
-                  : `linear-gradient(270deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(${activite.image})`,
+                  ? `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)  ), url(./src/images/${activite.image})`
+                  : `linear-gradient(270deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(./src/images/${activite.image})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -101,6 +126,7 @@ const SectionActivites = () => {
           );
         })}
       </ul>
+      <ToastContainer />
     </div>
   );
 };

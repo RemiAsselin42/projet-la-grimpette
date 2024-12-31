@@ -42,7 +42,9 @@ try {
     $stmt->execute();
 
     // Appel au script de mise à jour du fichier JSON
-    file_get_contents("http://localhost/projet-la-grimpette/backend/php/updateDataJson.php");
+    file_get_contents("http://localhost/projet-la-grimpette/backend/php/activites/reloadActivites.php");
+    file_get_contents("http://localhost/projet-la-grimpette/backend/php/inscriptions/reloadInscriptions.php");
+
 
 } catch (PDOException $e) {
     echo json_encode(["error" => $e->getMessage()]);

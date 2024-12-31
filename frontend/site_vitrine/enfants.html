@@ -103,9 +103,7 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      fetch(
-        "http://localhost:80/projet-la-grimpette/backend/php/activites/activite.php"
-      )
+      fetch("./json/activites.json")
         .then((response) => response.json())
         .then((data) => {
           const container = document.querySelector(".activity-container-main");
@@ -136,7 +134,7 @@
                 activityDiv.classList.add("activity-container");
                 activityDiv.classList.add(`activity-${activite.id_activite}`);
                 activityDiv.dataset.activityId = activite.id_activite;
-                activityDiv.style.backgroundImage = `linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) 80%), url(${activite.image})`;
+                activityDiv.style.backgroundImage = `linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) 80%), url(./images/${activite.image})`;
                 activityDiv.style.backgroundSize = "cover";
                 activityDiv.style.backgroundPosition = "center";
 
@@ -146,11 +144,7 @@
         <p class="activity-description">${activite.description}</p>
         <p class="activity-date"><strong>Date :</strong> ${formattedDate}</p>
         <p class="activity-time"><strong>Horaire :</strong> ${heureSansSecondes}</p>
-        ${
-          !isPastActivity
-            ? `<a href="formulaire.html" class="register-button" data-activity-id="${activite.id_activite}" onclick="addActivityIdToUrl(event)">S'inscrire</a>`
-            : '<p class="past-activity">Activité terminée</p>'
-        }
+        <a href="formulaire.html" class="register-button" data-activity-id="${activite.id_activite}" onclick="addActivityIdToUrl(event)">S'inscrire</a>
       </div>
     `;
 

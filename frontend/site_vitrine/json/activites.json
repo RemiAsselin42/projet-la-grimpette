@@ -1,0 +1,65 @@
+[
+    {
+        "id_activite": 1,
+        "nom_activite": "Sortie escalade.",
+        "date": "2025-01-21",
+        "description": "Sortie escalade pour l'\u00e9quipe junior afin de d\u00e9couvrir l'escalade sur roches.",
+        "heure": "14:00:00",
+        "categorie": 1,
+        "image": "image-1.jpg"
+    },
+    {
+        "id_activite": 2,
+        "nom_activite": "Concours de bloc.",
+        "date": "2025-01-02",
+        "description": "Qualifications pour le concours de bloc de section r\u00e9gionale.",
+        "heure": "10:30:00",
+        "categorie": 2,
+        "image": "image-2.jpg"
+    },
+    {
+        "id_activite": 3,
+        "nom_activite": "S\u00e9ance de renforcement musculaire. ",
+        "date": "2025-01-08",
+        "description": "Programme habituel : exercices physiques bras\/dos\/abdos\/jambes.\r\nD\u00e9couverte de la callisth\u00e9nie avec un coach.",
+        "heure": "20:00:00",
+        "categorie": 3,
+        "image": "image-3.jpg"
+    },
+    {
+        "id_activite": 4,
+        "nom_activite": "Sortie via ferrata.",
+        "date": "2025-01-11",
+        "description": "Sortie via ferrata d'une demi-journ\u00e9e pour d\u00e9couvrir les gorges de la r\u00e9gion.",
+        "heure": "13:30:00",
+        "categorie": 3,
+        "image": "image-4.jpg"
+    },
+    {
+        "id_activite": 5,
+        "nom_activite": "Cours de bloc.",
+        "date": "2025-01-26",
+        "description": "Cours de bloc en salle.",
+        "heure": "17:30:00",
+        "categorie": 1,
+        "image": "image-5.jpg"
+    },
+    {
+        "id_activite": 6,
+        "nom_activite": "Soir\u00e9e \u00e9tudiante.",
+        "date": "2025-01-12",
+        "description": "Soir\u00e9e \u00e9tudiante dans le grand gymnase pour tous les \u00e9tudiants. 15\u20ac l'entr\u00e9e.",
+        "heure": "21:00:00",
+        "categorie": 2,
+        "image": "image-6.jpeg"
+    },
+    {
+        "id_activite": 7,
+        "nom_activite": "Cours de mont\u00e9e en t\u00eate",
+        "date": "2025-01-28",
+        "description": "Cours pour apprendre \u00e0 monter en t\u00eate sur les voies de 12m.",
+        "heure": "19:30:00",
+        "categorie": 2,
+        "image": "image-7.jpg"
+    }
+]

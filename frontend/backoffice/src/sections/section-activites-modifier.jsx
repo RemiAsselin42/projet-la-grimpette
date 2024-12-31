@@ -11,8 +11,8 @@ const SectionActivitesModifier = () => {
   const [date, setDate] = useState("");
   const [heure, setHeure] = useState("");
   const [categorie, setCategorie] = useState("");
-  const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState("");
 
   useEffect(() => {
     const fetchActivites = async () => {
@@ -31,22 +31,6 @@ const SectionActivitesModifier = () => {
 
   useEffect(() => {
     if (selectedActiviteId) {
-      const fetchActivites = async () => {
-        try {
-          const response = await axios.get(
-            `http://localhost:80/projet-la-grimpette/backend/php/activites/get_activite_image.php?id=${selectedActiviteId}`
-          );
-          setImage(response.data.image || "");
-        } catch (err) {
-          console.log(err.message);
-        }
-      };
-      fetchActivites();
-    }
-  }, [selectedActiviteId]);
-
-  useEffect(() => {
-    if (selectedActiviteId) {
       const fetchActivite = async () => {
         setLoading(true);
         try {
@@ -60,6 +44,7 @@ const SectionActivitesModifier = () => {
             setDate(String(response.data.date || ""));
             setHeure(String(response.data.heure || ""));
             setCategorie(String(response.data.categorie || ""));
+            setImage(String(response.data.image || ""));
           } else {
             console.error("Données inattendues:", response.data);
           }
@@ -135,7 +120,7 @@ const SectionActivitesModifier = () => {
               <div
                 className="modifierActivite"
                 style={{
-                  backgroundImage: `linear-gradient(270deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(http://localhost/projet-la-grimpette/frontend/backoffice/src/images/${activite.image})`,
+                  backgroundImage: `linear-gradient(270deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(./src/images/${image})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
