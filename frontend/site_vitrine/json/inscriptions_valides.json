@@ -22,5 +22,17 @@
         "nom_client": "Creuset",
         "prenom_client": "Emilie",
         "cours_client": "Sortie escalade."
+    },
+    {
+        "id_client": 11,
+        "nom_client": "Bernard",
+        "prenom_client": "Jeanne",
+        "cours_client": "Concours de bloc."
+    },
+    {
+        "id_client": 28,
+        "nom_client": "Rodriguez",
+        "prenom_client": "J\u00e9remy",
+        "cours_client": "Concours de bloc."
     }
 ]
