@@ -41,11 +41,6 @@ try {
     $jsonDir = "C:/wamp64/www/projet-la-grimpette/frontend/site_vitrine/json";
     $jsonFile = $jsonDir . "/inscriptions_valides.json";
 
-    // Créer le dossier s'il n'existe pas
-    if (!file_exists($jsonDir)) {
-        mkdir($jsonDir, 0777, true);
-    }
-
     // Écrire le fichier
     if (file_put_contents($jsonFile, json_encode($validInscriptions, JSON_PRETTY_PRINT))) {
         echo json_encode(['success' => true]);
