@@ -55,11 +55,29 @@
     },
     {
         "id_activite": 7,
-        "nom_activite": "Cours de mont\u00e9e en t\u00eate",
+        "nom_activite": "Cours de mont\u00e9e en t\u00eate.",
         "date": "2025-01-28",
         "description": "Cours pour apprendre \u00e0 monter en t\u00eate sur les voies de 12m.",
         "heure": "19:30:00",
         "categorie": 2,
         "image": "image-7.jpg"
+    },
+    {
+        "id_activite": 9,
+        "nom_activite": "Repas de No\u00ebl.",
+        "date": "2024-12-20",
+        "description": "Repas de No\u00ebl avant les vacances.",
+        "heure": "19:00:00",
+        "categorie": 1,
+        "image": "image-9.png"
+    },
+    {
+        "id_activite": 8,
+        "nom_activite": "Sortie accrobranche.",
+        "date": "2025-01-29",
+        "description": "Sortie accrobranche dans les bois\ud83c\udf32",
+        "heure": "14:00:00",
+        "categorie": 1,
+        "image": "image-8.jpg"
     }
 ]

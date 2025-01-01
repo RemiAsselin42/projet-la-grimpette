@@ -17,9 +17,7 @@
 }
 
 #section-inscriptions-validees table {
-  min-width: calc(100vw - 325px);
-  max-width: calc(100vw - 325px);
-  width: 100%;
+  width: calc(100vw - 336px);
   border-collapse: collapse;
 }
 

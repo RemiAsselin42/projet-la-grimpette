@@ -107,19 +107,23 @@
         .then((response) => response.json())
         .then((data) => {
           const container = document.querySelector(".activity-container-main");
-          container.innerHTML = "<h2>Activités Adultes</h2>";
+          container.innerHTML = "<h2>Activités Enfants</h2>";
 
           if (data.error) {
             container.innerHTML = `<p>${data.error}</p>`;
           } else {
             let hasActivities = false;
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
 
             data.forEach((activite) => {
-              // Vérifie si la catégorie est égale à Adultes
-              if (activite.categorie == "3") {
+              // Vérifie si la catégorie est égale à Enfants et si la date n'est pas passée
+              const activityDate = new Date(activite.date);
+              activityDate.setHours(0, 0, 0, 0);
+
+              if (activite.categorie == "3" && activityDate >= today) {
                 hasActivities = true;
 
-                // Formatage de l'heure et de la date
                 const heureSansSecondes = activite.heure
                   .slice(0, 5)
                   .split(":")
@@ -128,7 +132,6 @@
                   .split("-")
                   .reverse()
                   .join("/");
-                const isPastActivity = new Date(activite.date) < new Date();
 
                 const activityDiv = document.createElement("div");
                 activityDiv.classList.add("activity-container");
@@ -139,14 +142,14 @@
                 activityDiv.style.backgroundPosition = "center";
 
                 activityDiv.innerHTML = `
-      <div class="activity-details">
-        <h3 class="activity-title">${activite.nom_activite}</h3>
-        <p class="activity-description">${activite.description}</p>
-        <p class="activity-date"><strong>Date :</strong> ${formattedDate}</p>
-        <p class="activity-time"><strong>Horaire :</strong> ${heureSansSecondes}</p>
-        <a href="formulaire.html" class="register-button" data-activity-id="${activite.id_activite}" onclick="addActivityIdToUrl(event)">S'inscrire</a>
-      </div>
-    `;
+                  <div class="activity-details">
+                    <h3 class="activity-title">${activite.nom_activite}</h3>
+                    <p class="activity-description">${activite.description}</p>
+                    <p class="activity-date"><strong>Date :</strong> ${formattedDate}</p>
+                    <p class="activity-time"><strong>Horaire :</strong> ${heureSansSecondes}</p>
+                    <a href="formulaire.html" class="register-button" data-activity-id="${activite.id_activite}" onclick="addActivityIdToUrl(event)">S'inscrire</a>
+                  </div>
+                `;
 
                 container.appendChild(activityDiv);
               }

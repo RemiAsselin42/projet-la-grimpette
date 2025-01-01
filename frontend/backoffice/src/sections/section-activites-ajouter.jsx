@@ -116,7 +116,7 @@ const SectionActivitesAjouter = () => {
                 type="file"
                 ref={hiddenFileInput}
                 onChange={handleFileChange}
-                accept="image/*"
+                accept="image/jpeg, image/jpg, image/png, image/webp, image/bmp, image/svg+xml, image/avif"
                 required
                 style={{ display: "none" }}
               />
