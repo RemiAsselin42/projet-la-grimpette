@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSync } from "@fortawesome/free-solid-svg-icons";
-
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const SectionActivites = () => {
@@ -28,19 +25,6 @@ const SectionActivites = () => {
 
     fetchActivites();
   }, []);
-
-  const handleReload = async () => {
-    try {
-      await axios.get(
-        "http://localhost:80/projet-la-grimpette/backend/php/activites/reloadActivites.php"
-      );
-      toast.success("Liste des activités mise à jour !", {
-        position: "top-right",
-      });
-    } catch (error) {
-      setError(error.message);
-    }
-  };
 
   if (loading) {
     return <p>Chargement des activités...</p>;
@@ -75,9 +59,6 @@ const SectionActivites = () => {
     <div id="section-activites">
       <div className="section-title">
         <h2>Liste des Activités</h2>
-        <button onClick={handleReload} className="btnReload">
-          <FontAwesomeIcon icon={faSync} />
-        </button>
       </div>
 
       <ul>
@@ -143,7 +124,6 @@ const SectionActivites = () => {
               .split(":")
               .join("h");
             const formattedDate = activite.date.split("-").reverse().join("/");
-            const isPastActivity = true;
             return (
               <li
                 key={activite.id_activite}

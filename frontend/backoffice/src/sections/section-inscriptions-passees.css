@@ -1,0 +1,86 @@
+#section-inscriptions-passees {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 0 20px;
+  margin: 20px 0;
+  max-width: calc(100vw - 325px);
+  max-height: calc(100vh - 275px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+#section-inscriptions-passees h2 {
+  margin: 20px;
+  font-size: 24px;
+  color: var(--main-color);
+}
+
+#section-inscriptions-passees table {
+  width: calc(100vw - 336px);
+  border-collapse: collapse;
+}
+
+#section-inscriptions-passees th,
+#section-inscriptions-passees td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#section-inscriptions-passees tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#section-inscriptions-passees tr:hover {
+  background-color: #e7e7e7;
+}
+
+#section-inscriptions-passees th {
+  background-color: var(--main-color);
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+#section-inscriptions-passees td {
+  color: #333;
+}
+
+#section-inscriptions-passees table {
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#section-inscriptions-passees .btnReload {
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+  height: 36px;
+}
+
+#section-inscriptions-passees .btnReload:hover {
+  background-color: var(--main-color-dark);
+}
+
+.table-container {
+  position: relative;
+  pointer-events: none; /* Disables interaction with the table */
+}
+
+.overlayBlock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}

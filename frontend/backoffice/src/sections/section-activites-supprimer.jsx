@@ -85,6 +85,10 @@ const SectionActivitesSupprimer = () => {
       toast.success("Activité supprimée.", {
         position: "top-right",
       });
+
+      // Fetch updated activities list
+      const updatedResponse = await axios.get("./src/json/activites.json");
+      setActivites(updatedResponse.data);
     } catch (error) {
       console.error("Erreur lors de la suppression de l'activité :", error);
     }

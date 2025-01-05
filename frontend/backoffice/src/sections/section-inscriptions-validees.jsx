@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const SectionInscriptionsValidees = () => {
   const [inscriptions, setInscriptions] = useState([]);
   const [error, setError] = useState(null);
@@ -35,7 +38,9 @@ const SectionInscriptionsValidees = () => {
 
   return (
     <div id="section-inscriptions-validees">
-      <h2>Liste des Inscriptions Validées</h2>
+      <div className="section-title">
+        <h2>Liste des Inscriptions Validées</h2>
+      </div>
       {error && <p>Erreur lors du chargement des inscriptions : {error}</p>}
       {inscriptions.length === 0 ? (
         <div>
@@ -85,6 +90,7 @@ const SectionInscriptionsValidees = () => {
           </tbody>
         </table>
       )}
+      <ToastContainer />
     </div>
   );
 };

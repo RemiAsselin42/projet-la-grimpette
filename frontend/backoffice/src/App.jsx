@@ -10,6 +10,7 @@ import SectionInscriptionsValidees from "./sections/section-inscriptions-validee
 import SectionInscriptionsRefusees from "./sections/section-inscriptions-refusees";
 import SectionActivitesModifier from "./sections/section-activites-modifier";
 import SectionActivitesSupprimer from "./sections/section-activites-supprimer";
+import SectionInscriptionsPassees from "./sections/section-inscriptions-passees";
 
 import "./root.css";
 
@@ -85,6 +86,21 @@ function App() {
             </div>
           ),
           className: "modifier-section inscriptions",
+        };
+      case "inscriptions-passees":
+        return {
+          content: (
+            <div>
+              <Navinscriptions
+                setSelectedSection={setSelectedSection}
+                selectedSection={selectedSection}
+              />
+              <div className="inscriptions-content">
+                <SectionInscriptionsPassees />
+              </div>
+            </div>
+          ),
+          className: "inscriptions-section inscriptions",
         };
 
       // Activites
@@ -210,6 +226,13 @@ function App() {
                       onClick={() => setSelectedSection("inscriptions-refuse")}
                     >
                       Refusées
+                    </p>
+                  </li>
+                  <li>
+                    <p
+                      onClick={() => setSelectedSection("inscriptions-passees")}
+                    >
+                      Passées
                     </p>
                   </li>
                 </ul>

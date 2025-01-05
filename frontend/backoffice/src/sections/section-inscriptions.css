@@ -48,6 +48,22 @@
   font-weight: bold;
 }
 
+#section-inscriptions th button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0px 0px 0px 15px;
+}
+
+#section-inscriptions th button:hover {
+  color: #ddd;
+}
+
+#section-inscriptions th button i {
+  font-size: 14px;
+}
+
 #section-inscriptions td {
   color: #333;
 }
@@ -90,38 +106,6 @@
 #section-inscriptions .btnValidations .btnRefuser {
   background-color: var(--color-red);
   color: white;
-}
-
-#section-inscriptions .btnValidations button:hover {
-  filter: brightness(1.3);
-  width: 150%;
-}
-
-#section-inscriptions .btnValidations button:not(:hover) {
-  filter: brightness(0.9);
-}
-
-#section-inscriptions .btnReload {
-  background-color: var(--main-color);
-  color: white;
-  border: none;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-left: 10px;
-  transition: background-color 0.3s ease;
-  height: 36px;
-}
-
-#section-inscriptions .btnReload:hover {
-  background-color: var(--main-color-dark);
-}
-
-#section-inscriptions .section-title {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
 }
 
 #section-inscriptions .activite-select-section {

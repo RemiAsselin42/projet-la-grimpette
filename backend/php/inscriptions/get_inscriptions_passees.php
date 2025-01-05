@@ -7,8 +7,6 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token, Author
 
 include("conf_bdd_inscriptions.php");
 
-header('Content-Type: application/json');
-
 try {
     // Connexion à la base de données inscription_user
     $bdd_inscriptions = new PDO("mysql:host=$servername;dbname=inscription_user", $user, $pass);
@@ -18,10 +16,31 @@ try {
     $bdd_activites = new PDO("mysql:host=$servername;dbname=liste_activites", $user, $pass);
     $bdd_activites->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Requête SQL pour récupérer les inscriptions refusées
+    // Requête SQL pour récupérer les inscriptions passées
     $stmt_inscriptions = $bdd_inscriptions->prepare("
-        SELECT id_client, nom_client, prenom_client, tel_client, mail_client, cours_client
+        SELECT id_client, nom_client, prenom_client, tel_client, mail_client, cours_client, 'En attente' AS statut
+        FROM preinscription
+        WHERE cours_client IN (
+            SELECT id_activite
+            FROM liste_activites.activite
+            WHERE date < NOW()
+        )
+        UNION
+        SELECT id_client, nom_client, prenom_client, tel_client, mail_client, cours_client, 'Validée' AS statut
+        FROM inscription_valide
+        WHERE cours_client IN (
+            SELECT id_activite
+            FROM liste_activites.activite
+            WHERE date < NOW()
+        )
+        UNION
+        SELECT id_client, nom_client, prenom_client, tel_client, mail_client, cours_client, 'Refusée' AS statut
         FROM inscription_refus
+        WHERE cours_client IN (
+            SELECT id_activite
+            FROM liste_activites.activite
+            WHERE date < NOW()
+        )
     ");
     $stmt_inscriptions->execute();
     $inscriptions = $stmt_inscriptions->fetchAll(PDO::FETCH_ASSOC);
@@ -43,7 +62,7 @@ try {
         ];
     }
 
-    // Ajouter le nom de l'activité et la catégorie à chaque inscription refusée
+    // Ajouter le nom de l'activité et la catégorie à chaque inscription
     foreach ($inscriptions as &$inscription) {
         $inscription['nom_activite'] = $activite_map[$inscription['cours_client']]['nom_activite'] ?? 'Activité inconnue';
         $inscription['categorie'] = $activite_map[$inscription['cours_client']]['categorie'] ?? 'Catégorie inconnue';
@@ -51,5 +70,5 @@ try {
 
     echo json_encode($inscriptions);
 } catch (PDOException $erreur) {
-    echo json_encode(['error' => $erreur->getMessage()]);
+    echo 'Erreur PDO : ' . $erreur->getMessage();
 }

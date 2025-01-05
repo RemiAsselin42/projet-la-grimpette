@@ -33,8 +33,7 @@ try {
     }
 
     if (file_put_contents("C:/wamp64/www/projet-la-grimpette/frontend/backoffice/src/json/activites.json", json_encode($allActivites, JSON_PRETTY_PRINT))) {
-        echo json_encode(['success' => true]);
-        echo json_encode($allActivites);
+        echo json_encode(['success' => true, 'data' => $allActivites]);
     } else {
         throw new Exception("Impossible d'écrire dans le fichier JSON");
     }

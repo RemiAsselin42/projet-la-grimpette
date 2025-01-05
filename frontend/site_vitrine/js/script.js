@@ -149,3 +149,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// Update du tableau des inscrits automatiquement
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Fonction pour appeler le script PHP
+  function updateInscriptions() {
+    fetch("http://localhost/projet-la-grimpette/backend/php/inscriptions/reloadInscriptions.php")
+      .then(response => response.text()) // Utiliser .text() pour voir la réponse brute
+      .then(data => {
+        console.log("Réponse brute:", data); // Afficher la réponse brute
+        try {
+          const jsonData = JSON.parse(data); // Tenter de parser la réponse en JSON
+          console.log("Inscriptions mises à jour:", jsonData);
+        } catch (error) {
+          console.error("Erreur lors du parsing JSON:", error);
+        }
+      })
+      .catch(error => {
+        console.error("Erreur lors de la mise à jour des inscriptions:", error);
+      });
+  }
+
+  updateInscriptions();
+
+  setInterval(updateInscriptions, 60000);
+});

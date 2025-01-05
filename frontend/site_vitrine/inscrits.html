@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
     <title>Inscriptions</title>
     <link rel="stylesheet" href="css/root.css" />
+    <link rel="icon" href="img/favicon.ico" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <script src="js/script.js"></script>
+    <script src="js/renderTable.js"></script>
+    <script src="js/fetchAndUpdateTable.js"></script>
+    <script src="js/filterAndSearch.js"></script>
   </head>
   <body>
     <header>
@@ -61,9 +72,6 @@
         <select id="activity-select">
           <option value="">Liste des activités</option>
         </select>
-        <!-- <button id="sort-nom">Tri Nom</button>
-        <button id="sort-prenom">Tri Prénom</button>
-        <button id="sort-cours">Tri Cours</button> -->
       </div>
       <table id="inscriptions-table"></table>
     </main>
@@ -95,101 +103,8 @@
       </div>
     </footer>
     <script>
-      let originalData = [];
-      let currentData = [];
-
-      function renderTable(data) {
-        let html = `
-          <thead>
-            <tr>
-              <th>
-                Nom
-                <button id="sort-nom">
-                  <i class="fa-solid fa-sort"></i>
-                </button>
-              </th>
-              <th>
-                Prénom
-                <button id="sort-prenom">
-                  <i class="fa-solid fa-sort"></i>
-                </button>
-              </th>
-              <th>
-                Cours
-                <button id="sort-cours">
-                  <i class="fa-solid fa-sort"></i>
-                </button>
-              </th>
-            </tr>
-          </thead>
-        `;
-        html += "<tbody>";
-        if (data.length === 0) {
-          html += `
-            <tr>
-              <td colspan="3" style="text-align:center">Aucune inscription acceptée pour le moment</td>
-            </tr>
-          `;
-        } else {
-          data.forEach((item) => {
-            html += `
-              <tr>
-                <td>${item.nom_client}</td>
-                <td>${item.prenom_client}</td>
-                <td>${item.cours_client}</td>
-              </tr>
-            `;
-          });
-        }
-        html += "</tbody>";
-        document.getElementById("inscriptions-table").innerHTML = html;
-
-        if (data.length > 0) {
-          document.getElementById("sort-nom").addEventListener("click", () => {
-            currentData.sort((a, b) =>
-              a.nom_client.localeCompare(b.nom_client)
-            );
-            renderTable(currentData);
-          });
-          document
-            .getElementById("sort-prenom")
-            .addEventListener("click", () => {
-              currentData.sort((a, b) =>
-                a.prenom_client.localeCompare(b.prenom_client)
-              );
-              renderTable(currentData);
-            });
-          document
-            .getElementById("sort-cours")
-            .addEventListener("click", () => {
-              currentData.sort((a, b) =>
-                a.cours_client.localeCompare(b.cours_client)
-              );
-              renderTable(currentData);
-            });
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        fetch("./json/inscriptions_valides.json")
-          .then((response) => response.json())
-          .then((data) => {
-            originalData = data;
-            currentData = data;
-
-            const activities = [...new Set(data.map((d) => d.cours_client))];
-            const select = document.getElementById("activity-select");
-            activities.forEach((act) => {
-              let opt = document.createElement("option");
-              opt.value = act;
-              opt.text = act;
-              select.appendChild(opt);
-            });
-
-            renderTable(data);
-          })
-          .catch((err) => console.error(err));
-
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchAndUpdateTable();
         document
           .getElementById("search-input")
           .addEventListener("input", (e) => {
@@ -201,20 +116,11 @@
             );
             filterByActivity();
           });
-
         document
           .getElementById("activity-select")
           .addEventListener("change", () => {
             filterByActivity();
           });
-
-        function filterByActivity() {
-          const selected = document.getElementById("activity-select").value;
-          let filtered = currentData.filter(
-            (item) => !selected || item.cours_client === selected
-          );
-          renderTable(filtered);
-        }
       });
     </script>
   </body>

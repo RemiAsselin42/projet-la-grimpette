@@ -69,7 +69,7 @@ try {
     echo "Activité ajoutée avec succès.";
 
     // Met à jour le JSON
-    file_get_contents("http://localhost/projet-la-grimpette/backend/php/inscriptions/reloadInscriptions.php");
+    file_get_contents("http://localhost/projet-la-grimpette/backend/php/activites/reloadActivites.php");
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }

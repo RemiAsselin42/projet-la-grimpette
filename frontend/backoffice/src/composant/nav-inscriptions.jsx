@@ -22,6 +22,12 @@ const NavMenu = ({ setSelectedSection, selectedSection }) => {
         >
           <p>Refusées</p>
         </li>
+        <li
+          className={selectedSection === "inscriptions-passees" ? "active" : ""}
+          onClick={() => setSelectedSection("inscriptions-passees")}
+        >
+          <p>Passées</p>
+        </li>
       </ul>
     </nav>
   );

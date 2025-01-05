@@ -7,6 +7,8 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token, Author
 
 include("conf_bdd_inscriptions.php");
 
+header('Content-Type: application/json');
+
 try {
     // Connexion à la base de données inscription_user
     $bdd_inscriptions = new PDO("mysql:host=$servername;dbname=inscription_user", $user, $pass);
@@ -16,10 +18,10 @@ try {
     $bdd_activites = new PDO("mysql:host=$servername;dbname=liste_activites", $user, $pass);
     $bdd_activites->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Requête SQL pour récupérer les inscriptions
+    // Requête SQL pour récupérer les inscriptions refusées
     $stmt_inscriptions = $bdd_inscriptions->prepare("
         SELECT id_client, nom_client, prenom_client, tel_client, mail_client, cours_client
-        FROM preinscription
+        FROM inscription_refus
         WHERE cours_client NOT IN (
             SELECT id_activite
             FROM liste_activites.activite
@@ -46,7 +48,7 @@ try {
         ];
     }
 
-    // Ajouter le nom de l'activité et la catégorie à chaque inscription
+    // Ajouter le nom de l'activité et la catégorie à chaque inscription refusée
     foreach ($inscriptions as &$inscription) {
         $inscription['nom_activite'] = $activite_map[$inscription['cours_client']]['nom_activite'] ?? 'Activité inconnue';
         $inscription['categorie'] = $activite_map[$inscription['cours_client']]['categorie'] ?? 'Catégorie inconnue';
@@ -54,5 +56,6 @@ try {
 
     echo json_encode($inscriptions);
 } catch (PDOException $erreur) {
-    echo 'Erreur PDO : ' . $erreur->getMessage();
+    echo json_encode(['error' => $erreur->getMessage()]);
 }
+?>

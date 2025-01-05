@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
     <title>Ados</title>
     <link rel="stylesheet" href="./css/root.css" />
+    <link rel="icon" href="img/favicon.ico" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -103,11 +112,18 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      fetch("./json/activites.json")
+      const url = `./json/activites.json?cache_bust=${new Date().getTime()}`;
+      fetch(url, {
+        headers: {
+          "Cache-Control": "no-cache",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           const container = document.querySelector(".activity-container-main");
-          container.innerHTML = "<h2>Activités Enfants</h2>";
+          container.innerHTML = "<h2>Activités Ados</h2>";
 
           if (data.error) {
             container.innerHTML = `<p>${data.error}</p>`;

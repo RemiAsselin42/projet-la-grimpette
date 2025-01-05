@@ -22,6 +22,11 @@ try {
     $stmt_inscriptions = $bdd_inscriptions->prepare("
         SELECT id_client, nom_client, prenom_client, tel_client, mail_client, cours_client
         FROM inscription_valide
+        WHERE cours_client NOT IN (
+            SELECT id_activite
+            FROM liste_activites.activite
+            WHERE date < NOW()
+        )
     ");
     $stmt_inscriptions->execute();
     $inscriptions = $stmt_inscriptions->fetchAll(PDO::FETCH_ASSOC);

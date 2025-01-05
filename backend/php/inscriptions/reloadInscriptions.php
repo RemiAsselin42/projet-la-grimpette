@@ -25,14 +25,21 @@ try {
     $bdd_activites = new PDO("mysql:host=$servername;dbname=$dbname", $user, $pass);
     $bdd_activites->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Replace ID with course name
+    $filteredInscriptions = [];
+    $currentDate = new DateTime();
+
+    // Replace ID with course name and filter by date
     foreach ($validInscriptions as &$row) {
-        $stmt2 = $bdd_activites->prepare("SELECT nom_activite FROM activite WHERE id_activite = :id_activite");
+        $stmt2 = $bdd_activites->prepare("SELECT nom_activite, date FROM activite WHERE id_activite = :id_activite");
         $stmt2->bindParam(':id_activite', $row['cours_client']);
         $stmt2->execute();
         $act = $stmt2->fetch(PDO::FETCH_ASSOC);
         if ($act) {
-            $row['cours_client'] = $act['nom_activite'];
+            $activityDate = new DateTime($act['date']);
+            if ($activityDate > $currentDate) {
+                $row['cours_client'] = $act['nom_activite'];
+                $filteredInscriptions[] = $row;
+            }
         }
     }
     unset($row);
@@ -41,10 +48,12 @@ try {
     $jsonDir = "C:/wamp64/www/projet-la-grimpette/frontend/site_vitrine/json";
     $jsonFile = $jsonDir . "/inscriptions_valides.json";
 
+    // Vider le fichier avant d'écrire les nouvelles données
+    file_put_contents($jsonFile, '');
+
     // Écrire le fichier
-    if (file_put_contents($jsonFile, json_encode($validInscriptions, JSON_PRETTY_PRINT))) {
-        echo json_encode(['success' => true]);
-        echo json_encode($validInscriptions);
+    if (file_put_contents($jsonFile, json_encode($filteredInscriptions, JSON_PRETTY_PRINT))) {
+        echo json_encode(['success' => true, 'data' => $filteredInscriptions]);
     } else {
         throw new Exception("Impossible d'écrire dans le fichier JSON");
     }

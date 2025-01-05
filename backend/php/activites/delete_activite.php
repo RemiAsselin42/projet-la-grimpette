@@ -25,6 +25,12 @@ if ($id > 0) {
         $bdd_inscriptions->beginTransaction();
         $bdd_activites->beginTransaction();
 
+        // Récupérer le nom de l'image associée à l'activité
+        $stmt_image = $bdd_activites->prepare("SELECT image FROM activite WHERE id_activite = :id");
+        $stmt_image->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt_image->execute();
+        $image = $stmt_image->fetch(PDO::FETCH_ASSOC);
+
         // Fonction pour exécuter les requêtes de suppression
         function supprimerInscriptions($bdd, $table, $id)
         {
@@ -42,6 +48,16 @@ if ($id > 0) {
         $stmt_activites = $bdd_activites->prepare("DELETE FROM activite WHERE id_activite = :id");
         $stmt_activites->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt_activites->execute();
+
+        // Supprimer l'image associée à l'activité
+        $imagePath1 = "C:/wamp64/www/projet-la-grimpette/frontend/backoffice/src/images/" . $image['image'];
+        $imagePath2 = "C:/wamp64/www/projet-la-grimpette/frontend/site_vitrine/images/" . $image['image'];
+        if (file_exists($imagePath1)) {
+            unlink($imagePath1);
+        }
+        if (file_exists($imagePath2)) {
+            unlink($imagePath2);
+        }
 
         // Valider les transactions sur les deux bases de données
         $bdd_inscriptions->commit();

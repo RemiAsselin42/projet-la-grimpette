@@ -17,12 +17,10 @@ const SectionActivitesModifier = () => {
   useEffect(() => {
     const fetchActivites = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:80/projet-la-grimpette/backend/php/activites/activite.php"
-        );
+        const response = await axios.get("./src/json/activites.json");
         setActivites(response.data);
-      } catch (err) {
-        console.log(err.message);
+      } catch (error) {
+        console.error("Erreur lors du chargement des activités :", error);
       }
     };
 
@@ -83,6 +81,10 @@ const SectionActivitesModifier = () => {
       toast.success("Activité modifiée.", {
         position: "top-right",
       });
+
+      // Fetch updated activities list
+      const updatedResponse = await axios.get("./src/json/activites.json");
+      setActivites(updatedResponse.data);
     } catch (error) {
       console.error("Erreur lors de la modification de l'activité :", error);
     }

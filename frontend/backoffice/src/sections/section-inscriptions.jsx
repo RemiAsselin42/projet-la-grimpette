@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faTimes, faSync } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes, faSort } from "@fortawesome/free-solid-svg-icons";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,6 +11,7 @@ const SectionInscriptions = () => {
   const [activites, setActivites] = useState([]);
   const [selectedActivite, setSelectedActivite] = useState("");
   const [error, setError] = useState(null);
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
 
   const fetchInscriptions = async () => {
     try {
@@ -90,32 +91,38 @@ const SectionInscriptions = () => {
     setSelectedActivite(event.target.value);
   };
 
-  const handleReload = async () => {
-    try {
-      await axios.get(
-        "http://localhost:80/projet-la-grimpette/backend/php/inscriptions/reloadInscriptions.php"
-      );
-      toast.success("Inscriptions validées mise à jour !", {
-        position: "top-right",
-      });
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
   const filteredInscriptions = selectedActivite
     ? inscriptions.filter(
         (inscription) => inscription.nom_activite === selectedActivite
       )
     : inscriptions;
 
+  const sortedInscriptions = [...filteredInscriptions].sort((a, b) => {
+    if (sortConfig.key) {
+      const aValue = a[sortConfig.key].toString().toLowerCase();
+      const bValue = b[sortConfig.key].toString().toLowerCase();
+      if (aValue < bValue) {
+        return sortConfig.direction === "asc" ? -1 : 1;
+      }
+      if (aValue > bValue) {
+        return sortConfig.direction === "asc" ? 1 : -1;
+      }
+    }
+    return 0;
+  });
+
+  const requestSort = (key) => {
+    let direction = "asc";
+    if (sortConfig.key === key && sortConfig.direction === "asc") {
+      direction = "desc";
+    }
+    setSortConfig({ key, direction });
+  };
+
   return (
     <div id="section-inscriptions">
       <div className="section-title">
         <h2>Liste des Inscriptions</h2>
-        <button onClick={handleReload} className="btnReload">
-          <FontAwesomeIcon icon={faSync} />
-        </button>
       </div>
       {error && <p>Erreur lors du chargement des inscriptions : {error}</p>}
       <div className="activite-select-section">
@@ -163,18 +170,38 @@ const SectionInscriptions = () => {
         <table>
           <thead>
             <tr>
-              <th>Nom</th>
-              <th>Prénom</th>
-              <th>Cours</th>
-              <th>Catégorie</th>
+              <th>
+                Nom
+                <button onClick={() => requestSort("nom_client")}>
+                  <FontAwesomeIcon icon={faSort} />
+                </button>
+              </th>
+              <th>
+                Prénom
+                <button onClick={() => requestSort("prenom_client")}>
+                  <FontAwesomeIcon icon={faSort} />
+                </button>
+              </th>
+              <th>
+                Cours
+                <button onClick={() => requestSort("nom_activite")}>
+                  <FontAwesomeIcon icon={faSort} />
+                </button>
+              </th>
+              <th>
+                Catégorie
+                <button onClick={() => requestSort("categorie")}>
+                  <FontAwesomeIcon icon={faSort} />
+                </button>
+              </th>
               <th>Téléphone</th>
               <th>Email</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {Array.isArray(filteredInscriptions) &&
-              filteredInscriptions.map((inscription) => (
+            {Array.isArray(sortedInscriptions) &&
+              sortedInscriptions.map((inscription) => (
                 <tr key={inscription.id_client}>
                   <td>{inscription.nom_client}</td>
                   <td>{inscription.prenom_client}</td>

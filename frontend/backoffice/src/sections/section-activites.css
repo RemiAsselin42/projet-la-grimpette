@@ -2,17 +2,18 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 20px 40px;
-  margin: 10px auto;
+  padding: 0 20px;
+  margin: 20px 0;
   max-width: calc(100vw - 325px);
-  max-height: calc(100vh - 130px - 175px);
-  overflow: auto;
+  max-height: calc(100vh - 275px);
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 #section-activites h2 {
   font-size: 1.5em;
   font-weight: 700;
-  margin: 0 20px 0 0;
+  margin: 20px 20px 0 20px;
 }
 
 #section-activites ul {

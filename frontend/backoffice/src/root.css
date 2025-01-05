@@ -10,6 +10,7 @@
 @import "./sections/section-inscriptions-refusees.css";
 @import "./sections/section-activites-modifier.css";
 @import "./sections/section-activites-supprimer.css";
+@import "./sections/section-inscriptions-passees.css";
 @import "./composant/confirm-alert-custom.css";
 
 :root {
